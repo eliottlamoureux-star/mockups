@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Mockup Bank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080C14;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #080C14;
+      border-bottom: 2px solid #E8820C;
+      padding: 28px clamp(24px, 5vw, 80px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo span { color: #E8820C; }
+
+    .header-meta {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px);
+    }
+
+    .page-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .page-title span { color: #E8820C; }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: clamp(40px, 6vw, 72px);
+    }
+
+    .category {
+      margin-bottom: clamp(40px, 5vw, 64px);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .category-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .category-count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #E8820C;
+      background: rgba(232,130,12,0.12);
+      border: 1px solid rgba(232,130,12,0.3);
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      background: #fff;
+      color: #080C14;
+      border-radius: 6px;
+      padding: 18px 20px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(232,130,12,0.2);
+      border-color: #E8820C;
+    }
+
+    .card-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #080C14;
+    }
+
+    .card-style {
+      font-size: 0.75rem;
+      color: rgba(8,12,20,0.45);
+      text-transform: capitalize;
+    }
+
+    .card-arrow {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #E8820C;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .card-multi {
+      background: #080C14;
+      border: 2px solid #E8820C;
+    }
+
+    .card-multi .card-name,
+    .card-multi .card-style { color: #fff; }
+    .card-multi .card-style { color: rgba(255,255,255,0.45); }
+    .card-multi:hover { background: #080C14; box-shadow: 0 8px 24px rgba(232,130,12,0.3); }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px clamp(24px, 5vw, 80px);
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">STUDIO <span>·</span> MOCKUPS</a>
+  <span class="header-meta">83 mockups · 13 industries</span>
+</header>
+
+<main>
+  <h1 class="page-title">MOCKUP <span>BANK</span></h1>
+  <p class="page-subtitle">Click any card to open the full mockup in your browser.</p>
+
+  <!-- MOVING -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Moving</span>
+      <span class="category-count">1</span>
+    </div>
+    <div class="cards">
+      <a class="card card-multi" href="moving-professional.html">
+        <div class="card-name">MovePro Estrie</div>
+        <div class="card-style">professional · multi-page</div>
+        <span class="card-arrow">View site →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- RESTAURANT -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Restaurant</span>
+      <span class="category-count">8</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="restaurant-warm.html"><div class="card-name">Restaurant</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="cafe-warm.html"><div class="card-name">Café</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="foodtruck-bold.html"><div class="card-name">Food Truck</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="catering-professional.html"><div class="card-name">Catering</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="ramen-modern.html"><div class="card-name">Ramen</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="boulangerie-warm.html"><div class="card-name">Boulangerie</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="lebanese-warm.html"><div class="card-name">Lebanese</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="brunch-bold.html"><div class="card-name">Brunch</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- PLUMBING -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Plumbing</span>
+      <span class="category-count">10</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="plumbing-professional.html"><div class="card-name">Plumbing</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="hvac-commercial.html"><div class="card-name">HVAC</div><div class="card-style">commercial</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="drain-specialist.html"><div class="card-name">Drain Specialist</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="plumbing-residential.html"><div class="card-name">Plumbing</div><div class="card-style">residential</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="waterheater-professional.html"><div class="card-name">Water Heater</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="bathroom-reno-plumbing.html"><div class="card-name">Bathroom Reno</div><div class="card-style">plumbing</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="backflow-specialist.html"><div class="card-name">Backflow</div><div class="card-style">specialist</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="plumbing-inspection.html"><div class="card-name">Plumbing</div><div class="card-style">inspection</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="plumbing-emergency.html"><div class="card-name">Emergency</div><div class="card-style">plumbing</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="plumbing-hydro-jetting.html"><div class="card-name">Hydro Jetting</div><div class="card-style">plumbing</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- CONTRACTOR -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Contractor</span>
+      <span class="category-count">10</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="contractor-bold.html"><div class="card-name">Contractor</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="roofing-bold.html"><div class="card-name">Roofing</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="painting-warm.html"><div class="card-name">Painting</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="landscaping-modern.html"><div class="card-name">Landscaping</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="foundation-bold.html"><div class="card-name">Foundation</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="windows-modern.html"><div class="card-name">Windows</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="deck-warm.html"><div class="card-name">Deck</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="interior-renovation.html"><div class="card-name">Interior Reno</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="construction-residential.html"><div class="card-name">Construction</div><div class="card-style">residential</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="construction-commercial.html"><div class="card-name">Construction</div><div class="card-style">commercial</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- ELECTRICIAN -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Electrician</span>
+      <span class="category-count">8</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="electrician-modern.html"><div class="card-name">Electrician</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="electrician-commercial.html"><div class="card-name">Electrician</div><div class="card-style">commercial</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="solar-modern.html"><div class="card-name">Solar</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="smarthome-modern.html"><div class="card-name">Smart Home</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="led-lighting.html"><div class="card-name">LED Lighting</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="generator-professional.html"><div class="card-name">Generator</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="electrical-inspection.html"><div class="card-name">Electrical</div><div class="card-style">inspection</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="outdoor-electrical.html"><div class="card-name">Outdoor</div><div class="card-style">electrical</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- CLINIC -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Clinic</span>
+      <span class="category-count">9</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="clinic-professional.html"><div class="card-name">Clinic</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="dentist-professional.html"><div class="card-name">Dentist</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="physio-warm.html"><div class="card-name">Physio</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="optometrist-modern.html"><div class="card-name">Optometrist</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="chiro-warm.html"><div class="card-name">Chiro</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="psycho-professional.html"><div class="card-name">Psycho</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="nutritionist-modern.html"><div class="card-name">Nutritionist</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="veterinary-warm.html"><div class="card-name">Veterinary</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="massage-warm.html"><div class="card-name">Massage</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- SALON -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Salon</span>
+      <span class="category-count">7</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="salon-warm.html"><div class="card-name">Salon</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="barber-bold.html"><div class="card-name">Barber</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="nailsalon-warm.html"><div class="card-name">Nail Salon</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="medispa-professional.html"><div class="card-name">Medi Spa</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="hairsalon-bold.html"><div class="card-name">Hair Salon</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="lash-modern.html"><div class="card-name">Lash</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="mua-bold.html"><div class="card-name">MUA</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- FITNESS -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Fitness</span>
+      <span class="category-count">4</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="fitness-bold.html"><div class="card-name">Fitness</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="yoga-warm.html"><div class="card-name">Yoga</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="boxing-bold.html"><div class="card-name">Boxing</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="pilates-warm.html"><div class="card-name">Pilates</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- RETAIL -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Retail</span>
+      <span class="category-count">5</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="retail-modern.html"><div class="card-name">Retail</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="boutique-modern.html"><div class="card-name">Boutique</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="petstore-warm.html"><div class="card-name">Pet Store</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="bookshop-warm.html"><div class="card-name">Bookshop</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="florist-warm.html"><div class="card-name">Florist</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- CONSULTING -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Consulting</span>
+      <span class="category-count">6</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="consulting-modern.html"><div class="card-name">Consulting</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="hr-consulting-professional.html"><div class="card-name">HR Consulting</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="it-consulting-modern.html"><div class="card-name">IT Consulting</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="accounting-professional.html"><div class="card-name">Accounting</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="accounting-corporate.html"><div class="card-name">Accounting</div><div class="card-style">corporate</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="insurance-professional.html"><div class="card-name">Insurance</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- REAL ESTATE -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Real Estate</span>
+      <span class="category-count">3</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="realestate-professional.html"><div class="card-name">Real Estate</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="commercial-realestate.html"><div class="card-name">Commercial RE</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="property-management.html"><div class="card-name">Property Mgmt</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- LAW -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Law</span>
+      <span class="category-count">3</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="law-professional.html"><div class="card-name">Law</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="immigration-law.html"><div class="card-name">Immigration</div><div class="card-style">law</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="family-law.html"><div class="card-name">Family Law</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+  <!-- OTHER -->
+  <div class="category">
+    <div class="category-header">
+      <span class="category-name">Other</span>
+      <span class="category-count">9</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="other-modern.html"><div class="card-name">Other</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="tutoring-warm.html"><div class="card-name">Tutoring</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="cleaning-professional.html"><div class="card-name">Cleaning</div><div class="card-style">professional</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="eventplanner-modern.html"><div class="card-name">Event Planner</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="blog-modern.html"><div class="card-name">Blog</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="photography-modern.html"><div class="card-name">Photography</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="community-warm.html"><div class="card-name">Community</div><div class="card-style">warm</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="autorepair-bold.html"><div class="card-name">Auto Repair</div><div class="card-style">bold</div><span class="card-arrow">View →</span></a>
+      <a class="card" href="doggrooming-modern.html"><div class="card-name">Dog Grooming</div><div class="card-style">modern</div><span class="card-arrow">View →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer>© 2026 Studio — studio-montreal.ca</footer>
+
+</body>
+</html>
