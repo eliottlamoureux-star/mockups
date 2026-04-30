@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avis Clients — MovePro Estrie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      font-family: 'Inter', sans-serif;
+      background: #080C14;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 80px);
+      height: 88px;
+      background: #080C14;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav__logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #E8820C;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav__logo-icon svg { width: 22px; height: 22px; fill: #fff; }
+
+    .nav__logo-text { display: flex; flex-direction: column; line-height: 1; }
+
+    .nav__logo-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav__logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+      padding-bottom: 3px;
+    }
+
+    .nav__links a:hover { color: #fff; }
+    .nav__links a.active { color: #fff; border-bottom: 2px solid #E8820C; }
+
+    .nav__cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: #E8820C;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      border: 2px solid #E8820C;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav__cta:hover { background: #CF7009; border-color: #CF7009; }
+
+    /* ── PAGE HERO BANNER ── */
+    .page-hero {
+      height: 300px;
+      background: linear-gradient(135deg, #0D1220 0%, #1A1F2E 40%, #0F1520 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,130,12,0.08) 0%, transparent 60%);
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #E8820C 0%, rgba(232,130,12,0.3) 100%);
+    }
+
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .page-hero__breadcrumb {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .page-hero__breadcrumb a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .page-hero__breadcrumb a:hover { color: #E8820C; }
+    .page-hero__breadcrumb span { color: #E8820C; }
+
+    .page-hero__title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section { width: 100%; }
+
+    .section-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 80px);
+    }
+
+    .section-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #E8820C;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: #E8820C;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.05;
+      color: #080C14;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: #5A6272;
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: #F3F4F6;
+      padding: clamp(60px, 8vw, 120px) 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 32px;
+      border: 1px solid #EAECF0;
+      box-shadow: 0 4px 24px rgba(8,12,20,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+    }
+
+    .testimonial-stars svg {
+      width: 18px;
+      height: 18px;
+      fill: #E8820C;
+    }
+
+    .testimonial-quote {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #374151;
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid #EAECF0;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E8820C 0%, #CF7009 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .author-info { display: flex; flex-direction: column; }
+
+    .author-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #080C14;
+      margin-bottom: 2px;
+    }
+
+    .author-detail {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: #9CA3AF;
+    }
+
+    /* ── RATING SUMMARY ── */
+    .rating-summary {
+      background: #080C14;
+      padding: clamp(48px, 6vw, 80px) 0;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .rating-big {
+      text-align: center;
+    }
+
+    .rating-big__number {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 5rem;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .rating-big__number span { color: #E8820C; }
+
+    .rating-big__stars {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin: 12px 0 8px;
+    }
+
+    .rating-big__stars svg {
+      width: 24px;
+      height: 24px;
+      fill: #E8820C;
+    }
+
+    .rating-big__label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .rating-divider {
+      width: 1px;
+      height: 80px;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .rating-stat {
+      text-align: center;
+    }
+
+    .rating-stat__number {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .rating-stat__number span { color: #E8820C; }
+
+    .rating-stat__label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #080C14;
+      padding: clamp(48px, 6vw, 80px) 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 48px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #E8820C;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-icon svg { width: 22px; height: 22px; fill: #fff; }
+
+    .footer-logo-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .footer-logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.40);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 260px;
+    }
+
+    .footer-social { display: flex; gap: 12px; }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .social-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: rgba(255,255,255,0.55);
+      transition: fill 0.2s;
+    }
+
+    .social-btn:hover { background: rgba(232,130,12,0.20); }
+    .social-btn:hover svg { fill: #E8820C; }
+
+    .footer-col-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      display: block;
+      height: 2px;
+      flex: 1;
+      background: rgba(232,130,12,0.35);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      background: #E8820C;
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-links a:hover::before { opacity: 1; }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .footer-contact-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(232,130,12,0.12);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .footer-contact-icon svg {
+      width: 15px;
+      height: 15px;
+      stroke: #E8820C;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-contact-text { display: flex; flex-direction: column; }
+
+    .footer-contact-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .footer-contact-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+    }
+
+    .footer-copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .footer-copyright span { color: #E8820C; }
+    .footer-legal { display: flex; gap: 24px; }
+
+    .footer-legal a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,0.55); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      nav { height: 72px; }
+      .section-inner { padding: 0 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .rating-divider { display: none; }
+      .rating-row { gap: 40px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav__logo-sub { display: none; }
+      .section-subtitle { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="moving-professional.html" class="nav__logo">
+    <div class="nav__logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 3h15v13H1V3zM16 8h4l3 4v5h-7V8z"/>
+        <circle cx="5.5" cy="18.5" r="2.5"/>
+        <circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+    </div>
+    <div class="nav__logo-text">
+      <span class="nav__logo-name">MovePro</span>
+      <span class="nav__logo-sub">Estrie · Québec</span>
+    </div>
+  </a>
+
+  <ul class="nav__links">
+    <li><a href="moving-professional.html">Accueil</a></li>
+    <li><a href="moving-services.html">Services</a></li>
+    <li><a href="moving-process.html">Processus</a></li>
+    <li><a href="moving-testimonials.html" class="active">Avis</a></li>
+    <li><a href="moving-contact.html">Contact</a></li>
+  </ul>
+
+  <a href="moving-contact.html" class="nav__cta">Réserver un déménagement</a>
+  <div class="nav__hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO BANNER -->
+<div class="page-hero">
+  <div class="page-hero__content">
+    <div class="page-hero__breadcrumb">
+      <a href="moving-professional.html">Accueil</a>
+      <span>›</span>
+      <span>Avis</span>
+    </div>
+    <h1 class="page-hero__title">Avis Clients</h1>
+  </div>
+</div>
+
+<!-- RATING SUMMARY -->
+<div class="rating-summary">
+  <div class="section-inner">
+    <div class="rating-row">
+      <div class="rating-big">
+        <div class="rating-big__number">4<span>.9</span></div>
+        <div class="rating-big__stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="rating-big__label">Note moyenne</div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="rating-stat">
+        <div class="rating-stat__number">500<span>+</span></div>
+        <div class="rating-stat__label">Déménagements</div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="rating-stat">
+        <div class="rating-stat__number">98<span>%</span></div>
+        <div class="rating-stat__label">Satisfaction</div>
+      </div>
+      <div class="rating-divider"></div>
+      <div class="rating-stat">
+        <div class="rating-stat__number">12<span> ans</span></div>
+        <div class="rating-stat__label">D'expérience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials">
+  <div class="section-inner">
+    <div class="section-eyebrow">Témoignages</div>
+    <h2 class="section-title">Ils nous ont fait<br/>confiance</h2>
+    <p class="section-subtitle">Vraies expériences, vrais clients. Découvrez ce que nos clients pensent de notre service.</p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Troisième déménagement avec MovePro et toujours aussi satisfaits. L'équipe est arrivée à l'heure pile, a tout emballé avec soin et a géré le déchargement en un temps record. Aucune égratignure, aucun retard."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">FT</div>
+          <div class="author-info">
+            <span class="author-name">Famille Tremblay</span>
+            <span class="author-detail">Sherbrooke → Magog · Résidentiel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"J'ai dû déménager mon bureau en urgence sur une fin de semaine. MovePro a répondu en moins d'une heure, organisé le tout du vendredi au samedi et on était opérationnels le lundi matin. Impressionnant."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MB</div>
+          <div class="author-info">
+            <span class="author-name">Marc B.</span>
+            <span class="author-detail">Sherbrooke · Déménagement commercial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"On a fait appel à MovePro pour le déménagement de nos entrepôts vers nos nouveaux locaux. L'équipe a géré plus de 200 palettes en deux jours, sans aucun dommage. Professionnalisme exemplaire du début à la fin."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ED</div>
+          <div class="author-info">
+            <span class="author-name">Entreprise Dupont</span>
+            <span class="author-detail">Granby · Relocalisation d'entrepôt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Service irréprochable pour notre déménagement Sherbrooke-Magog. Soumission reçue en 90 minutes, tout s'est déroulé exactement comme prévu. Mon piano à queue a été déplacé sans aucun problème. Bravo à toute l'équipe!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SL</div>
+          <div class="author-info">
+            <span class="author-name">Sophie L.</span>
+            <span class="author-detail">Sherbrooke → Magog · Transport spécialisé</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Excellente expérience du début à la fin. L'équipe était polie, efficace et a pris grand soin de nos meubles. Le prix correspondait exactement à la soumission — aucune mauvaise surprise. Je recommande sans hésitation."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RL</div>
+          <div class="author-info">
+            <span class="author-name">Rachelle L.</span>
+            <span class="author-detail">Coaticook · Déménagement résidentiel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-quote">"Nous avons utilisé leur service d'entreposage pendant 3 mois lors de la rénovation de notre maison. Tout était impeccablement organisé et nos affaires sont revenues dans le même état. Prix très compétitif aussi."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PG</div>
+          <div class="author-info">
+            <span class="author-name">Pierre G.</span>
+            <span class="author-detail">Sherbrooke · Entreposage temporaire</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="section-inner">
+    <div class="footer-top">
+      <div>
+        <a href="moving-professional.html" class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 3h15v13H1V3zM16 8h4l3 4v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="footer-logo-name">MovePro</div>
+            <div class="footer-logo-sub">Estrie · Québec</div>
+          </div>
+        </a>
+        <p class="footer-tagline">Déménageurs professionnels certifiés en Estrie depuis 2012. Votre satisfaction est notre priorité.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="moving-services.html">Déménagement résidentiel</a></li>
+          <li><a href="moving-services.html">Déménagement commercial</a></li>
+          <li><a href="moving-services.html">Entreposage sécurisé</a></li>
+          <li><a href="moving-services.html">Emballage professionnel</a></li>
+          <li><a href="moving-services.html">Transport spécialisé</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="moving-professional.html">Accueil</a></li>
+          <li><a href="moving-services.html">Services</a></li>
+          <li><a href="moving-process.html">Processus</a></li>
+          <li><a href="moving-testimonials.html">Avis clients</a></li>
+          <li><a href="moving-contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.93 12 19.79 19.79 0 0 1 1.93 3.26 2 2 0 0 1 3.91 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="footer-contact-text">
+            <span class="footer-contact-label">Téléphone</span>
+            <span class="footer-contact-value">(819) 000-0000</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="footer-contact-text">
+            <span class="footer-contact-label">Courriel</span>
+            <span class="footer-contact-value">info@moveproestrie.ca</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="footer-contact-text">
+            <span class="footer-contact-label">Adresse</span>
+            <span class="footer-contact-value">Sherbrooke, QC, J1H 1A1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 <span>MovePro Estrie</span>. Tous droits réservés.</p>
+      <div class="footer-legal">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d'utilisation</a>
+        <a href="#">Licence RBQ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
