@@ -230,6 +230,52 @@
       backdrop-filter: blur(8px);
     }
 
+    /* ── SEARCH ── */
+    .search-wrap {
+      position: relative;
+      margin-bottom: clamp(32px, 5vw, 56px);
+      max-width: 520px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(17,18,20,0.12);
+      border-radius: 50px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    .search-input::placeholder { color: rgba(17,18,20,0.35); }
+
+    .search-input:focus {
+      border-color: var(--green);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 0 0 3px rgba(52,94,41,0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      pointer-events: none;
+    }
+
+    .no-results {
+      display: none;
+      font-size: 0.9rem;
+      color: var(--gray);
+      padding: 40px 0;
+    }
+
     @media (max-width: 600px) {
       .cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
     }
@@ -260,6 +306,12 @@
 <main>
   <h1 class="page-title">Mockup <span>Bank</span></h1>
   <p class="page-subtitle">Click any card to open the full mockup in your browser.</p>
+
+  <div class="search-wrap">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="search-input" type="search" id="search" placeholder="Search mockups — plumbing, salon, bold…" autocomplete="off" />
+  </div>
+  <p class="no-results" id="no-results">No mockups found for "<span id="search-term"></span>".</p>
 
   <!-- MOVING -->
   <div class="category">
@@ -482,5 +534,36 @@
 
 <footer>© 2026 Studio — studio-montreal.ca</footer>
 
+<script>
+  const input = document.getElementById('search');
+  const noResults = document.getElementById('no-results');
+  const searchTerm = document.getElementById('search-term');
+  const categories = document.querySelectorAll('.category');
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    let totalVisible = 0;
+
+    categories.forEach(function(cat) {
+      const cards = cat.querySelectorAll('.card');
+      let visibleInCat = 0;
+
+      cards.forEach(function(card) {
+        const name = card.querySelector('.card-name').textContent.toLowerCase();
+        const style = card.querySelector('.card-style').textContent.toLowerCase();
+        const catName = cat.querySelector('.category-name').textContent.toLowerCase();
+        const matches = !q || name.includes(q) || style.includes(q) || catName.includes(q);
+        card.style.display = matches ? '' : 'none';
+        if (matches) visibleInCat++;
+      });
+
+      cat.style.display = visibleInCat > 0 ? '' : 'none';
+      totalVisible += visibleInCat;
+    });
+
+    noResults.style.display = totalVisible === 0 && q ? 'block' : 'none';
+    searchTerm.textContent = q;
+  });
+</script>
 </body>
 </html>
