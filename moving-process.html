@@ -126,10 +126,14 @@
 
     .nav__cta:hover { background: #CF7009; border-color: #CF7009; }
 
+    @media (max-width: 768px) {
+      .nav__cta { display: none; }
+    }
+
     /* ── PAGE HERO BANNER ── */
     .page-hero {
       height: 300px;
-      background: linear-gradient(135deg, #0D1220 0%, #1A1F2E 40%, #0F1520 100%);
+      background: linear-gradient(135deg, #080C14 0%, #080C14 40%, #080C14 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -247,7 +251,7 @@
 
     /* ── HOW IT WORKS ── */
     .how-it-works {
-      background: #F3F4F6;
+      background: #fff;
       padding: clamp(60px, 8vw, 120px) 0;
     }
 
@@ -810,15 +814,31 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copyright">© 2024 <span>MovePro Estrie</span>. Tous droits réservés.</p>
+      <p class="footer-copyright">© 2026 <span>MovePro Estrie</span>. Tous droits réservés.</p>
       <div class="footer-legal">
-        <a href="#">Politique de confidentialité</a>
-        <a href="#">Conditions d'utilisation</a>
-        <a href="#">Licence RBQ</a>
+        <a href="javascript:void(0)">Politique de confidentialité</a>
+        <a href="javascript:void(0)">Conditions d'utilisation</a>
+        <a href="javascript:void(0)">Licence RBQ</a>
       </div>
     </div>
   </div>
 </footer>
 
+<script>
+  document.querySelector('.nav__hamburger').addEventListener('click', function() {
+    var links = document.querySelector('.nav__links');
+    var isOpen = links.style.display === 'flex';
+    links.style.display = isOpen ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '88px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = '#080C14';
+    links.style.padding = '20px 40px';
+    links.style.gap = '16px';
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+</script>
 </body>
 </html>
