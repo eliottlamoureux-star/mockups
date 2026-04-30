@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | Commercial {{MAIN_SERVICE}} Brokerage — {{LOCATION}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F9F7F4;
+  --primary: #1A1A2E;
+  --accent: #C9A96E;
+  --surface: #F2EDE4;
+  --text-on-dark: #FAF7F0;
+  --accent-15: rgba(201, 169, 110, 0.15);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(26, 26, 46, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #b89555;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201,169,110,0.35);
+}
+
+.btn-secondary-link {
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+  padding: 140px 80px 80px;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-left h1 span {
+  color: var(--accent);
+}
+
+.hero-left p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.78);
+  max-width: 520px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn-primary {
+  padding: 14px 32px;
+  font-size: 15px;
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero-card-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.hero-card-stars svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--accent);
+  stroke: none;
+}
+
+.hero-card-stars span {
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hero-card-stat {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.hero-card-stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.hero-card-credentials {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-card-credentials li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255,255,255,0.88);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.hero-card-credentials li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.credential-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+/* SECTIONS */
+.section {
+  padding: 100px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 100px 80px;
+}
+
+.section-title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: rgba(26, 26, 46, 0.6);
+  max-width: 560px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* FEATURED LISTINGS */
+.listings-section {
+  background: var(--surface);
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.listing-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+}
+
+.listing-img {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.listing-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.listing-card:hover .listing-img img {
+  transform: scale(1.04);
+}
+
+.listing-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.listing-content {
+  padding: 24px;
+}
+
+.listing-address {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.listing-neighborhood {
+  font-size: 13px;
+  color: rgba(26,26,46,0.5);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.listing-specs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.listing-spec {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(26,26,46,0.65);
+  font-weight: 500;
+}
+
+.listing-spec svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.listing-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listing-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.listing-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(26,26,46,0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* WHY WORK WITH US */
+.why-section {
+  background: var(--primary);
+}
+
+.why-section .section-title {
+  color: var(--text-on-dark);
+}
+
+.why-section .section-subtitle {
+  color: rgba(250,247,240,0.6);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.why-card {
+  padding: 32px 28px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.25s ease;
+}
+
+.why-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.why-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.why-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+}
+
+.why-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: rgba(250,247,240,0.6);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* TESTIMONIALS */
+.testimonials-section {
+  background: var(--bg);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 36px 32px;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+
+.testimonial-stars svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--accent);
+  stroke: none;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  color: var(--primary);
+  line-height: 1.75;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 15px;
+}
+
+.testimonial-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.testimonial-role {
+  font-size: 13px;
+  color: rgba(26,26,46,0.5);
+  font-weight: 400;
+}
+
+/* FORM SECTION */
+.form-section {
+  background: var(--surface);
+}
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1120px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.form-info h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.form-info p {
+  font-size: 15px;
+  color: rgba(26,26,46,0.65);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.form-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.form-contact-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.form-contact-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.form-contact-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+}
+
+.form-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--primary);
+  transition: all 0.2s;
+  background: #fff;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-15);
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231A1A2E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.btn-form {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 6px;
+}
+
+.btn-form:hover {
+  background: #b89555;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,169,110,0.35);
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.cta-banner p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  max-width: 540px;
+  margin: 0 auto 32px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.cta-banner-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-white:hover {
+  background: var(--text-on-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.cta-banner .btn-secondary-link {
+  color: rgba(255,255,255,0.9);
+  border-bottom-color: rgba(255,255,255,0.4);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 72px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 14px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: rgba(250,247,240,0.55);
+  line-height: 1.7;
+  max-width: 320px;
+  font-weight: 400;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(250,247,240,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 48px 0 24px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(250,247,240,0.35);
+  font-weight: 400;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 120px 24px 56px;
+    min-height: auto;
+  }
+
+  .section {
+    padding: 56px 24px;
+  }
+
+  .section-full {
+    padding: 56px 24px;
+  }
+
+  .listings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrapper {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .listing-specs {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">{{BUSINESS_NAME}}</a>
+    <ul class="nav-links">
+      <li><a href="#listings">Listings</a></li>
+      <li><a href="#why">Why Lumex</a></li>
+      <li><a href="#schedule">Schedule a Viewing</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#schedule" class="btn-primary">Get a Free Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>Montreal's Premier <span>Commercial {{MAIN_SERVICE}}</span> Brokerage</h1>
+    <p>From prime office space in the Quartier International to high-yield industrial properties in the West Island, our team delivers exclusive opportunities that never hit the open market. 25 years of closing deals across Greater Montreal.</p>
+    <div class="hero-buttons">
+      <a href="#schedule" class="btn-primary">Get a Free Quote</a>
+      <a href="tel:+15145551234" class="btn-secondary-link">Call for a Free Estimate</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-stars">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>4.9 on Google (187 reviews)</span>
+    </div>
+    <div class="hero-card-stat">$1.3B+ in Transaction Volume</div>
+    <div class="hero-card-stat-label">Across 743 properties sold and leased since 1999</div>
+    <ul class="hero-card-credentials">
+      <li>
+        <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Licensed by the OACIQ with full regulatory compliance
+      </li>
+      <li>
+        <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Exclusive access to 47 off-market commercial listings
+      </li>
+      <li>
+        <svg class="credential-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Full-service transaction team: offer through closing
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- FEATURED LISTINGS -->
+<section class="listings-section section-full" id="listings">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="section-header">
+      <h2 class="section-title">Featured Commercial Properties in Montreal</h2>
+      <p class="section-subtitle">Handpicked opportunities across office, retail, and industrial — updated weekly by our brokerage team.</p>
+    </div>
+    <div class="listings-grid">
+
+      <div class="listing-card">
+        <div class="listing-img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85&auto=format&fit=crop" alt="Modern office space in Old Montreal">
+          <span class="listing-tag">Office</span>
+        </div>
+        <div class="listing-content">
+          <div class="listing-address">350 Rue Saint-Jacques, Suite 400</div>
+          <div class="listing-neighborhood">Old Montreal · Ville-Marie</div>
+          <div class="listing-specs">
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              8,200 sq ft
+            </span>
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Class A
+            </span>
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Immediate
+            </span>
+          </div>
+          <div class="listing-bottom">
+            <div class="listing-price">$38 <span>/sq ft/yr</span></div>
+            <a href="#schedule" class="btn-outline">View Listing</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=85&auto=format&fit=crop" alt="Retail space on Sainte-Catherine">
+          <span class="listing-tag">Retail</span>
+        </div>
+        <div class="listing-content">
+          <div class="listing-address">1425 Rue Sainte-Catherine Ouest</div>
+          <div class="listing-neighborhood">Golden Square Mile · Downtown</div>
+          <div class="listing-specs">
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              3,400 sq ft
+            </span>
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Street Level
+            </span>
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Q2 2025
+            </span>
+          </div>
+          <div class="listing-bottom">
+            <div class="listing-price">$52 <span>/sq ft/yr</span></div>
+            <a href="#schedule" class="btn-outline">View Listing</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=85&auto=format&fit=crop" alt="Industrial property in Lachine">
+          <span class="listing-tag">Industrial</span>
+        </div>
+        <div class="listing-content">
+          <div class="listing-address">7890 Boul. Saint-Laurent</div>
+          <div class="listing-neighborhood">Lachine · West Island</div>
+          <div class="listing-specs">
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              22,500 sq ft
+            </span>
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Warehouse
+            </span>
+            <span class="listing-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Immediate
+            </span>
+          </div>
+          <div class="listing-bottom">
+            <div class="listing-price">$2.1M <span>sale</span></div>
+            <a href="#schedule" class="btn-outline">View Listing</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY WORK WITH US -->
+<section class="why-section section-full" id="why">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="section-header">
+      <h2 class="section-title">Why Montreal's Top Investors Choose Lumex</h2>
+      <p class="section-subtitle">Our track record isn't built on promises. It's built on 743 closed transactions and $1.3 billion in volume.</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>25 Years of Market Expertise</h3>
+        <p>Since 1999, we've navigated every cycle of the Montreal commercial market — from downturns to booms. Our insight gives you an unfair advantage in every negotiation.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <h3>743 Transactions Closed</h3>
+        <p>Office leases, retail acquisitions, industrial dispositions, and portfolio investment sales — all closed with precision and minimal days on market.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>97.3% of Asking Price Achieved</h3>
+        <p>Our negotiation methodology consistently delivers near-asking or above-asking results. We position your property to command top dollar in any condition.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Deep Montreal Network</h3>
+        <p>Active relationships with 200+ property owners, developers, and institutional investors across Ville-Marie, Griffintown, Mile End, Laval, and the South Shore.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section section">
+  <div class="section-header">
+    <h2 class="section-title">What Our Clients Say About Working With Lumex</h2>
+    <p class="section-subtitle">Real outcomes from real transactions in the Greater Montreal commercial market.</p>
+  </div>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testimonial-text">"We needed 12,000 sq ft of flex industrial space in Lachine and had been searching for 6 months with no luck. Lumex showed us an off-market property within 10 days that wasn't listed anywhere. We closed at $14/sq ft below the comparable average. Their transaction team handled every step — environmental, zoning, notary — without a single delay."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">ML</div>
+        <div>
+          <div class="testimonial-name">Marc Lefebvre</div>
+          <div class="testimonial-role">CEO, Distribution Nordique Inc.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testimonial-text">"I sold a 4-unit retail building on Saint-Denis through Lumex and they achieved $2.4M — that's $180K over what two other brokerages told me I'd get. They positioned the building as a development play, which attracted a completely different buyer pool. The whole process from listing to notary took 58 days."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SB</div>
+        <div>
+          <div class="testimonial-name">Sophie Bouchard</div>
+          <div class="testimonial-role">Private Investor, Montreal Portfolio</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCHEDULE A VIEWING FORM -->
+<section class="form-section section-full" id="schedule">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="form-wrapper">
+      <div class="form-info">
+        <h2>Schedule a Viewing or Request a Market Analysis</h2>
+        <p>Whether you're looking for your next commercial space, evaluating an investment, or curious about what your property is worth — we'll have a broker reach out within 2 business hours.</p>
+        <div class="form-contact-item">
+          <div class="form-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="form-contact-text">(514) 555-1234</div>
+        </div>
+        <div class="form-contact-item">
+          <div class="form-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div class="form-contact-text">info@lumeximmobilier.ca</div>
+        </div>
+        <div class="form-contact-item">
+          <div class="form-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="form-contact-text">1250 Boul. Rene-Levesque Ouest, Suite 2200, Montreal, QC</div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Book Your Viewing</h3>
+        <form onsubmit="event.preventDefault(); alert('Thank you! A Lumex broker will contact you within 2 hours.');">
+          <div class="form-group">
+            <label for="interest">Property Interest</label>
+            <select id="interest" required>
+              <option value="" disabled selected>Select property type</option>
+              <option>Office Space — Lease</option>
+              <option>Office Space — Purchase</option>
+              <option>Retail Space — Lease</option>
+              <option>Retail Space — Purchase</option>
+              <option>Industrial / Warehouse</option>
+              <option>Investment Property</option>
+              <option>Development Land</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Viewing Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Jean" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Tremblay" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="jean@entreprise.ca" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="(514) 555-0000" required>
+          </div>
+          <button type="submit" class="btn-form">Get a Free Quote</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to Find Your Next Commercial Property?</h2>
+  <p>Talk to a Lumex broker today and get access to 47 exclusive off-market listings across Greater Montreal. No obligation, no pressure.</p>
+  <div class="cta-banner-buttons">
+    <a href="#schedule" class="btn-white">Get a Free Quote</a>
+    <a href="tel:+15145551234" class="btn-secondary-link">Call for a Free Estimate</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">{{BUSINESS_NAME}}</div>
+      <p class="footer-desc">{{LOCATION}}'s trusted commercial {{MAIN_SERVICE}} brokerage since 1999. Specializing in office leasing, retail spaces, industrial properties, and investment sales across the Greater Montreal area.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Office Leasing</a></li>
+        <li><a href="#">Retail Spaces</a></li>
+        <li><a href="#">Industrial Properties</a></li>
+        <li><a href="#">Investment Sales</a></li>
+        <li><a href="#">Market Analysis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+15145551234">(514) 555-1234</a></li>
+        <li><a href="mailto:info@lumeximmobilier.ca">info@lumeximmobilier.ca</a></li>
+        <li><a href="#">1250 Boul. Rene-Levesque O.</a></li>
+        <li><a href="#">Suite 2200, Montreal, QC</a></li>
+        <li><a href="#">Mon-Fri: 8:30am - 6:00pm</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    &copy; 2025 {{BUSINESS_NAME}}. All rights reserved. Licensed by the OACIQ. RBQ #8372-4519-14.
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.listing-card, .why-card, .testimonial-card, .form-card, .form-info').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Artisan Bakery in {{LOCATION}}, Quebec City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F0A0A;
+  --primary: #C8102E;
+  --accent: #E8C97A;
+  --surface: #1A1010;
+  --text-on-dark: #F5F0E8;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-on-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(15, 10, 10, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary:hover {
+  background: #d4a84e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 201, 122, 0.3);
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  color: #d4a84e;
+  border-color: #d4a84e;
+}
+
+/* HERO — VARIANT C */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 80px;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=85&auto=format&fit=crop') center center / cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.78) 65%, rgba(0,0,0,0.85) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.hero-badge {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  background: var(--primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: rgba(245, 240, 232, 0.82);
+  max-width: 560px;
+  margin-bottom: 36px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.hero-buttons .btn-primary {
+  padding: 14px 32px;
+  font-size: 16px;
+}
+
+/* SECTION DEFAULTS */
+section {
+  padding: 100px 80px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: rgba(245, 240, 232, 0.7);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* OUR MENU */
+.menu-section {
+  background: var(--surface);
+}
+
+.menu-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.menu-header .section-desc {
+  margin: 0 auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  background: var(--bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-card-body {
+  padding: 24px;
+}
+
+.menu-card-body h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.menu-card-body p {
+  font-size: 0.92rem;
+  color: rgba(245, 240, 232, 0.65);
+  margin-bottom: 14px;
+  line-height: 1.55;
+}
+
+.menu-card-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* THE EXPERIENCE */
+.experience-section {
+  background: var(--bg);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.experience-img-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.experience-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.experience-content .section-title {
+  margin-bottom: 28px;
+}
+
+.experience-text p {
+  font-size: 1.02rem;
+  color: rgba(245, 240, 232, 0.75);
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.experience-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(245, 240, 232, 0.1);
+}
+
+.stat-item h4 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-item p {
+  font-size: 0.88rem;
+  color: rgba(245, 240, 232, 0.55);
+  font-weight: 500;
+}
+
+/* FIND US */
+.findus-section {
+  background: var(--surface);
+}
+
+.findus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.findus-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.findus-info .section-title {
+  margin-bottom: 28px;
+}
+
+.findus-address {
+  font-size: 1.02rem;
+  color: rgba(245, 240, 232, 0.8);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 380px;
+}
+
+.hours-table tr {
+  border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.hours-table tr:last-child {
+  border-bottom: none;
+}
+
+.hours-table td {
+  padding: 10px 0;
+  font-size: 0.95rem;
+}
+
+.hours-table td:first-child {
+  font-weight: 600;
+  color: var(--text-on-dark);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: rgba(245, 240, 232, 0.6);
+}
+
+.map-placeholder {
+  background: rgba(245, 240, 232, 0.05);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  border: 1.5px solid rgba(245, 240, 232, 0.08);
+}
+
+.map-placeholder svg {
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.map-placeholder p {
+  font-size: 0.95rem;
+  color: rgba(245, 240, 232, 0.4);
+  text-align: center;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--bg);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.cta-banner p {
+  font-size: 1.1rem;
+  color: rgba(15, 10, 10, 0.7);
+  margin-bottom: 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-banner .btn-dark {
+  display: inline-block;
+  background: var(--bg);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.cta-banner .btn-dark:hover {
+  background: var(--surface);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--bg);
+  padding: 80px 80px 40px;
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+}
+
+.footer-brand h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-on-dark);
+}
+
+.footer-brand p {
+  font-size: 0.92rem;
+  color: rgba(245, 240, 232, 0.5);
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 0.92rem;
+  color: rgba(245, 240, 232, 0.55);
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-col p {
+  font-size: 0.92rem;
+  color: rgba(245, 240, 232, 0.55);
+  line-height: 1.7;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-bottom p {
+  font-size: 0.82rem;
+  color: rgba(245, 240, 232, 0.3);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 0 24px 64px;
+  }
+
+  .hero-badge {
+    position: relative;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  section {
+    padding: 56px 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .experience-img-wrap {
+    min-height: 300px;
+  }
+
+  .experience-stats {
+    gap: 32px;
+  }
+
+  .findus-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">{{BUSINESS_NAME}}</a>
+    <ul class="nav-links">
+      <li><a href="#menu">Our Breads</a></li>
+      <li><a href="#experience">Our Story</a></li>
+      <li><a href="#findus">Find Us</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#findus" class="btn-primary">Visit the Shop</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — VARIANT C -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg style="display:inline-block;vertical-align:middle;margin-right:6px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Reserve a Celebration Cake
+    </div>
+    <h1>Bread Worth<br>Waking Up <span>Early</span> For</h1>
+    <p class="hero-sub">Stone-deck baked sourdough, slow-fermented for 72 hours. Every loaf shaped by the same hands that have been at it for 15 years — right here in {{LOCATION}}.</p>
+    <div class="hero-buttons">
+      <a href="#findus" class="btn-primary">Visit the Shop</a>
+      <a href="#findus" class="btn-secondary">Find Us Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <p class="section-label">From Our Oven</p>
+    <h2 class="section-title">Three Reasons to Walk In</h2>
+    <p class="section-desc">No shortcuts, no rush. Each item follows its own timeline — because flavour can't be hurried.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=85&auto=format&fit=crop" alt="72-Hour Sourdough Loaf">
+      <div class="menu-card-body">
+        <h3>72-Hour Country Sourdough</h3>
+        <p>Cold-fermented with Quebec flour, baked on our stone deck until the crust sings.</p>
+        <span class="menu-card-price">$8 – $12</span>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1200&q=85&auto=format&fit=crop" alt="Butter Croissants">
+      <div class="menu-card-body">
+        <h3>Hand-Laminated Croissants</h3>
+        <p>48 layers of Charlevoix butter, folded by hand each morning before sunrise.</p>
+        <span class="menu-card-price">$4 – $6</span>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1200&q=85&auto=format&fit=crop" alt="Seasonal Celebration Cake">
+      <div class="menu-card-body">
+        <h3>Custom Celebration Cakes</h3>
+        <p>Seasonal layers built to order — from maple-walnut to dark chocolate and sea buckthorn.</p>
+        <span class="menu-card-price">$38 – $72</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="experience-grid">
+    <div class="experience-img-wrap">
+      <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=1200&q=85&auto=format&fit=crop" alt="Inside {{BUSINESS_NAME}} bakery">
+    </div>
+    <div class="experience-content">
+      <p class="section-label">The Story</p>
+      <h2 class="section-title">A Neighbourhood Bakery That Still Does Things the Hard Way</h2>
+      <div class="experience-text">
+        <p>{{BUSINESS_NAME}} was born in 2011 from a stubborn belief: real bread takes time. Our stone-deck oven — imported from Lyon and rebuilt twice — sits at the heart of everything we do. Every loaf begins as a simple mix of flour, water, salt, and a starter that's been alive for over a decade.</p>
+        <p>We're not trying to be the biggest bakery in Quebec City. We just want to be the one your family trusts for Saturday morning bread, the one you call when a birthday cake actually matters, and the one that makes {{LOCATION}} smell like home.</p>
+      </div>
+      <div class="experience-stats">
+        <div class="stat-item">
+          <h4>53</h4>
+          <p>Seats in our cafe</p>
+        </div>
+        <div class="stat-item">
+          <h4>4.8</h4>
+          <p>
+            <svg style="display:inline-block;vertical-align:middle;margin-right:2px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            on Google (287 reviews)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="findus-section" id="findus">
+  <div class="findus-grid">
+    <div class="findus-info">
+      <p class="section-label">Visit Us</p>
+      <h2 class="section-title">Corner of Rue Saint-Joseph, Heart of {{LOCATION}}</h2>
+      <p class="findus-address">
+        <svg style="display:inline-block;vertical-align:middle;margin-right:6px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        248 Rue Saint-Joseph Est<br>
+        {{LOCATION}} G1K 3A9<br>
+        <svg style="display:inline-block;vertical-align:middle;margin-right:6px;margin-top:8px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (418) 555-0174
+      </p>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>Closed</td></tr>
+        <tr><td>Tuesday</td><td>7:00 AM – 6:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>7:00 AM – 6:00 PM</td></tr>
+        <tr><td>Thursday</td><td>7:00 AM – 6:00 PM</td></tr>
+        <tr><td>Friday</td><td>7:00 AM – 6:00 PM</td></tr>
+        <tr><td>Saturday</td><td>7:00 AM – 5:00 PM</td></tr>
+        <tr><td>Sunday</td><td>8:00 AM – 3:00 PM</td></tr>
+      </table>
+    </div>
+    <div class="map-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-on-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p>248 Rue Saint-Joseph Est<br>{{LOCATION}} G1K 3A9</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Your Next Loaf Is Waiting</h2>
+  <p>Sourdough is best the day it's baked. Walk in, grab it warm, and taste what 72 hours of patience delivers.</p>
+  <a href="#findus" class="btn-dark">Visit the Shop</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>Stone-deck artisan bakery in {{LOCATION}}. Slow bread, honest pastry, and celebration cakes made by hand since 2011.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#menu">Our Breads</a></li>
+        <li><a href="#experience">Our Story</a></li>
+        <li><a href="#findus">Find Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact + Hours</h4>
+      <p>
+        248 Rue Saint-Joseph Est<br>
+        {{LOCATION}}<br><br>
+        (418) 555-0174<br><br>
+        Tue – Fri · 7 AM – 6 PM<br>
+        Sat · 7 AM – 5 PM<br>
+        Sun · 8 AM – 3 PM<br>
+        Mon · Closed
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 {{BUSINESS_NAME}}. All rights reserved. Baked in {{LOCATION}}.</p>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.menu-card, .experience-grid, .findus-grid, .cta-banner').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

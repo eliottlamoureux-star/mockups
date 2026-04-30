@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Certified Electrical Inspections in {{LOCATION}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A12;
+  --primary: #1A1A2E;
+  --accent: #FFD700;
+  --surface: #12121E;
+  --text-on-dark: #EBEBF8;
+  --accent-15: rgba(255, 215, 0, 0.15);
+  --accent-30: rgba(255, 215, 0, 0.30);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-on-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(10, 10, 18, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #0A0A12;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: #e6c200;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero-phone {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.hero p {
+  font-size: clamp(16px, 1.8vw, 19px);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 620px;
+  margin: 0 auto 36px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.hero-stat-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 80px;
+}
+
+.section-surface {
+  background: var(--surface);
+}
+
+.section-primary {
+  background: var(--primary);
+}
+
+.section-bg {
+  background: var(--bg);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: rgba(235, 235, 248, 0.65);
+  line-height: 1.7;
+}
+
+/* SERVICES CARDS */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 40px 32px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.15);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+
+.service-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-on-dark);
+}
+
+.service-card p {
+  font-size: 15px;
+  color: rgba(235, 235, 248, 0.6);
+  line-height: 1.7;
+}
+
+.service-card .service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  transition: gap 0.2s;
+}
+
+.service-card:hover .service-link {
+  gap: 10px;
+}
+
+/* SAFETY & CREDENTIALS */
+.safety-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.safety-text h2 {
+  font-size: clamp(28px, 3.5vw, 38px);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+}
+
+.safety-text p {
+  font-size: 16px;
+  color: rgba(235, 235, 248, 0.65);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.safety-highlight {
+  background: rgba(255, 215, 0, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 24px;
+}
+
+.safety-highlight p {
+  color: rgba(235, 235, 248, 0.8);
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.credentials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.credential-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: all 0.25s ease;
+}
+
+.credential-item:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: translateX(4px);
+}
+
+.credential-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 215, 0, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.credential-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin-bottom: 3px;
+}
+
+.credential-item p {
+  font-size: 13px;
+  color: rgba(235, 235, 248, 0.5);
+  line-height: 1.5;
+}
+
+/* SERVICE AREAS */
+.areas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-on-dark);
+  transition: all 0.25s ease;
+}
+
+.area-item:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.area-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* BOOKING FORM */
+.booking-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(235, 235, 248, 0.7);
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-on-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(235, 235, 248, 0.3);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.15);
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23EBEBF8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-group select option {
+  background: var(--bg);
+  color: var(--text-on-dark);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: #0A0A12;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 22px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-submit:hover {
+  background: #e6c200;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  text-align: center;
+  padding: 80px 80px;
+}
+
+.cta-banner h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #0A0A12;
+  margin-bottom: 16px;
+  letter-spacing: -0.6px;
+}
+
+.cta-banner p {
+  font-size: 17px;
+  color: rgba(10, 10, 18, 0.7);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+.cta-banner .btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0A0A12;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  margin-right: 12px;
+}
+
+.cta-banner .btn-dark:hover {
+  background: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta-banner .btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #0A0A12;
+  border: 2px solid rgba(10, 10, 18, 0.3);
+  border-radius: 8px;
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.cta-banner .btn-outline-dark:hover {
+  border-color: #0A0A12;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 64px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(235, 235, 248, 0.5);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(235, 235, 248, 0.6);
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(235, 235, 248, 0.4);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  section {
+    padding: 56px 24px;
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-stats {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat-number {
+    font-size: 26px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .safety-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: 1;
+  }
+
+  .form-submit {
+    grid-column: 1;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .cta-banner .btn-dark,
+  .cta-banner .btn-outline-dark {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#booking">Book Now</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-phone">24/7 Emergency Service — (418) 555-0147</div>
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Safety-First Certified {{MAIN_SERVICE}}
+    </div>
+    <h1>Certified Electrical Inspections for {{LOCATION}} Properties</h1>
+    <p>Get your compliance certificate fast. We deliver detailed inspection reports within 24 hours, liaise directly with your insurance company, and flag every code violation with a prioritized repair list and cost estimate.</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+      <a href="#services" class="btn-secondary">Reserve Your Spot</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-number">1,247</span>
+        <span class="hero-stat-label">Inspections Completed</span>
+      </div>
+      <div>
+        <span class="hero-stat-number">14</span>
+        <span class="hero-stat-label">Years of Service</span>
+      </div>
+      <div>
+        <span class="hero-stat-number">4.8</span>
+        <span class="hero-stat-label">Google Rating (287 reviews)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-surface" id="services">
+  <div class="section-header fade-up">
+    <span class="section-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Our Services
+    </span>
+    <h2>Inspection Services Tailored to Your Compliance Needs</h2>
+    <p>Whether you are buying a home, renewing insurance coverage, or managing rental properties, {{BUSINESS_NAME}} provides the certified documentation you need.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Residential Electrical Inspections</h3>
+      <p>Comprehensive assessment of your home's wiring, panels, outlets, and grounding systems. Perfect for home buyers who need a pre-purchase evaluation before closing.</p>
+      <span class="service-link">Learn more <span>&#8594;</span></span>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+      </div>
+      <h3>Commercial Compliance Certificates</h3>
+      <p>Meet provincial and municipal code requirements for your commercial property. We issue compliance certificates accepted by insurance companies and regulatory bodies across Quebec.</p>
+      <span class="service-link">Learn more <span>&#8594;</span></span>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3>Insurance Liaison &amp; Reporting</h3>
+      <p>We submit your inspection report directly to your insurance company within 24 hours. Every code violation is flagged with a prioritized repair list and estimated cost.</p>
+      <span class="service-link">Learn more <span>&#8594;</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY & CREDENTIALS -->
+<section class="section-bg" id="credentials">
+  <div class="safety-grid">
+    <div class="safety-text fade-up">
+      <span class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Safety &amp; Credentials
+      </span>
+      <h2>Your Property Deserves a Certified, Code-Compliant Inspection</h2>
+      <p>{{BUSINESS_NAME}} was founded in 2010 to bring transparency and speed to electrical inspections in {{LOCATION}}. Every inspection follows the Canadian Electrical Code and provincial standards, ensuring your property meets the requirements set by insurers and municipal authorities.</p>
+      <p>Our inspectors carry master {{MAIN_SERVICE}} certifications and are authorized by the Corporation des maitres electriciens du Quebec (CMEQ). We work with over 40 insurance companies across the province to streamline the compliance process for homeowners and landlords.</p>
+      <div class="safety-highlight">
+        <p>Every report includes a detailed code violation breakdown, a prioritized repair list organized by safety severity, and cost estimates so you can plan and budget accordingly.</p>
+      </div>
+    </div>
+    <div class="credentials-list fade-up">
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>Master {{MAIN_SERVICE}} License</h4>
+          <p>Fully licensed under Quebec provincial regulations</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>CMEQ Certified</h4>
+          <p>Member of Corporation des maitres electriciens du Quebec</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>14 Years of Experience</h4>
+          <p>Serving {{LOCATION}} since 2010</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>$5M Liability Insurance</h4>
+          <p>Full coverage for every inspection we perform</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>24-Hour Report Delivery</h4>
+          <p>Guaranteed same-day or next-day inspection reports</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>40+ Insurance Partners</h4>
+          <p>Direct liaison with major insurers in Quebec</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="section-surface" id="areas">
+  <div class="areas-container">
+    <div class="section-header fade-up">
+      <span class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Service Areas
+      </span>
+      <h2>Electrical Inspections Across Greater {{LOCATION}}</h2>
+      <p>{{BUSINESS_NAME}} serves homeowners, landlords, and commercial property managers throughout {{LOCATION}} and surrounding municipalities.</p>
+    </div>
+    <div class="areas-grid fade-up">
+      <div class="area-item"><span class="area-dot"></span>Vieux-Quebec</div>
+      <div class="area-item"><span class="area-dot"></span>Sainte-Foy</div>
+      <div class="area-item"><span class="area-dot"></span>Beauport</div>
+      <div class="area-item"><span class="area-dot"></span>Charlesbourg</div>
+      <div class="area-item"><span class="area-dot"></span>Les Rivieres</div>
+      <div class="area-item"><span class="area-dot"></span>La Haute-Saint-Charles</div>
+      <div class="area-item"><span class="area-dot"></span>Levis</div>
+      <div class="area-item"><span class="area-dot"></span>Cap-Rouge</div>
+      <div class="area-item"><span class="area-dot"></span>L'Ancienne-Lorette</div>
+      <div class="area-item"><span class="area-dot"></span>Val-Belair</div>
+      <div class="area-item"><span class="area-dot"></span>Saint-Augustin</div>
+      <div class="area-item"><span class="area-dot"></span>Wendake</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="section-bg" id="booking">
+  <div class="booking-container">
+    <div class="section-header fade-up">
+      <span class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule an Inspection
+      </span>
+      <h2>Book Your Certified Electrical Inspection Today</h2>
+      <p>Fill out the form below and we will confirm your appointment within 2 hours. Report delivery guaranteed within 24 hours of inspection.</p>
+    </div>
+    <form class="booking-form fade-up" onsubmit="event.preventDefault(); alert('Thank you! We will confirm your appointment within 2 hours.');">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" placeholder="Jean" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" placeholder="Tremblay" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="jean@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="(418) 555-0100" required>
+      </div>
+      <div class="form-group">
+        <label for="service">Inspection Type</label>
+        <select id="service" required>
+          <option value="" disabled selected>Select a service</option>
+          <option value="residential">Residential Inspection</option>
+          <option value="commercial">Commercial Compliance Certificate</option>
+          <option value="pre-purchase">Pre-Purchase Assessment</option>
+          <option value="insurance">Insurance Renewal Inspection</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date" required>
+      </div>
+      <div class="form-group full-width">
+        <label for="address">Property Address</label>
+        <input type="text" id="address" placeholder="123 Rue Saint-Jean, {{LOCATION}}" required>
+      </div>
+      <div class="form-group full-width">
+        <label for="notes">Additional Details</label>
+        <textarea id="notes" placeholder="Tell us about your property type, number of units, specific concerns, or insurance requirements..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">Book Your Appointment</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Your Inspection Report in 24 Hours. Guaranteed.</h2>
+  <p>Join the 1,247 property owners across {{LOCATION}} who trust {{BUSINESS_NAME}} for fast, thorough, code-compliant electrical inspections.</p>
+  <a href="#booking" class="btn-dark">Book Your Appointment</a>
+  <a href="tel:4185550147" class="btn-outline-dark">Reserve Your Spot</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>Certified electrical inspections, compliance certificates, and pre-purchase assessments for residential and commercial properties in {{LOCATION}}. Report in 24 hours, every time.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Residential Inspections</a></li>
+        <li><a href="#services">Commercial Compliance</a></li>
+        <li><a href="#services">Pre-Purchase Assessments</a></li>
+        <li><a href="#services">Insurance Liaison</a></li>
+        <li><a href="#services">Code Violation Reports</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:4185550147">(418) 555-0147</a></li>
+        <li><a href="mailto:info@certifielec.ca">info@certifielec.ca</a></li>
+        <li><a href="#areas">{{LOCATION}}</a></li>
+        <li><a href="#booking">Book an Inspection</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 {{BUSINESS_NAME}}. All rights reserved. Licensed Master {{MAIN_SERVICE}}, Quebec.</p>
+    <p>CMEQ Member · RBQ License Holder</p>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.fade-up').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

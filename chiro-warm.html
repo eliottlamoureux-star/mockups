@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} · {{LOCATION}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --primary: #2C7A7B;
+  --accent: #38B2AC;
+  --surface: #F0FAFA;
+  --text-on-dark: #F7FFFE;
+  --text-dark: #1A202C;
+  --text-muted: #4A5568;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(44, 122, 123, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #2C9D9E;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(56,178,172,0.35);
+}
+
+.btn-secondary {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.btn-secondary:hover {
+  color: var(--primary);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+  padding: 140px 80px 80px;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1600&q=85&auto=format&fit=crop') center center / cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+  color: var(--accent);
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn-primary {
+  padding: 14px 32px;
+  font-size: 16px;
+}
+
+.hero-buttons .btn-secondary {
+  color: rgba(255,255,255,0.8);
+}
+
+.hero-buttons .btn-secondary:hover {
+  color: var(--accent);
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-card-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.hero-card-stars .stars {
+  display: flex;
+  gap: 3px;
+}
+
+.hero-card-stars .rating-text {
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.hero-card-stat {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.hero-card-stat-sub {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.hero-card-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 20px 0;
+}
+
+.hero-card-credentials {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-card-credentials li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero-card-credentials li svg {
+  flex-shrink: 0;
+}
+
+.star-svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* SECTIONS GENERAL */
+.section-title {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 580px;
+  margin: 0 auto 56px;
+  line-height: 1.7;
+}
+
+/* SERVICES */
+.services {
+  padding: 100px 80px;
+  background: var(--bg);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(44,122,123,0.12);
+  border-color: var(--accent);
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--accent);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: #fff;
+}
+
+.service-card h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.service-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* TRUST / CREDENTIALS */
+.trust {
+  padding: 100px 80px;
+  background: var(--primary);
+  color: var(--text-on-dark);
+}
+
+.trust .section-title {
+  color: #fff;
+}
+
+.trust .section-subtitle {
+  color: rgba(247,255,254,0.7);
+}
+
+.trust-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.trust-stat-number {
+  font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.trust-stat-label {
+  color: rgba(247,255,254,0.8);
+  font-size: 0.95rem;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.credential-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(247,255,254,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.credential-tag svg {
+  flex-shrink: 0;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(44,122,123,0.08);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+.testimonial-quote {
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-quote::before {
+  content: none;
+}
+
+.quote-mark {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+
+/* BOOKING */
+.booking {
+  padding: 100px 80px;
+  background: var(--bg);
+}
+
+.booking-form-container {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 48px 44px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select {
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(56,178,172,0.15);
+}
+
+.form-submit {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.form-submit .btn-primary {
+  padding: 14px 40px;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  padding: 80px;
+  background: var(--accent);
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.cta-banner p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-banner .btn-primary {
+  background: #fff;
+  color: var(--primary);
+  padding: 14px 36px;
+  font-size: 16px;
+}
+
+.cta-banner .btn-primary:hover {
+  background: var(--surface);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* FOOTER */
+.footer {
+  padding: 64px 80px 40px;
+  background: var(--primary);
+  color: var(--text-on-dark);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.footer h4 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.footer p,
+.footer a {
+  color: rgba(247,255,254,0.75);
+  font-size: 14px;
+  line-height: 1.7;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 24px;
+  text-align: center;
+  color: rgba(247,255,254,0.5);
+  font-size: 13px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 120px 24px 64px;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .services {
+    padding: 56px 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust {
+    padding: 56px 24px;
+  }
+
+  .trust-stats {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .credentials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials {
+    padding: 56px 24px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking {
+    padding: 56px 24px;
+  }
+
+  .booking-form-container {
+    padding: 32px 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-buttons .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">{{BUSINESS_NAME}}</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#trust">Why Us</a></li>
+      <li><a href="#booking">Book Now</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Drug-Free Relief for <span>Back Pain, Neck Pain &amp; Headaches</span> in {{LOCATION}}</h1>
+    <p>At {{BUSINESS_NAME}}, every new patient receives a personalized treatment plan from day one. With evening and Saturday appointments, relief fits your schedule — not the other way around.</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+      <a href="#services" class="btn-secondary">Reserve Your Spot <span>→</span></a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-stars">
+      <div class="stars">
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="rating-text">4.8 / 5</span>
+    </div>
+    <div class="hero-card-stat">1,247+</div>
+    <div class="hero-card-stat-sub">patients treated in {{LOCATION}} and surrounding areas</div>
+    <hr class="hero-card-divider">
+    <ul class="hero-card-credentials">
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Dr. Marc-Antoine Gauthier, D.C.
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Chiropractic · Posture Correction · Pediatric Care
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Direct billing to most major insurers
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <h2 class="section-title" style="color:var(--primary);">Our Chiropractic Services</h2>
+  <p class="section-subtitle">Hands-on, evidence-based treatment plans designed for lasting relief — not quick fixes.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <h3>Back &amp; Neck Pain Relief</h3>
+      <p>Targeted spinal adjustments and soft tissue therapy to reduce chronic back pain, neck stiffness, and tension that disrupt your daily life.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </div>
+      <h3>Headache &amp; Migraine Care</h3>
+      <p>Cervical adjustments and postural correction to address the root causes of tension headaches and migraines — without medication.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Posture &amp; Pediatric Chiropractic</h3>
+      <p>Gentle, age-appropriate adjustments for children and comprehensive posture correction programs for adults working at desks all day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / CREDENTIALS -->
+<section class="trust" id="trust">
+  <h2 class="section-title">Why Patients in {{LOCATION}} Trust Us</h2>
+  <p class="section-subtitle">Over 14 years of hands-on chiropractic care, built on results patients can feel.</p>
+  <div class="trust-stats">
+    <div>
+      <div class="trust-stat-number">14</div>
+      <div class="trust-stat-label">Years Serving {{LOCATION}}</div>
+    </div>
+    <div>
+      <div class="trust-stat-number">1,247</div>
+      <div class="trust-stat-label">Patients Treated</div>
+    </div>
+    <div>
+      <div class="trust-stat-number">4.8</div>
+      <div class="trust-stat-label">Google Rating · 189 Reviews</div>
+    </div>
+  </div>
+  <div class="credentials-grid">
+    <div class="credential-tag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Ordre des chiropraticiens du Qu&#233;bec
+    </div>
+    <div class="credential-tag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Association chiropratique canadienne
+    </div>
+    <div class="credential-tag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Evening &amp; Saturday Appointments
+    </div>
+    <div class="credential-tag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Direct Insurance Billing (Most Providers)
+    </div>
+    <div class="credential-tag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Certified in Pediatric Chiropractic
+    </div>
+    <div class="credential-tag">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Personalized Treatment From Day One
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="section-title" style="color:var(--primary);">What Our Patients Say</h2>
+  <p class="section-subtitle">Real feedback from patients who chose drug-free, hands-on care at {{BUSINESS_NAME}}.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <svg class="quote-mark" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+      <div class="testimonial-stars">
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"I was dealing with constant lower back tension for months. After my first visit, Dr. Gauthier had a clear plan. Within a few weeks, I felt like myself again. The Saturday appointments are a lifesaver."</p>
+      <div class="testimonial-author">Sophie L.</div>
+    </div>
+    <div class="testimonial-card">
+      <svg class="quote-mark" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+      <div class="testimonial-stars">
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24" fill="#38B2AC" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testimonial-quote">"I brought my two kids in for posture assessments and was so impressed by how gentle and thorough the whole process was. The direct billing to our insurance made everything easy."</p>
+      <div class="testimonial-author">Jean-Fran&#231;ois D.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <h2 class="section-title" style="color:var(--primary);">Schedule Your First Visit</h2>
+  <p class="section-subtitle">Choose a time that works for you — including evenings and Saturdays. Your personalized treatment plan starts at your very first appointment.</p>
+  <div class="booking-form-container">
+    <form onsubmit="event.preventDefault(); document.getElementById('formSuccess').style.display='block'; this.style.display='none';">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="back-neck">Back &amp; Neck Pain Relief</option>
+            <option value="headache">Headache &amp; Migraine Care</option>
+            <option value="posture">Posture Correction</option>
+            <option value="pediatric">Pediatric Chiropractic</option>
+            <option value="initial">Initial Assessment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Preferred Time</label>
+          <select id="time" name="time" required>
+            <option value="" disabled selected>Select a time</option>
+            <option value="9:00">9:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:00">3:00 PM</option>
+            <option value="17:00">5:00 PM</option>
+            <option value="18:00">6:00 PM (Evening)</option>
+            <option value="19:00">7:00 PM (Evening)</option>
+            <option value="sat-10">Saturday 10:00 AM</option>
+            <option value="sat-11">Saturday 11:00 AM</option>
+            <option value="sat-13">Saturday 1:00 PM</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(450) 000-0000" required>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary">Book Your Appointment</button>
+      </div>
+    </form>
+    <div id="formSuccess" style="display:none;text-align:center;padding:24px 0;">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <h3 style="color:var(--primary);font-weight:700;margin-bottom:8px;">Request Received</h3>
+      <p style="color:var(--text-muted);font-size:0.95rem;">We'll confirm your appointment within 24 hours. Thank you for choosing {{BUSINESS_NAME}}.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to Live Without Pain?</h2>
+  <p>Join 1,247+ patients in {{LOCATION}} who chose personalized, drug-free chiropractic care. Evening and Saturday spots fill quickly.</p>
+  <a href="#booking" class="btn-primary">Book Your Appointment</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>{{BUSINESS_NAME}}</h4>
+      <p>Personalized chiropractic care for adults and children in {{LOCATION}}. Drug-free relief for back pain, neck pain, headaches, and posture issues.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#trust">Why Choose Us</a></li>
+        <li><a href="#booking">Book an Appointment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact &amp; Hours</h4>
+      <p>{{LOCATION}}</p>
+      <p style="margin-top:8px;">Mon – Fri: 9:00 AM – 7:00 PM<br>Saturday: 9:00 AM – 2:00 PM<br>Sunday: Closed</p>
+      <p style="margin-top:8px;"><a href="tel:+14505550000">(450) 555-0000</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2024 {{BUSINESS_NAME}}. All rights reserved. · {{LOCATION}}
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+let lastScroll = 0;
+
+function handleScroll() {
+  const scrollY = window.scrollY;
+  if (scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = scrollY;
+}
+
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .credential-tag, .testimonial-card, .trust-stats > div').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Set min date for date input
+const dateInput = document.getElementById('date');
+if (dateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+}
+</script>
+
+</body>
+</html>

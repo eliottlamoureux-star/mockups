@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Solar Panel Installation in {{LOCATION}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A12;
+  --primary: #1A1A2E;
+  --accent: #FFD700;
+  --surface: #12121E;
+  --text-on-dark: #EBEBF8;
+  --accent-15: rgba(255, 215, 0, 0.15);
+  --accent-30: rgba(255, 215, 0, 0.30);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-on-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(10, 10, 18, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #e6c200;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero-emergency {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.08;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.hero p {
+  font-size: clamp(16px, 2vw, 19px);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.hero-stat-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 80px;
+}
+
+.section-surface {
+  background: var(--surface);
+}
+
+.section-primary {
+  background: var(--primary);
+}
+
+.section-bg {
+  background: var(--bg);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 64px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: rgba(235, 235, 248, 0.65);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* SERVICES CARDS */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 40px 32px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.15);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--accent-15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+
+.service-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  font-size: 15px;
+  color: rgba(235, 235, 248, 0.6);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.service-card .learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: gap 0.2s ease;
+}
+
+.service-card:hover .learn-more {
+  gap: 10px;
+}
+
+/* SAFETY & CREDENTIALS */
+.safety-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.safety-text h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.safety-text p {
+  font-size: 16px;
+  color: rgba(235, 235, 248, 0.65);
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.safety-highlight {
+  background: var(--accent-15);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 28px;
+}
+
+.safety-highlight p {
+  color: var(--text-on-dark);
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.credentials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.credential-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 20px 24px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.credential-item:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: translateX(4px);
+}
+
+.credential-check {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: var(--accent-15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-top: 1px;
+}
+
+.credential-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin-bottom: 4px;
+}
+
+.credential-item p {
+  font-size: 13px;
+  color: rgba(235, 235, 248, 0.5);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* SERVICE AREAS */
+.areas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 18px 22px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.area-item:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.area-pin {
+  color: var(--accent);
+  min-width: 20px;
+}
+
+.area-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-on-dark);
+}
+
+/* BOOKING FORM */
+.booking-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(235, 235, 248, 0.7);
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-on-dark);
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23EBEBF8' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-submit {
+  margin-top: 12px;
+  grid-column: 1 / -1;
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-submit:hover {
+  background: #e6c200;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(255, 215, 0, 0.3);
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  text-align: center;
+  padding: 80px 80px;
+}
+
+.cta-banner h2 {
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700;
+  color: var(--bg);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.cta-banner p {
+  font-size: 17px;
+  color: rgba(10, 10, 18, 0.7);
+  margin-bottom: 32px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.btn-cta-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-cta-dark:hover {
+  background: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--bg);
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 24px;
+  transition: gap 0.2s ease;
+}
+
+.btn-cta-link:hover {
+  gap: 10px;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 72px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 14px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(235, 235, 248, 0.5);
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(235, 235, 248, 0.6);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 56px;
+  padding-top: 28px;
+  text-align: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(235, 235, 248, 0.35);
+  font-weight: 400;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  section {
+    padding: 56px 24px;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+  }
+
+  .hero-stats {
+    gap: 32px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .safety-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: 1;
+  }
+
+  .form-submit {
+    grid-column: 1;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .cta-banner .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-cta-link {
+    margin-left: 0;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#booking">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-emergency">24/7 Emergency Service — (819) 371-4827</div>
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Safety-First Certified {{MAIN_SERVICE}}
+    </div>
+    <h1>Go Solar in Trois-Rivi&egrave;res. Save $1,200/Year on Hydro-Qu&eacute;bec.</h1>
+    <p>{{BUSINESS_NAME}} installs residential solar panels, battery storage systems, and EV chargers — with a free energy audit and ROI projection before you commit to anything. 25-year panel warranty included.</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary" style="padding:14px 32px;font-size:16px;">Book Your Appointment</a>
+      <a href="#services" class="btn-secondary" style="padding:14px 32px;font-size:16px;">Reserve Your Spot</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">847</span>
+        <span class="hero-stat-label">Installations Completed</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">14 Years</span>
+        <span class="hero-stat-label">Serving the Mauricie Region</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4.8</span>
+        <span class="hero-stat-label">Google Rating (213 reviews)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-surface" id="services">
+  <div class="section-header">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      Our Services
+    </div>
+    <h2>Complete Solar and Clean Energy Solutions for Your Home</h2>
+    <p>From your first energy audit to a fully installed system, we handle every step so you can start saving from day one.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 012-2h8a2 2 0 012 2v2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+      </div>
+      <h3>Residential Solar Panel Installation</h3>
+      <p>Precision-mounted rooftop and ground-mount solar arrays, custom-designed for Trois-Rivi&egrave;res homes. Every system includes a free energy audit, engineered ROI projection, and our 25-year panel warranty.</p>
+      <div class="learn-more">Learn more <span>&rarr;</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="12" height="13" rx="2"/><line x1="6" y1="11" x2="18" y2="11"/><line x1="6" y1="15" x2="18" y2="15"/><line x1="10" y1="3" x2="10" y2="7"/><line x1="14" y1="3" x2="14" y2="7"/></svg>
+      </div>
+      <h3>Battery Storage Systems</h3>
+      <p>Store surplus solar energy with lithium-ion battery packs so you have power during outages and peak-rate hours. Our homeowners see up to 40% additional savings when pairing panels with storage.</p>
+      <div class="learn-more">Learn more <span>&rarr;</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>EV Charger Integration</h3>
+      <p>Level 2 EV charger installation wired directly into your solar system. Charge your electric vehicle with clean energy from your own roof — at a fraction of the cost of public charging stations.</p>
+      <div class="learn-more">Learn more <span>&rarr;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY & CREDENTIALS -->
+<section class="section-bg" id="credentials">
+  <div class="section-header">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Safety and Credentials
+    </div>
+    <h2>Licensed, Insured, and Built to Qu&eacute;bec Standards</h2>
+  </div>
+  <div class="safety-grid">
+    <div class="safety-text">
+      <h3>Your Safety Is Engineered Into Every Installation</h3>
+      <p>At {{BUSINESS_NAME}}, every solar panel, battery unit, and EV charger is installed in strict compliance with the Qu&eacute;bec Electrical Code and Canadian Standards Association (CSA) guidelines. Our master electricians are trained in both high-voltage solar systems and residential wiring to ensure seamless, code-compliant integration.</p>
+      <p>We carry $5M in liability insurance, and every project passes a mandatory post-installation inspection before we hand you the keys. Our 14 years of work across the Mauricie region means we understand the specific challenges of Quebec's climate — from snow load calculations to freeze-thaw wiring protection.</p>
+      <div class="safety-highlight">
+        <p>Every installation includes a complimentary post-install thermal imaging scan to verify all connections are secure and performing optimally.</p>
+      </div>
+    </div>
+    <div class="credentials-list">
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>Master {{MAIN_SERVICE}} Licence (CMEQ)</h4>
+          <p>Fully licensed by the Corporation des ma&icirc;tres &eacute;lectriciens du Qu&eacute;bec</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>CSA Certified Solar Installer</h4>
+          <p>Meeting Canadian Standards Association requirements for photovoltaic systems</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>14 Years Serving Mauricie</h4>
+          <p>Established in 2010, with deep roots in the Trois-Rivi&egrave;res community</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>$5M Liability Insurance</h4>
+          <p>Full coverage for property and workmanship on every project</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>25-Year Panel Warranty</h4>
+          <p>Industry-leading warranty covering panels, inverters, and labour</p>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h4>RBQ Licence Holder</h4>
+          <p>Registered with the R&eacute;gie du b&acirc;timent du Qu&eacute;bec for construction work</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="section-surface" id="areas">
+  <div class="areas-container">
+    <div class="section-header">
+      <div class="section-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Service Areas
+      </div>
+      <h2>Solar Installations Across the Mauricie Region and Beyond</h2>
+      <p>Based in Trois-Rivi&egrave;res, we serve homeowners across the greater Mauricie area. If your town is on the list, we can be at your door within 24 hours for a free energy audit.</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Trois-Rivi&egrave;res</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Shawinigan</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>B&eacute;cancour</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Louiseville</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Nicolet</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Cap-de-la-Madeleine</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Sainte-Th&egrave;cle</span>
+      </div>
+      <div class="area-item">
+        <svg class="area-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Grand-M&egrave;re</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="section-bg" id="booking">
+  <div class="booking-container">
+    <div class="section-header">
+      <div class="section-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Your Free Energy Audit
+      </div>
+      <h2>Start Saving — Get Your Custom ROI Projection</h2>
+      <p>Fill out the form below and one of our solar specialists will contact you within 24 hours to schedule your complimentary energy audit. No commitment required.</p>
+    </div>
+    <form class="form-grid" onsubmit="event.preventDefault(); alert('Thank you! We will contact you within 24 hours to schedule your free energy audit.');">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Jean" required>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Tremblay" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="jean@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(819) 555-0123" required>
+      </div>
+      <div class="form-group full-width">
+        <label for="service">Service Needed</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select a service</option>
+          <option value="solar">Solar Panel Installation</option>
+          <option value="battery">Battery Storage System</option>
+          <option value="ev">EV Charger Integration</option>
+          <option value="audit">Free Energy Audit Only</option>
+          <option value="multiple">Multiple Services</option>
+        </select>
+      </div>
+      <div class="form-group full-width">
+        <label for="message">Tell Us About Your Home</label>
+        <textarea id="message" name="message" placeholder="Approximate roof size, current monthly Hydro-Qu&eacute;bec bill, or any questions you have..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">Book Your Appointment</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Your Roof Could Be Generating $1,200/Year in Savings</h2>
+  <p>Get a free, no-obligation energy audit and custom ROI projection. See exactly how much you could save before committing to anything.</p>
+  <div class="cta-actions">
+    <a href="#booking" class="btn-cta-dark">Book Your Appointment</a>
+    <a href="tel:8193714827" class="btn-cta-link">Reserve Your Spot <span>&rarr;</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>Trois-Rivi&egrave;res' trusted team for residential solar installations, battery storage, and EV charger integration. 14 years of clean energy expertise across the Mauricie region.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Solar Panel Installation</a></li>
+        <li><a href="#services">Battery Storage Systems</a></li>
+        <li><a href="#services">EV Charger Integration</a></li>
+        <li><a href="#booking">Free Energy Audit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:8193714827">(819) 371-4827</a></li>
+        <li><a href="mailto:info@soleiltechqc.ca">info@soleiltechqc.ca</a></li>
+        <li><a href="#areas">Trois-Rivi&egrave;res, QC</a></li>
+        <li><a href="#booking">Book Your Appointment</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 {{BUSINESS_NAME}}. All rights reserved. Master {{MAIN_SERVICE}} Licence CMEQ. RBQ Licence Holder.</p>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .credential-item, .area-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

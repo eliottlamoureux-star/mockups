@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | Business Growth {{MAIN_SERVICE}} for SMEs | Montreal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFCFB;
+  --primary: #2F3E46;
+  --accent: #52B788;
+  --surface: #EDF7F2;
+  --text-on-dark: #F2F9F5;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(47, 62, 70, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.10);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  line-height: 1.5;
+}
+
+.btn-primary:hover {
+  background: #3da077;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(82, 183, 136, 0.35);
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(255,255,255,0.35);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.btn-secondary-dark {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.btn-secondary-dark:hover {
+  color: #3da077;
+  border-bottom-color: #3da077;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+  padding: 140px 80px 80px;
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left {
+  text-align: left;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(82, 183, 136, 0.15);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 4.2vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.12;
+  margin-bottom: 22px;
+  letter-spacing: -1.2px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 520px;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.hero-buttons .btn-primary {
+  padding: 14px 30px;
+  font-size: 15px;
+}
+
+/* Frosted card */
+.hero-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero-card-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.hero-card-stars svg {
+  color: #facc15;
+}
+
+.hero-card-stars span {
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero-card-stat {
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: -0.8px;
+}
+
+.hero-card-stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.hero-card-creds {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-card-creds li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.hero-card-creds li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+/* SECTIONS GENERAL */
+.section {
+  padding: 100px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 100px 80px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.section-headline {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  margin-bottom: 16px;
+}
+
+.section-headline-light {
+  color: #fff;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: #5a6b72;
+  line-height: 1.65;
+  max-width: 560px;
+  font-weight: 400;
+}
+
+.section-sub-light {
+  color: rgba(255,255,255,0.7);
+}
+
+/* HOW WE HELP */
+.services-section {
+  background: var(--bg);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid #e8ece9;
+  border-radius: 14px;
+  padding: 36px 30px;
+  transition: all 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(47, 62, 70, 0.08);
+  border-color: var(--accent);
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--surface);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  color: var(--accent);
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #5a6b72;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* THE PROCESS */
+.process-section {
+  background: var(--surface);
+}
+
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  position: relative;
+}
+
+.process-step {
+  text-align: center;
+  padding: 0 32px;
+  position: relative;
+}
+
+.process-step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 28px);
+  width: calc(100% - 56px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(82, 183, 136, 0.2) 100%);
+  z-index: 1;
+}
+
+.process-step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+.process-step p {
+  font-size: 14px;
+  color: #5a6b72;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.process-arrow {
+  color: var(--accent);
+}
+
+/* RESULTS */
+.results-section {
+  background: var(--primary);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+
+.result-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 36px 32px;
+  transition: all 0.25s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  border-color: rgba(82, 183, 136, 0.4);
+}
+
+.result-tag {
+  display: inline-block;
+  background: rgba(82, 183, 136, 0.15);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  letter-spacing: 0.3px;
+}
+
+.result-metrics {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.result-metric {
+  text-align: center;
+}
+
+.result-metric-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 4px;
+}
+
+.result-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.result-metric-value.highlight {
+  color: var(--accent);
+}
+
+.result-arrow-divider {
+  color: rgba(255,255,255,0.3);
+}
+
+.result-method {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  font-weight: 400;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.result-timeframe {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 12px;
+}
+
+/* FORM SECTION */
+.form-section {
+  background: var(--bg);
+}
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 56px;
+  align-items: start;
+}
+
+.form-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.form-info p {
+  font-size: 15px;
+  color: #5a6b72;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+.form-info-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-info-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.form-info-items li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+.form-card {
+  background: #fff;
+  border: 1px solid #e8ece9;
+  border-radius: 14px;
+  padding: 36px 32px;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-card label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--primary);
+  background: var(--bg);
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.15);
+}
+
+.form-card textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-card .btn-primary {
+  width: 100%;
+  padding: 14px 22px;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.cta-banner p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.cta-banner .btn-primary {
+  background: #fff;
+  color: var(--primary);
+  padding: 14px 32px;
+  font-size: 15px;
+}
+
+.cta-banner .btn-primary:hover {
+  background: var(--text-on-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 64px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer ul li a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.footer ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 120px 24px 64px;
+    min-height: auto;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section {
+    padding: 56px 24px;
+  }
+
+  .section-full {
+    padding: 56px 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .result-metrics {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">{{BUSINESS_NAME}}</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#results">Results</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      Only 3 of 8 client spots remaining in 2025
+    </div>
+    <h1>Break Through Your<br>Revenue Plateau.<br><span>Guaranteed.</span></h1>
+    <p class="hero-sub">We help SME founders and CEOs between $1M and $20M in revenue unlock their next phase of growth through market strategy, operational efficiency, and revenue optimization &mdash; all backed by a 90-day ROI guarantee.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Book Your Appointment</a>
+      <a href="#results" class="btn-secondary">Reserve Your Spot</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-stars">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <span>4.9 from 47 client engagements</span>
+    </div>
+    <div class="hero-card-stat">34% avg.</div>
+    <div class="hero-card-stat-label">Revenue growth within 6 months across all client engagements</div>
+    <ul class="hero-card-creds">
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        8 clients per year &mdash; deep-focus engagements only
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        90-day ROI guarantee on every engagement
+      </li>
+      <li>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        Based in {{LOCATION}}, serving SMEs across Quebec and Eastern Canada
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- HOW WE HELP -->
+<section class="section services-section" id="services">
+  <div class="section-tag">How We Help</div>
+  <h2 class="section-headline">Three levers to break through your growth ceiling</h2>
+  <p class="section-sub">Every engagement is built around the specific bottleneck holding your business back &mdash; not a one-size-fits-all playbook.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      </div>
+      <h3>Market Strategy</h3>
+      <p>Identify untapped segments, reposition your offer, and build a go-to-market plan that captures demand you are currently missing in your core market.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </div>
+      <h3>Operational Efficiency</h3>
+      <p>Eliminate the margin leaks and process bottlenecks that eat into profit. We streamline operations so you can scale without doubling headcount.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      </div>
+      <h3>Revenue Optimization</h3>
+      <p>Restructure pricing, improve close rates, and increase customer lifetime value. Our clients average a 34% revenue lift within the first six months.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROCESS -->
+<section class="section-full process-section" id="process">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="section-tag">The Process</div>
+    <h2 class="section-headline">From first call to measurable results in 90 days</h2>
+    <p class="section-sub">A structured, high-accountability engagement designed for founders who want outcomes &mdash; not slide decks.</p>
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="process-step-number">1</div>
+        <h3>Discovery Call</h3>
+        <p>A 45-minute deep dive into your revenue, operations, and growth blockers. We assess fit and identify your highest-leverage opportunity.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">2</div>
+        <h3>Strategy &amp; Roadmap</h3>
+        <p>Within 10 days, you receive a custom 90-day growth roadmap with prioritized initiatives, KPI targets, and resource requirements.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">3</div>
+        <h3>Execution &amp; Results</h3>
+        <p>We work alongside your team to implement &mdash; weekly check-ins, hands-on support, and real-time adjustments until ROI targets are met.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section-full results-section" id="results" style="background:var(--primary);">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="section-tag">Results</div>
+    <h2 class="section-headline section-headline-light">Real numbers from real engagements</h2>
+    <p class="section-sub section-sub-light">Every case below was completed under our 90-day ROI guarantee. Client details anonymized per our NDA policy.</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-tag">B2B Manufacturing &middot; Laval, QC</span>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="result-metric-label">Before</div>
+            <div class="result-metric-value">$2.1M</div>
+          </div>
+          <div class="result-arrow-divider">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+          <div class="result-metric">
+            <div class="result-metric-label">After (6 months)</div>
+            <div class="result-metric-value highlight">$3.2M</div>
+          </div>
+        </div>
+        <p class="result-method">Repositioned core product line for mid-market buyers, restructured sales process, and eliminated $180K in operational waste through supply chain optimization.</p>
+        <span class="result-timeframe">+52% revenue in 6 months</span>
+      </div>
+      <div class="result-card">
+        <span class="result-tag">SaaS &middot; Montreal, QC</span>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="result-metric-label">Before</div>
+            <div class="result-metric-value">$4.7M</div>
+          </div>
+          <div class="result-arrow-divider">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+          <div class="result-metric">
+            <div class="result-metric-label">After (6 months)</div>
+            <div class="result-metric-value highlight">$6.1M</div>
+          </div>
+        </div>
+        <p class="result-method">Rebuilt pricing tiers to capture enterprise demand, improved onboarding to reduce churn from 8.3% to 3.1% monthly, and launched a channel partner program.</p>
+        <span class="result-timeframe">+29.8% revenue in 6 months</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="section form-section" id="contact">
+  <div class="section-tag">Get Started</div>
+  <h2 class="section-headline">Book a discovery call with our team</h2>
+  <p class="section-sub">No pitch. No obligation. Just a focused conversation about where your business is today and what it would take to reach the next level.</p>
+  <div class="form-wrapper">
+    <div class="form-info">
+      <h3>What to expect</h3>
+      <p>Your discovery call is a 45-minute session with a senior strategist. We will review your current revenue, margins, and growth blockers &mdash; and you will leave with at least one actionable insight, whether or not we work together.</p>
+      <ul class="form-info-items">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          No cost, no commitment &mdash; just clarity
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Speak directly with a senior strategist, not a sales rep
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Every engagement backed by a 90-day ROI guarantee
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          {{LOCATION}} office &middot; in-person or virtual sessions
+        </li>
+      </ul>
+    </div>
+    <div class="form-card">
+      <form action="#" method="post">
+        <div>
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="First and last name" required>
+        </div>
+        <div>
+          <label for="company">Company Name</label>
+          <input type="text" id="company" name="company" placeholder="Your company" required>
+        </div>
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div>
+          <label for="challenge">What is your biggest growth challenge right now?</label>
+          <textarea id="challenge" name="challenge" placeholder="E.g. We have been stuck at $3M for two years and cannot figure out how to scale past it..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Book Your Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Only 3 spots left for 2025.</h2>
+  <p>We take 8 clients per year so we can deliver real results &mdash; not diluted advice. If your SME is stuck between $1M and $20M, let us show you what 34% growth looks like.</p>
+  <a href="#contact" class="btn-primary">Book Your Appointment</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">{{BUSINESS_NAME}}</div>
+      <p class="footer-desc">Business growth {{MAIN_SERVICE}} for ambitious SME founders. {{LOCATION}}. 8 clients per year. 90-day ROI guarantee on every engagement.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#services">How We Help</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#results">Client Results</a></li>
+        <li><a href="#contact">Book a Call</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">1250 Ren&eacute;-L&eacute;vesque Blvd W, Suite 2200</a></li>
+        <li><a href="#">Montreal, QC H3B 4W8</a></li>
+        <li><a href="mailto:hello@apexstrategygroup.com">hello@apexstrategygroup.com</a></li>
+        <li><a href="tel:+15148479100">(514) 847-9100</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 {{BUSINESS_NAME}}. All rights reserved. &middot; {{LOCATION}}
+  </div>
+</footer>
+
+<script>
+// Nav scroll behavior
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = scrollY;
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Subtle entrance animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .process-step, .result-card, .form-card, .form-info').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — CPA Firm for Growing Companies in {{LOCATION}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFCFB;
+  --primary: #2F3E46;
+  --accent: #52B788;
+  --surface: #EDF7F2;
+  --text-on-dark: #F2F9F5;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(47, 62, 70, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: #44a077;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(82,183,136,0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* HERO — Variant B */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+  padding: 140px 80px 80px;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.hero-left h1 span {
+  color: var(--accent);
+}
+
+.hero-left p {
+  color: rgba(255,255,255,0.8);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero-card-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.hero-card-stars .stars {
+  display: flex;
+  gap: 3px;
+}
+
+.hero-card-stars .rating-text {
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero-card-stat {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.hero-card-stat-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.hero-card-credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.credential-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.credential-line svg {
+  flex-shrink: 0;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 20px 0;
+}
+
+/* SECTIONS */
+.section {
+  padding: 100px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 100px 80px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: rgba(47,62,70,0.65);
+  max-width: 560px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* HOW WE HELP */
+.services-section {
+  background: var(--surface);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 36px 30px;
+  border: 1px solid rgba(47,62,70,0.06);
+  transition: all 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(47,62,70,0.1);
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--surface);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  color: var(--accent);
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.service-card p {
+  font-size: 14px;
+  color: rgba(47,62,70,0.6);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* PROCESS */
+.process-section {
+  background: var(--bg);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.process-step {
+  text-align: center;
+  padding: 0 32px;
+  position: relative;
+}
+
+.process-step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 36px);
+  width: calc(100% - 72px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(82,183,136,0.2));
+  z-index: 1;
+}
+
+.process-step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.process-step p {
+  font-size: 14px;
+  color: rgba(47,62,70,0.6);
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.process-arrow {
+  display: none;
+}
+
+/* RESULTS */
+.results-section {
+  background: var(--primary);
+}
+
+.results-section .section-label {
+  color: var(--accent);
+}
+
+.results-section .section-title {
+  color: var(--text-on-dark);
+}
+
+.results-section .section-subtitle {
+  color: rgba(242,249,245,0.55);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.result-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 36px 32px;
+  transition: all 0.25s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.09);
+}
+
+.result-tag {
+  display: inline-block;
+  background: rgba(82,183,136,0.15);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.result-metric {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.result-before {
+  font-size: 22px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.2);
+}
+
+.result-arrow {
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.result-after {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.result-period {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+
+.result-method {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* FORM SECTION */
+.form-section {
+  background: var(--surface);
+}
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.form-info h2 {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.form-info p {
+  font-size: 16px;
+  color: rgba(47,62,70,0.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.form-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-benefit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.form-benefit svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 32px rgba(47,62,70,0.08);
+}
+
+.form-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+
+.form-card .form-card-sub {
+  font-size: 14px;
+  color: rgba(47,62,70,0.5);
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--primary);
+  background: #fff;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(82,183,136,0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.cta-banner p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.cta-banner-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-white:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-outline-white:hover {
+  border-color: #fff;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  color: var(--text-on-dark);
+  padding: 72px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.footer-brand h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(242,249,245,0.55);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: rgba(242,249,245,0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(242,249,245,0.5);
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  max-width: 1440px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(242,249,245,0.35);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 120px 24px 60px;
+    min-height: auto;
+  }
+
+  .section, .section-full {
+    padding: 56px 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .result-metric {
+    gap: 10px;
+  }
+
+  .result-before {
+    font-size: 18px;
+  }
+
+  .result-after {
+    font-size: 22px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>Your Growing Company Deserves a <span>CPA Partner</span> — Not Just an Accountant</h1>
+    <p>{{LOCATION}} businesses with $1M-$50M in revenue trust Fiducie Lapointe for financial statements, corporate tax strategy, M&A due diligence, and CFO-on-demand services. We save our clients an average of $18,000/year through proactive tax planning.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary" style="padding:14px 28px; font-size:15px;">Get a Free Quote</a>
+      <a href="tel:+14185551234" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call for a Free Estimate
+      </a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-stars">
+      <div class="stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#52B788" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="rating-text">4.9 on Google (187 reviews)</span>
+    </div>
+    <div class="hero-card-stat">263+ Companies Served</div>
+    <div class="hero-card-stat-label">Across {{LOCATION}} and the Greater Capital Region</div>
+    <div class="divider-line"></div>
+    <div class="hero-card-credentials">
+      <div class="credential-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="#52B788" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Licensed CPA firm — Ordre des CPA du Quebec
+      </div>
+      <div class="credential-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="#52B788" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Bilingual reporting — French and English
+      </div>
+      <div class="credential-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="#52B788" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        14 years advising growing companies
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE HELP -->
+<section class="section-full services-section" id="services">
+  <div class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-header">
+      <div class="section-label">How We Help</div>
+      <h2 class="section-title">CPA Services Built for Companies That Are Scaling</h2>
+      <p class="section-subtitle">From annual compliance to strategic advisory — every engagement is led by a dedicated CPA partner who knows your business inside and out.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Financial Statements & Corporate Tax</h3>
+        <p>Audit-ready financial statements and corporate tax filings with proactive planning that saves our clients an average of $18,000 annually in taxes owed.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/></svg>
+        </div>
+        <h3>M&A Due Diligence</h3>
+        <p>Thorough financial and tax due diligence for acquisitions. We identify hidden liabilities, validate earnings quality, and protect your capital before you sign.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>CFO-on-Demand</h3>
+        <p>Get senior-level financial leadership without the $200K+ salary. Cash flow forecasting, KPI dashboards, and board-ready reporting — on your schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-section" id="process">
+  <div class="section-header">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">From First Call to Financial Clarity in 3 Steps</h2>
+    <p class="section-subtitle">We make onboarding simple so you can focus on running your company while we handle the financial complexity.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-step-number">1</div>
+      <h3>Discovery Call</h3>
+      <p>A 30-minute conversation to understand your revenue, entity structure, pain points, and what financial oversight your company is missing.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-step-number">2</div>
+      <h3>Strategy & Roadmap</h3>
+      <p>We audit your current financials, identify tax savings opportunities, and deliver a clear roadmap with timelines, deliverables, and pricing — no surprises.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-step-number">3</div>
+      <h3>Execution + Results</h3>
+      <p>Your dedicated CPA partner takes ownership of deliverables, meets reporting deadlines, and proactively flags risks and opportunities each quarter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section-full results-section" id="results">
+  <div class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-header">
+      <div class="section-label">Results</div>
+      <h2 class="section-title">Real Outcomes for Real Companies</h2>
+      <p class="section-subtitle">Here is what proactive CPA advisory looks like when it is done right.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-tag">SaaS · {{LOCATION}}</div>
+        <div class="result-metric">
+          <span class="result-before">$47K tax burden</span>
+          <span class="result-arrow">&rarr;</span>
+          <span class="result-after">$21K</span>
+        </div>
+        <div class="result-period">Annual corporate tax reduced in first filing year</div>
+        <div style="height:16px"></div>
+        <p class="result-method">Restructured SR&ED claims, optimized intercompany transactions, and implemented income splitting strategy across two holding companies.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-tag">Manufacturing · Levis</div>
+        <div class="result-metric">
+          <span class="result-before">No financial visibility</span>
+          <span class="result-arrow">&rarr;</span>
+          <span class="result-after">Monthly KPI dashboards</span>
+        </div>
+        <div class="result-period">CFO-on-demand engagement over 18 months</div>
+        <div style="height:16px"></div>
+        <p class="result-method">Deployed cash flow forecasting, margin analysis by product line, and bilingual board reporting — enabling the company to secure $2.4M in new financing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="section-full form-section" id="contact">
+  <div class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="form-wrapper">
+      <div class="form-info">
+        <div class="section-label">Book a Discovery Call</div>
+        <h2>Let's Talk About Your Company's Financial Future</h2>
+        <p>Whether you need cleaner financials, smarter tax strategy, or a CFO-level advisor on your team — we will map out a plan in 30 minutes. No obligation, no sales pressure.</p>
+        <div class="form-benefits">
+          <div class="form-benefit">
+            <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Dedicated CPA partner on every file
+          </div>
+          <div class="form-benefit">
+            <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Average $18,000/year in tax savings
+          </div>
+          <div class="form-benefit">
+            <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Bilingual reporting in French and English
+          </div>
+          <div class="form-benefit">
+            <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Serving {{LOCATION}} companies for 14 years
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Request Your Free Consultation</h3>
+        <p class="form-card-sub">We will respond within one business day.</p>
+        <form onsubmit="event.preventDefault(); alert('Thank you! We will be in touch shortly.');">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jean-Philippe Tremblay" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="Entreprises ABC Inc." required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jp@entreprises-abc.ca" required>
+          </div>
+          <div class="form-group">
+            <label for="challenge">What is your biggest financial challenge right now?</label>
+            <textarea id="challenge" name="challenge" placeholder="e.g. We need cleaner financials before our next round of financing..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit" style="padding:14px 28px; font-size:15px; justify-content:center;">Get a Free Quote</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Stop Overpaying in Taxes. Start Making Smarter Financial Decisions.</h2>
+  <p>Join the 263 companies across {{LOCATION}} that trust {{BUSINESS_NAME}} for proactive financial oversight and strategic tax planning.</p>
+  <div class="cta-banner-buttons">
+    <a href="#contact" class="btn-white">Get a Free Quote</a>
+    <a href="tel:+14185551234" class="btn-outline-white">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call for a Free Estimate
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>A trusted CPA firm serving growing companies in {{LOCATION}}. Proactive tax planning, strategic advisory, and bilingual financial reporting for businesses with $1M-$50M in revenue.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Financial Statements</a></li>
+        <li><a href="#services">Corporate Tax</a></li>
+        <li><a href="#services">M&A Due Diligence</a></li>
+        <li><a href="#services">CFO-on-Demand</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+14185551234">(418) 555-1234</a></li>
+        <li><a href="mailto:info@fiducielapointe.ca">info@fiducielapointe.ca</a></li>
+        <li><a href="#">1200, boul. Laurier, suite 420<br>{{LOCATION}} G1V 4T3</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 {{BUSINESS_NAME}}. All rights reserved.</span>
+    <span>Member of the Ordre des CPA du Quebec</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+
+// Smooth reveal on scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .process-step, .result-card, .form-card, .form-info').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

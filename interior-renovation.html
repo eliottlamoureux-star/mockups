@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | Design-Build Interior Renovations in {{LOCATION}}, Montreal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #14110E;
+  --primary: #2D3436;
+  --accent: #FDCB6E;
+  --surface: #1E1A16;
+  --text-on-dark: #F5F2ED;
+  --accent-15: rgba(253, 203, 110, 0.15);
+  --accent-hover: #f0be4a;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-on-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(20, 17, 14, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.2px;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(253, 203, 110, 0.3);
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 1.5px solid transparent;
+}
+
+.btn-secondary:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* HERO — VARIANT C */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 80px;
+  position: relative;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.78) 65%, rgba(0,0,0,0.85) 100%),
+    url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  max-width: 750px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(253, 203, 110, 0.12);
+  border: 1px solid rgba(253, 203, 110, 0.25);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 24px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: rgba(245, 242, 237, 0.78);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn-primary {
+  padding: 14px 32px;
+  font-size: 15px;
+}
+
+.hero-buttons .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* SECTION DEFAULTS */
+.section {
+  padding: 100px 80px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-label svg {
+  width: 16px;
+  height: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: rgba(245, 242, 237, 0.6);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* RECENT PROJECTS */
+.projects-section {
+  background: var(--bg);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.project-card {
+  background: var(--surface);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-color: rgba(253, 203, 110, 0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 24px;
+}
+
+.project-tag {
+  display: inline-block;
+  background: rgba(253, 203, 110, 0.1);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
+.project-location {
+  font-size: 14px;
+  color: rgba(245, 242, 237, 0.5);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.project-result {
+  font-size: 15px;
+  color: var(--text-on-dark);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* HOW WE WORK */
+.process-section {
+  background: var(--surface);
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 16px);
+  right: calc(12.5% + 16px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(253, 203, 110, 0.2));
+  z-index: 0;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 auto 20px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.step:hover .step-number {
+  background: var(--accent);
+  color: var(--bg);
+  transform: scale(1.08);
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-on-dark);
+}
+
+.step-desc {
+  font-size: 14px;
+  color: rgba(245, 242, 237, 0.55);
+  line-height: 1.6;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+/* TRUST BADGES */
+.trust-section {
+  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.trust-item {
+  text-align: center;
+  padding: 36px 24px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.25s ease;
+}
+
+.trust-item:hover {
+  border-color: rgba(253, 203, 110, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.trust-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  color: var(--accent);
+}
+
+.trust-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: 4px;
+}
+
+.trust-label {
+  font-size: 14px;
+  color: rgba(245, 242, 237, 0.55);
+  font-weight: 500;
+}
+
+/* BOOKING SECTION */
+.booking-section {
+  background: var(--surface);
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.booking-info h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.booking-info p {
+  color: rgba(245, 242, 237, 0.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+}
+
+.booking-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.booking-benefit-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.booking-benefit-text {
+  font-size: 15px;
+  color: rgba(245, 242, 237, 0.75);
+  line-height: 1.6;
+}
+
+.booking-benefit-text strong {
+  color: var(--text-on-dark);
+  font-weight: 600;
+}
+
+.booking-form {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(245, 242, 237, 0.7);
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: var(--surface);
+  color: var(--text-on-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23F5F2ED' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(245, 242, 237, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-submit {
+  margin-top: 24px;
+}
+
+.form-submit .btn-primary {
+  width: 100%;
+  padding: 14px 32px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.form-note {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(245, 242, 237, 0.35);
+  margin-top: 12px;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px;
+  text-align: center;
+}
+
+.cta-banner-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-banner h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--bg);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.cta-banner p {
+  font-size: 1.05rem;
+  color: rgba(20, 17, 14, 0.7);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.cta-banner .btn-primary {
+  background: var(--bg);
+  color: var(--accent);
+  padding: 14px 36px;
+  font-size: 15px;
+}
+
+.cta-banner .btn-primary:hover {
+  background: var(--primary);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 64px 80px 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 48px;
+}
+
+.footer-brand {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: rgba(245, 242, 237, 0.5);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: rgba(245, 242, 237, 0.55);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: rgba(245, 242, 237, 0.55);
+}
+
+.footer-contact-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(245, 242, 237, 0.35);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom-links a {
+  font-size: 13px;
+  color: rgba(245, 242, 237, 0.35);
+  transition: color 0.2s;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--accent);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 0 24px 64px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .section {
+    padding: 56px 24px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .booking-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .booking-form {
+    padding: 28px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .trust-item {
+    padding: 24px 16px;
+  }
+
+  .trust-value {
+    font-size: 22px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#process">Our Process</a></li>
+      <li><a href="#booking">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+      Design-Build Renovations · {{LOCATION}}, Montreal
+    </div>
+    <h1>Your Vision,<br>Built Right</h1>
+    <p>One team. One point of contact. From concept sketches to the final walkthrough, {{BUSINESS_NAME}} delivers complete interior renovations with an in-house designer on every project — and a fixed-price contract with zero surprise extras.</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+      <a href="#projects" class="btn-secondary">Reserve Your Spot →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT PROJECTS -->
+<section class="section projects-section" id="projects">
+  <div class="section-inner">
+    <div class="section-label">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      Recent Projects
+    </div>
+    <h2 class="section-title">{{LOCATION}} Homes, Transformed</h2>
+    <p class="section-subtitle">Every project is managed by a single point of contact — from the first sketch to the moment we hand you the keys.</p>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85&auto=format&fit=crop" alt="Open-concept kitchen renovation" class="project-image">
+        <div class="project-info">
+          <span class="project-tag">Open-Concept Kitchen</span>
+          <p class="project-location">3 1/2 Condo · {{LOCATION}}-La Petite-Patrie</p>
+          <p class="project-result">Wall removed, custom island millwork installed — delivered in 4 weeks, on budget.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&q=85&auto=format&fit=crop" alt="Complete condo refresh" class="project-image">
+        <div class="project-info">
+          <span class="project-tag">Complete Condo Refresh</span>
+          <p class="project-location">4 1/2 Condo · Plateau-Mont-Royal</p>
+          <p class="project-result">Full flooring, lighting, and bathroom overhaul — finished 3 days ahead of schedule.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&q=85&auto=format&fit=crop" alt="Custom millwork living space" class="project-image">
+        <div class="project-info">
+          <span class="project-tag">Custom Millwork + Flooring</span>
+          <p class="project-location">Detached Home · Villeray</p>
+          <p class="project-result">Built-in wall unit and engineered hardwood throughout — seamless 5-week execution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="section process-section" id="process">
+  <div class="section-inner">
+    <div class="section-label">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      How We Work
+    </div>
+    <h2 class="section-title">Four Steps to Your Dream Space</h2>
+    <p class="section-subtitle">No run-around. No juggling subcontractors. Just one clear process from start to finish.</p>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Free Consult</h3>
+        <p class="step-desc">We visit your home, listen to your vision, and assess what's possible within your space and budget.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Detailed Quote</h3>
+        <p class="step-desc">Our in-house designer creates a concept with a fixed-price contract — so you know exactly what you'll pay.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Professional Build</h3>
+        <p class="step-desc">Your dedicated project manager oversees every trade, keeping you updated and the timeline on track.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3 class="step-title">Final Walkthrough</h3>
+        <p class="step-desc">We walk through every detail together. You don't sign off until you're completely satisfied.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="section trust-section">
+  <div class="section-inner">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="trust-value">RBQ Licensed</div>
+        <div class="trust-label">Régie du bâtiment du Québec</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="trust-value">Bonded & Insured</div>
+        <div class="trust-label">Full liability coverage on every job</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="trust-value">13 Years</div>
+        <div class="trust-label">Renovating Montreal homes since 2011</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <div class="trust-value">187 Projects</div>
+        <div class="trust-label">Completed across Greater Montreal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING SECTION -->
+<section class="section booking-section" id="booking">
+  <div class="section-inner">
+    <div class="booking-layout">
+      <div class="booking-info">
+        <div class="section-label">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+          Start Your Project
+        </div>
+        <h2>Tell Us About Your Renovation</h2>
+        <p>Whether you're opening up a kitchen wall, refreshing your condo from floor to ceiling, or adding custom built-ins — we'd love to hear about it. Fill out the form and we'll reach out within one business day.</p>
+
+        <div class="booking-benefit">
+          <svg class="booking-benefit-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          <div class="booking-benefit-text"><strong>In-house interior designer</strong> included on every project — no extra cost for design consultation.</div>
+        </div>
+        <div class="booking-benefit">
+          <svg class="booking-benefit-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          <div class="booking-benefit-text"><strong>Fixed-price contracts</strong> — the number on your quote is the number you pay. Period.</div>
+        </div>
+        <div class="booking-benefit">
+          <svg class="booking-benefit-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          <div class="booking-benefit-text"><strong>Single point of contact</strong> from concept to keys — no chasing subcontractors yourself.</div>
+        </div>
+      </div>
+
+      <form class="booking-form" onsubmit="event.preventDefault();">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" placeholder="Jean">
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" placeholder="Tremblay">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="jean@example.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="(514) 555-0123">
+          </div>
+          <div class="form-group">
+            <label for="project-type">Project Type</label>
+            <select id="project-type">
+              <option value="" disabled selected>Select a project type</option>
+              <option>Open-Concept Conversion</option>
+              <option>Kitchen Renovation</option>
+              <option>Bathroom Renovation</option>
+              <option>Complete Condo Refresh</option>
+              <option>Custom Millwork</option>
+              <option>Flooring</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="timeline">Ideal Timeline</label>
+            <select id="timeline">
+              <option value="" disabled selected>When do you want to start?</option>
+              <option>Within 1 month</option>
+              <option>1 – 3 months</option>
+              <option>3 – 6 months</option>
+              <option>Flexible / Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label for="budget">Budget Range</label>
+            <select id="budget">
+              <option value="" disabled selected>Select your budget range</option>
+              <option>$15,000 – $30,000</option>
+              <option>$30,000 – $60,000</option>
+              <option>$60,000 – $100,000</option>
+              <option>$100,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label for="details">Project Details (optional)</label>
+            <textarea id="details" placeholder="Tell us a bit about what you have in mind..."></textarea>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">Book Your Appointment</button>
+        </div>
+        <p class="form-note">We'll respond within 1 business day. No spam, no obligations.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <h2>Ready to Reimagine Your Space?</h2>
+    <p>Join 187 Montreal homeowners who trusted {{BUSINESS_NAME}} to transform their homes — on time and on budget. Your free consultation is one click away.</p>
+    <a href="#booking" class="btn-primary">Book Your Appointment</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">{{BUSINESS_NAME}}</div>
+        <p class="footer-desc">Design-build interior renovations for condos and homes across {{LOCATION}} and Greater Montreal. In-house design. Fixed pricing. One team from concept to keys.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#projects">Recent Projects</a></li>
+          <li><a href="#process">How We Work</a></li>
+          <li><a href="#booking">Book a Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{LOCATION}}-La Petite-Patrie, Montreal, QC
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (514) 439-7821
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@studiorenov.ca
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2024 {{BUSINESS_NAME}}. All rights reserved. RBQ License #5734-8291-01</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+}, { passive: true });
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.project-card, .step, .trust-item, .booking-info, .booking-form').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

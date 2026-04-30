@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | All-Day Brunch in {{LOCATION}}, Montreal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F0A0A;
+  --primary: #C8102E;
+  --accent: #E8C97A;
+  --surface: #1A1010;
+  --text-on-dark: #F5F0E8;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-on-dark);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(15, 10, 10, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background: #d4b462;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 201, 122, 0.3);
+}
+
+.btn-secondary {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  background: rgba(232,201,122,0.1);
+  transform: translateY(-1px);
+}
+
+/* HERO — VARIANT C */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 80px;
+  position: relative;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.78) 65%, rgba(0,0,0,0.85) 100%),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 780px;
+  z-index: 2;
+}
+
+.hero-badge {
+  position: absolute;
+  top: -60px;
+  right: -120px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border-radius: 50px;
+  animation: badgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  max-width: 560px;
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* MENU SECTION */
+.menu-section {
+  background: var(--surface);
+  padding: 100px 80px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  color: var(--text-on-dark);
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: rgba(245,240,232,0.65);
+  max-width: 540px;
+  line-height: 1.6;
+  margin-bottom: 52px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+}
+
+.menu-card {
+  background: var(--bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.menu-card-body {
+  padding: 24px;
+}
+
+.menu-card-body h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+  color: var(--text-on-dark);
+}
+
+.menu-card-body p {
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.6);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.menu-card-price {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+/* EXPERIENCE SECTION */
+.experience-section {
+  background: var(--bg);
+  padding: 100px 80px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  align-items: stretch;
+}
+
+.experience-img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.experience-content p {
+  font-size: 1.05rem;
+  color: rgba(245,240,232,0.7);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.experience-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(245,240,232,0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(245,240,232,0.5);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* RESERVATION SECTION */
+.reservation-section {
+  background: var(--surface);
+  padding: 100px 80px;
+}
+
+.reservation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+}
+
+.reservation-benefits h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.reservation-benefits > p {
+  font-size: 1.05rem;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.benefit-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(232,201,122,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.benefit-icon svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+.benefit-text h4 {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.benefit-text p {
+  font-size: 0.87rem;
+  color: rgba(245,240,232,0.55);
+  line-height: 1.5;
+}
+
+.booking-card {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 40px;
+  border: 1px solid rgba(245,240,232,0.06);
+}
+
+.booking-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.booking-card > p {
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: rgba(245,240,232,0.8);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-on-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F5F0E8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(232,201,122,0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 22px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  margin-top: 6px;
+}
+
+.btn-submit:hover {
+  background: #d4b462;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232,201,122,0.3);
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--bg);
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+
+.cta-banner p {
+  font-size: 1.1rem;
+  color: rgba(15,10,10,0.7);
+  margin-bottom: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-banner {
+  background: var(--bg);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  display: inline-block;
+}
+
+.btn-banner:hover {
+  background: var(--surface);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--bg);
+  padding: 80px 80px 48px;
+  border-top: 1px solid rgba(245,240,232,0.06);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin-bottom: 60px;
+}
+
+.footer-brand h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.5);
+  line-height: 1.65;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col ul li a,
+.footer-col ul li {
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.6);
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(245,240,232,0.08);
+  padding-top: 28px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(245,240,232,0.35);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 0 24px 64px;
+  }
+
+  .hero-badge {
+    position: relative;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-section,
+  .experience-section,
+  .reservation-section {
+    padding: 56px 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-img {
+    min-height: 300px;
+  }
+
+  .experience-stats {
+    gap: 32px;
+  }
+
+  .reservation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 36px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#experience">Our Story</a></li>
+      <li><a href="#reservation">Reserve</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#reservation" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — VARIANT C -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Reserve Now</div>
+    <h1>Where Every<br>Morning Feels<br>Like <span>Sunday</span></h1>
+    <p class="hero-sub">All-day brunch and bottomless weekend mimosas in the heart of {{LOCATION}}, Montreal. Seasonal plates, craft cocktails, and a kids' corner so you can actually sit down and eat.</p>
+    <div class="hero-buttons">
+      <a href="#reservation" class="btn-primary" style="padding:14px 32px; font-size:1rem;">Book Your Appointment</a>
+      <a href="#reservation" class="btn-secondary" style="padding:14px 32px; font-size:1rem;">Reserve Your Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR MENU -->
+<section class="menu-section" id="menu">
+  <div class="section-label">Our Menu</div>
+  <h2 class="section-heading">Signature Plates Worth Waking Up For</h2>
+  <p class="section-desc">Our rotating seasonal menu changes monthly, so there's always something new alongside the classics you love.</p>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=85&auto=format&fit=crop" alt="Classic Eggs Benedict" class="menu-card-img">
+      <div class="menu-card-body">
+        <h3>Classic Eggs Benedict</h3>
+        <p>Poached eggs on brioche with smoked ham, silky hollandaise, and house-roasted potatoes</p>
+        <span class="menu-card-price">$18 – $24</span>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=1200&q=85&auto=format&fit=crop" alt="Smashed Avo Toast" class="menu-card-img">
+      <div class="menu-card-body">
+        <h3>Smashed Avo Toast</h3>
+        <p>Sourdough piled with avocado, chili flakes, pickled radish, and a soft-poached egg</p>
+        <span class="menu-card-price">$16 – $22</span>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1200&q=85&auto=format&fit=crop" alt="Buttermilk Pancake Stack" class="menu-card-img">
+      <div class="menu-card-body">
+        <h3>Buttermilk Pancake Stack</h3>
+        <p>Fluffy buttermilk pancakes with maple-bourbon butter, seasonal berries, and whipped cream</p>
+        <span class="menu-card-price">$17 – $23</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="experience-grid">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=85&auto=format&fit=crop" alt="{{BUSINESS_NAME}} Interior" class="experience-img">
+    <div class="experience-content">
+      <div class="section-label">The Experience</div>
+      <h2 class="section-heading">A Neighbourhood Ritual Since 2017</h2>
+      <p>{{BUSINESS_NAME}} started with a simple idea: brunch should never feel rushed. Tucked into the heart of {{LOCATION}}, Montreal, we built a space where the coffee is bottomless, the mimosas flow every weekend, and the seasonal menu keeps you curious month after month. Whether you're here for the eggs Benny or the craft cocktails, every plate is designed to look as good as it tastes.</p>
+      <p>We're proudly family-friendly, too. Our dedicated kids' corner means parents can actually enjoy a warm meal and a second mimosa while the little ones stay entertained. It's the kind of place where weekend regulars become friends, and first-timers leave planning their next visit.</p>
+      <div class="experience-stats">
+        <div class="stat-item">
+          <span class="stat-number">54</span>
+          <span class="stat-label">Seats Inside + Patio</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4.8<span style="font-size:1.2rem;">&#9733;</span></span>
+          <span class="stat-label">on Google · 287 Reviews</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">7</span>
+          <span class="stat-label">Years in {{LOCATION}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION SECTION -->
+<section class="reservation-section" id="reservation">
+  <div class="reservation-grid">
+    <div class="reservation-benefits">
+      <div class="section-label">Reservations</div>
+      <h2>Skip the Line. Secure Your Table.</h2>
+      <p>Weekend brunch at {{BUSINESS_NAME}} fills up fast — especially during bottomless mimosa hours. Reserve ahead and walk straight to your table.</p>
+      <ul class="benefit-list">
+        <li class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="benefit-text">
+            <h4>Bottomless Mimosas Every Weekend</h4>
+            <p>Unlimited mimosas with any brunch order, Saturdays and Sundays from 10 AM to 2 PM.</p>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="benefit-text">
+            <h4>Kids' Corner for Stress-Free Dining</h4>
+            <p>A supervised play area so parents can relax, recharge, and actually taste their food.</p>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="benefit-text">
+            <h4>Fresh Seasonal Menu Monthly</h4>
+            <p>Our chef updates the menu every month with seasonal ingredients from local Quebec producers.</p>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="benefit-text">
+            <h4>Instagram-Worthy Presentation</h4>
+            <p>Every plate is styled for the 'gram — because if you didn't post it, did you even brunch?</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="booking-card">
+      <h3>Reserve Your Table</h3>
+      <p>Fill in the details below and we'll confirm within 2 hours.</p>
+      <form onsubmit="event.preventDefault(); alert('Thank you! We\'ll confirm your reservation within 2 hours.');">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <select id="time" required>
+              <option value="" disabled selected>Select time</option>
+              <option>9:00 AM</option>
+              <option>9:30 AM</option>
+              <option>10:00 AM</option>
+              <option>10:30 AM</option>
+              <option>11:00 AM</option>
+              <option>11:30 AM</option>
+              <option>12:00 PM</option>
+              <option>12:30 PM</option>
+              <option>1:00 PM</option>
+              <option>1:30 PM</option>
+              <option>2:00 PM</option>
+              <option>2:30 PM</option>
+              <option>3:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="party">Party Size</label>
+          <select id="party" required>
+            <option value="" disabled selected>How many guests?</option>
+            <option>1 person</option>
+            <option>2 people</option>
+            <option>3 people</option>
+            <option>4 people</option>
+            <option>5 people</option>
+            <option>6 people</option>
+            <option>7+ people</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Book Your Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Your Best Weekend Starts Here</h2>
+  <p>Bottomless mimosas, seasonal plates, and a table waiting for you every Saturday and Sunday in {{LOCATION}}.</p>
+  <a href="#reservation" class="btn-banner">Book Your Appointment</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>All-day brunch and weekend bottomless mimosas in {{LOCATION}}, Montreal. Seasonal plates, craft cocktails, and a kids' corner that makes brunch actually enjoyable for the whole family.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#experience">Our Story</a></li>
+        <li><a href="#reservation">Reservations</a></li>
+        <li><a href="#reservation">Reserve Your Spot</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact + Hours</h4>
+      <ul>
+        <li>{{LOCATION}}</li>
+        <li>(514) 555-0173</li>
+        <li>hello@thesundayco.ca</li>
+        <li style="margin-top:8px; color:rgba(245,240,232,0.4); font-size:0.82rem;">Mon – Fri · 8 AM – 3 PM</li>
+        <li style="color:rgba(245,240,232,0.4); font-size:0.82rem;">Sat – Sun · 9 AM – 4 PM</li>
+        <li style="color:var(--accent); font-size:0.82rem; font-weight:600; margin-top:4px;">Bottomless Brunch · Sat + Sun 10 AM – 2 PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2024 {{BUSINESS_NAME}} All rights reserved. · {{LOCATION}}
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Smooth reveal animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.menu-card, .experience-grid, .reservation-grid, .booking-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

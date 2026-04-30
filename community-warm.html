@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Communauté d'entrepreneures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --primary: #1A1A1A;
+  --accent: #4361EE;
+  --surface: #F0F2FF;
+  --text-on-dark: #F5F7FF;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.06);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 17px;
+  color: #fff;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.nav.scrolled .nav-brand {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav.scrolled .nav-links a {
+  color: rgba(26, 26, 26, 0.65);
+}
+
+.nav.scrolled .nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-cta-wrap {
+  justify-self: end;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #3451d6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(67, 97, 238, 0.35);
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1600&q=85&auto=format&fit=crop') center center / cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  padding: 0 24px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(6px);
+}
+
+.hero-badge span {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 400;
+  max-width: 620px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn-primary {
+  padding: 14px 32px;
+  font-size: 15px;
+}
+
+/* SECTIONS BASE */
+section {
+  padding: 100px 80px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.18;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: rgba(26, 26, 26, 0.6);
+  font-weight: 400;
+  max-width: 580px;
+  line-height: 1.65;
+}
+
+/* {{MAIN_SERVICE}} */
+.{{MAIN_SERVICE}} {
+  background: var(--surface);
+}
+
+.{{MAIN_SERVICE}}-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.{{MAIN_SERVICE}}-header .section-subtitle {
+  margin: 0 auto;
+}
+
+.{{MAIN_SERVICE}}-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(67, 97, 238, 0.12);
+}
+
+.service-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-card-body {
+  padding: 28px 26px;
+}
+
+.service-card-body h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.service-card-body p {
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.6);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.card-link {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+
+.card-link:hover {
+  gap: 10px;
+}
+
+/* SOCIAL PROOF */
+.social-proof {
+  background: var(--primary);
+  color: var(--text-on-dark);
+}
+
+.proof-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.proof-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+
+.stat-card {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.25s ease;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin-bottom: 6px;
+}
+
+.stat-detail {
+  font-size: 14px;
+  color: rgba(245, 247, 255, 0.55);
+  font-weight: 400;
+}
+
+.testimonial-block {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 48px 52px;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+
+.quote-mark {
+  position: absolute;
+  top: 32px;
+  left: 48px;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.3;
+  font-weight: 700;
+}
+
+.testimonial-text {
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(245, 247, 255, 0.9);
+  font-weight: 400;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-on-dark);
+}
+
+.testimonial-role {
+  font-size: 13px;
+  color: rgba(245, 247, 255, 0.5);
+  font-weight: 400;
+}
+
+/* BOOKING */
+.booking {
+  background: var(--bg);
+}
+
+.booking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.booking-info {
+  padding-top: 12px;
+}
+
+.booking-info .section-title {
+  margin-bottom: 20px;
+}
+
+.booking-info .section-subtitle {
+  margin-bottom: 36px;
+}
+
+.booking-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.booking-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.75);
+  line-height: 1.5;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--surface);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.stripe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border-radius: 8px;
+  font-size: 13px;
+  color: rgba(26,26,26,0.6);
+  font-weight: 500;
+}
+
+.stripe-badge svg {
+  color: #635BFF;
+}
+
+.booking-form {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 40px;
+}
+
+.booking-form h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.booking-form .form-subtitle {
+  font-size: 14px;
+  color: rgba(26,26,26,0.5);
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--primary);
+  background: var(--bg);
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.booking-form .btn-primary {
+  width: 100%;
+  padding: 14px 28px;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  color: #fff;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.cta-banner p {
+  color: rgba(255,255,255,0.85);
+  font-size: 17px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+.cta-banner .btn-primary {
+  background: #fff;
+  color: var(--accent);
+  padding: 14px 36px;
+  font-size: 15px;
+}
+
+.cta-banner .btn-primary:hover {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  color: var(--text-on-dark);
+  padding: 72px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+
+.footer-brand {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: rgba(245, 247, 255, 0.5);
+  line-height: 1.65;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(245, 247, 255, 0.4);
+  margin-bottom: 18px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col ul a {
+  font-size: 14px;
+  color: rgba(245, 247, 255, 0.65);
+  transition: color 0.2s;
+}
+
+.footer-col ul a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(245, 247, 255, 0.35);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom-links a {
+  font-size: 13px;
+  color: rgba(245, 247, 255, 0.35);
+  transition: color 0.2s;
+}
+
+.footer-bottom-links a:hover {
+  color: rgba(245, 247, 255, 0.7);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  section {
+    padding: 56px 24px;
+  }
+
+  .nav-inner {
+    padding: 0 24px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .{{MAIN_SERVICE}}-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .proof-top {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .booking-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .stat-card {
+    padding: 28px;
+  }
+
+  .testimonial-block {
+    padding: 32px 28px;
+  }
+
+  .booking-form {
+    padding: 28px 24px;
+  }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.fade-up.visible {
+  animation: fadeUp 0.6s ease forwards;
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#{{MAIN_SERVICE}}">Nos {{MAIN_SERVICE}}</a></li>
+      <li><a href="#communaute">Communauté</a></li>
+      <li><a href="#rejoindre">Rejoindre</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="#rejoindre" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Plus de 600 entrepreneures à travers le Québec</span>
+    </div>
+    <h1>Le réseau qui propulse les femmes entrepreneures du Québec</h1>
+    <p>Rejoignez une communauté engagée avec des rencontres mensuelles dans 8 villes, un programme de mentorat personnalisé et une bibliothèque de ressources conçues pour accélérer votre croissance.</p>
+    <div class="hero-buttons">
+      <a href="#rejoindre" class="btn-primary">Book Your Appointment</a>
+      <a href="#{{MAIN_SERVICE}}" class="btn-secondary">Reserve Your Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- {{MAIN_SERVICE}} -->
+<section class="{{MAIN_SERVICE}}" id="{{MAIN_SERVICE}}">
+  <div class="{{MAIN_SERVICE}}-header fade-up">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      Nos {{MAIN_SERVICE}}
+    </div>
+    <h2 class="section-title">Tout ce dont vous avez besoin pour réussir</h2>
+    <p class="section-subtitle">Des outils concrets et une communauté bienveillante pour chaque étape de votre parcours entrepreneurial au Québec.</p>
+  </div>
+  <div class="{{MAIN_SERVICE}}-grid">
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&q=85&auto=format&fit=crop" alt="Rencontres réseau femmes">
+      <div class="service-card-body">
+        <h3>Rencontres mensuelles en personne</h3>
+        <p>Des événements de réseautage organisés chaque mois dans 8 villes du Québec — Montréal, Québec, Sherbrooke, Gatineau, Trois-Rivières, Saguenay, Drummondville et Rimouski.</p>
+        <a href="#rejoindre" class="card-link">Voir le calendrier →</a>
+      </div>
+    </div>
+    <div class="service-card fade-up" style="animation-delay:0.1s">
+      <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=85&auto=format&fit=crop" alt="Programme mentorat femmes entrepreneures">
+      <div class="service-card-body">
+        <h3>Programme de mentorat vérifié</h3>
+        <p>Soyez jumelée avec une mentore ayant plus de 5 ans d'expérience entrepreneuriale. Notre processus de sélection rigoureux assure des pairages qui génèrent de vrais résultats.</p>
+        <a href="#rejoindre" class="card-link">Demander une mentore →</a>
+      </div>
+    </div>
+    <div class="service-card fade-up" style="animation-delay:0.2s">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=85&auto=format&fit=crop" alt="Bibliothèque ressources entrepreneuriales">
+      <div class="service-card-body">
+        <h3>Bibliothèque de ressources</h3>
+        <p>Accédez à plus de 140 guides, gabarits et formations en ligne — du plan d'affaires à la stratégie numérique, le tout en français et adapté au marché québécois.</p>
+        <a href="#rejoindre" class="card-link">Explorer les ressources →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof" id="communaute">
+  <div class="proof-container">
+    <div style="text-align:center; margin-bottom:56px;" class="fade-up">
+      <div class="section-label" style="color:var(--accent);">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Notre communauté en chiffres
+      </div>
+      <h2 class="section-title" style="color:var(--text-on-dark);">Bâtie par et pour les entrepreneures québécoises</h2>
+    </div>
+    <div class="proof-top fade-up">
+      <div class="stat-card">
+        <div class="stat-number">637</div>
+        <div class="stat-label">Membres actives à travers le Québec</div>
+        <div class="stat-detail">Réparties dans 8 villes · 94% de taux de renouvellement annuel</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">189</div>
+        <div class="stat-label">Pairages de mentorat réalisés</div>
+        <div class="stat-detail">Mentores avec 5 à 22 ans d'expérience · Note de satisfaction de 4.8/5</div>
+      </div>
+    </div>
+    <div class="testimonial-block fade-up">
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Rejoindre le {{BUSINESS_NAME}} a été le tournant de mon entreprise. En six mois, j'ai trouvé ma mentore, signé trois nouveaux contrats grâce à des connexions faites lors des rencontres à Sherbrooke et trouvé une communauté qui comprend vraiment les défis d'entreprendre au féminin. Ce n'est pas juste du réseautage — c'est un système de soutien complet.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">MC</div>
+        <div>
+          <div class="testimonial-name">Marie-Claude Fortier</div>
+          <div class="testimonial-role">Fondatrice, Atelier Borealis · Membre depuis 2021</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="rejoindre">
+  <div class="booking-container">
+    <div class="booking-info fade-up">
+      <div class="section-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Rejoindre le réseau
+      </div>
+      <h2 class="section-title">Réservez votre place dans la prochaine cohorte</h2>
+      <p class="section-subtitle">Chaque mois, nous accueillons de nouvelles membres lors d'une session d'intégration personnalisée. Choisissez votre créneau et commencez votre parcours.</p>
+
+      <ul class="booking-features">
+        <li>
+          <div class="feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Appel d'accueil de 30 minutes avec une coordonnatrice régionale pour cibler vos besoins</span>
+        </li>
+        <li>
+          <div class="feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Accès immédiat à la bibliothèque de 140+ ressources et au répertoire de membres</span>
+        </li>
+        <li>
+          <div class="feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Jumelage mentorat dans les 2 premières semaines suivant votre inscription</span>
+        </li>
+        <li>
+          <div class="feature-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Paiement sécurisé et facturation automatique via Stripe</span>
+        </li>
+      </ul>
+
+      <div class="stripe-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Paiements sécurisés par Stripe · Visa, Mastercard, Interac
+      </div>
+    </div>
+
+    <div class="booking-form fade-up">
+      <h3>Réserver votre appel d'accueil</h3>
+      <p class="form-subtitle">Nous vous contacterons dans les 24h pour confirmer votre créneau.</p>
+      <form onsubmit="event.preventDefault(); alert('Merci! Nous vous contacterons sous 24h.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" placeholder="Votre nom" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Courriel</label>
+          <input type="email" id="email" placeholder="vous@exemple.com" required>
+        </div>
+        <div class="form-group">
+          <label for="ville">Ville</label>
+          <select id="ville" required>
+            <option value="" disabled selected>Choisir votre ville</option>
+            <option>Montréal</option>
+            <option>Québec</option>
+            <option>Sherbrooke</option>
+            <option>Gatineau</option>
+            <option>Trois-Rivières</option>
+            <option>Saguenay</option>
+            <option>Drummondville</option>
+            <option>Rimouski</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="entreprise">Nom de votre entreprise (ou projet)</label>
+          <input type="text" id="entreprise" placeholder="Mon Entreprise inc.">
+        </div>
+        <div class="form-group">
+          <label for="message">Qu'attendez-vous du réseau?</label>
+          <textarea id="message" placeholder="Parlez-nous de vos objectifs..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Book Your Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Prête à rejoindre 637 entrepreneures qui s'entraident au quotidien?</h2>
+  <p>Votre prochaine connexion d'affaires vous attend. Mentorat, événements et ressources — tout commence par un premier pas.</p>
+  <a href="#rejoindre" class="btn-primary">Book Your Appointment</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">{{BUSINESS_NAME}}</div>
+      <p class="footer-desc">La communauté de référence pour les femmes entrepreneures à travers la province. Ensemble, on va plus loin.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#{{MAIN_SERVICE}}">Nos {{MAIN_SERVICE}}</a></li>
+        <li><a href="#communaute">Communauté</a></li>
+        <li><a href="#rejoindre">Devenir membre</a></li>
+        <li><a href="#">Calendrier des événements</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@reseaufemininqc.ca">info@reseaufemininqc.ca</a></li>
+        <li><a href="tel:+14185551247">(418) 555-1247</a></li>
+        <li><a href="#">Province de Québec</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>2024 {{BUSINESS_NAME}}. Tous droits réservés.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Conditions d'utilisation</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Intersection Observer for fade-up animations
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

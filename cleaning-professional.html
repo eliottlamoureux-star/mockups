@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | Professional Cleaning in {{LOCATION}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --primary: #1A1A1A;
+  --accent: #4361EE;
+  --surface: #F0F2FF;
+  --text-on-dark: #F5F7FF;
+  --accent-hover: #3451DE;
+  --accent-15: rgba(67, 97, 238, 0.15);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(26, 26, 26, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.12);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #FFFFFF;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(67, 97, 238, 0.35);
+}
+
+.btn-secondary {
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+}
+
+.btn-secondary-dark {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(67, 97, 238, 0.4);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary-dark:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=85&auto=format&fit=crop') center center / cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  padding: 0 24px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 40px;
+  padding: 8px 20px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-badge span {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.hero h1 {
+  color: #FFFFFF;
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 400;
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.hero .btn-primary {
+  padding: 14px 32px;
+  font-size: 16px;
+}
+
+/* {{MAIN_SERVICE}} */
+.{{MAIN_SERVICE}} {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.section-header h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.section-header p {
+  color: #555;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.{{MAIN_SERVICE}}-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+}
+
+.service-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-card-body {
+  padding: 28px;
+}
+
+.service-card-body h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+
+.service-card-body p {
+  color: #555;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.card-link {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+
+.card-link:hover {
+  gap: 10px;
+}
+
+/* SOCIAL PROOF */
+.social-proof {
+  padding: 100px 80px;
+  background: var(--primary);
+}
+
+.proof-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.stats-area {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(67, 97, 238, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+
+.stat-text h3 {
+  color: var(--text-on-dark);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.stat-text p {
+  color: rgba(245, 247, 255, 0.6);
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 44px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 40px;
+  right: 40px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 0 0 3px 3px;
+}
+
+.quote-mark {
+  color: var(--accent);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 16px;
+  font-family: Georgia, serif;
+}
+
+.testimonial-card blockquote {
+  color: var(--text-on-dark);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.author-info strong {
+  color: var(--text-on-dark);
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+}
+
+.author-info span {
+  color: rgba(245, 247, 255, 0.5);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+
+.stars svg {
+  width: 18px;
+  height: 18px;
+  color: #FACC15;
+  fill: #FACC15;
+}
+
+/* BOOKING */
+.booking {
+  padding: 100px 80px;
+  background: var(--bg);
+}
+
+.booking-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.booking-info h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  margin-bottom: 18px;
+}
+
+.booking-info > p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+.benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.benefit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.benefit-check {
+  width: 24px;
+  height: 24px;
+  background: var(--accent-15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.benefit-check svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+.stripe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+
+.stripe-badge svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.booking-form-card {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.booking-form-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+
+.booking-form-card > p {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #E5E7EB;
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--primary);
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.booking-form-card .btn-primary {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 16px;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  padding: 80px 80px;
+}
+
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-inner h2 {
+  color: #FFFFFF;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.cta-inner p {
+  color: rgba(255,255,255,0.85);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.cta-inner .btn-primary {
+  background: #FFFFFF;
+  color: var(--accent);
+  padding: 14px 36px;
+  font-size: 16px;
+}
+
+.cta-inner .btn-primary:hover {
+  background: #F0F2FF;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 64px 80px 40px;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand h3 {
+  color: var(--text-on-dark);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  color: rgba(245, 247, 255, 0.55);
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  color: var(--text-on-dark);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col ul li a {
+  color: rgba(245, 247, 255, 0.55);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--text-on-dark);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  color: rgba(245, 247, 255, 0.4);
+  font-size: 13px;
+}
+
+.footer-bottom a {
+  color: rgba(245, 247, 255, 0.4);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-bottom a:hover {
+  color: var(--text-on-dark);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .{{MAIN_SERVICE}} {
+    padding: 56px 24px;
+  }
+
+  .{{MAIN_SERVICE}}-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-proof {
+    padding: 56px 24px;
+  }
+
+  .proof-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .stats-area {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .booking {
+    padding: 56px 24px;
+  }
+
+  .booking-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .testimonial-card {
+    padding: 28px;
+  }
+
+  .booking-form-card {
+    padding: 28px;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">{{BUSINESS_NAME}}</a>
+    <ul class="nav-links">
+      <li><a href="#{{MAIN_SERVICE}}">{{MAIN_SERVICE}}</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#booking">Booking</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:#4361EE"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>
+      <span>Fully Insured · Eco-Friendly · Serving {{LOCATION}}</span>
+    </div>
+    <h1>A Spotless Home Without Lifting a Finger</h1>
+    <p>Reliable recurring cleans, deep cleans, and move-in/move-out {{MAIN_SERVICE}} for busy families and property managers across {{LOCATION}}. Eco-friendly products, bonded professionals, and a satisfaction guarantee you can count on.</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+      <a href="#{{MAIN_SERVICE}}" class="btn-secondary">Reserve Your Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- {{MAIN_SERVICE}} -->
+<section class="{{MAIN_SERVICE}}" id="{{MAIN_SERVICE}}">
+  <div class="section-header">
+    <div class="section-label">
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Our {{MAIN_SERVICE}}
+    </div>
+    <h2>Cleaning That Fits Your Schedule and Your Standards</h2>
+    <p>Whether you need weekly upkeep or a one-time deep scrub, we handle every detail so you never have to worry about it.</p>
+  </div>
+  <div class="{{MAIN_SERVICE}}-grid">
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=85&auto=format&fit=crop" alt="Recurring weekly and biweekly cleaning">
+      <div class="service-card-body">
+        <h3>Recurring Weekly and Biweekly Cleans</h3>
+        <p>Set it and forget it. Our trained teams arrive on your chosen day, every week or every two weeks, keeping your home consistently fresh with eco-friendly products.</p>
+        <a href="#booking" class="card-link">Schedule recurring visits <span>→</span></a>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1200&q=85&auto=format&fit=crop" alt="Deep cleaning service">
+      <div class="service-card-body">
+        <h3>Deep Cleaning Sessions</h3>
+        <p>From baseboards to ceiling fans, our deep clean covers every overlooked surface. Perfect for seasonal refreshes or getting your space back to showroom condition.</p>
+        <a href="#booking" class="card-link">Book a deep clean <span>→</span></a>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1200&q=85&auto=format&fit=crop" alt="Move-in move-out cleaning">
+      <div class="service-card-body">
+        <h3>Move-In and Move-Out Cleans</h3>
+        <p>Handing over keys or welcoming new tenants? We leave every room spotless, ensuring security deposits are returned and first impressions are flawless.</p>
+        <a href="#booking" class="card-link">Get a move clean quote <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof" id="reviews">
+  <div class="proof-inner">
+    <div class="stats-area">
+      <div>
+        <div class="section-label" style="color:var(--accent); margin-bottom: 24px;">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Trusted in {{LOCATION}}
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="stat-text">
+          <h3>1,247</h3>
+          <p>Homes and offices cleaned across {{LOCATION}}</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="stat-text">
+          <h3>4.8 on Google</h3>
+          <p>Based on 187 verified client reviews</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="quote-mark">"</div>
+      <blockquote>I manage 14 rental units in {{LOCATION}} and Netto Propre handles every single turnover clean. They show up on time, use eco-friendly products my tenants appreciate, and the one time I had a concern, they came back the next morning for a reclean — no questions asked. I have not looked at another cleaning service in three years.</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">ML</div>
+        <div class="author-info">
+          <strong>Marc-Antoine Lefebvre</strong>
+          <span>Property Manager · {{LOCATION}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <div class="booking-info">
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Online
+      </div>
+      <h2>Your Cleanest Space Is One Click Away</h2>
+      <p>Pick your service, choose your preferred date, and we handle the rest. No phone tag, no back-and-forth — just a clean home when you need it.</p>
+      <ul class="benefit-list">
+        <li>
+          <div class="benefit-check">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          100% satisfaction guarantee — free reclean within 24 hours
+        </li>
+        <li>
+          <div class="benefit-check">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Fully insured and bonded for your peace of mind
+        </li>
+        <li>
+          <div class="benefit-check">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Only eco-friendly, non-toxic cleaning products used
+        </li>
+        <li>
+          <div class="benefit-check">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Flexible weekly, biweekly, or one-time scheduling
+        </li>
+      </ul>
+      <div class="stripe-badge">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Secure online payments powered by Stripe
+      </div>
+    </div>
+    <div class="booking-form-card">
+      <h3>Request Your Clean</h3>
+      <p>Fill in a few details and we will confirm within 2 hours.</p>
+      <form onsubmit="event.preventDefault(); alert('Thank you! We will confirm your booking within 2 hours.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Marie" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Tremblay" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="marie@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="(450) 555-0123" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Type</label>
+          <select id="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="recurring">Recurring Weekly/Biweekly Clean</option>
+            <option value="deep">Deep Cleaning</option>
+            <option value="move">Move-In / Move-Out Clean</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date" required>
+        </div>
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" placeholder="Number of rooms, special requests, access instructions..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Book Your Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2>Stop Scrubbing. Start Living.</h2>
+    <p>Join over 1,200 {{LOCATION}} homes and businesses that trust {{BUSINESS_NAME}} for consistent, eco-friendly cleans. If you are not satisfied, we reclean for free — guaranteed.</p>
+    <a href="#booking" class="btn-primary">Book Your Appointment</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>Professional residential and commercial cleaning in {{LOCATION}}. Fully insured, bonded, and committed to eco-friendly products and your complete satisfaction.</p>
+    </div>
+    <div class="footer-col">
+      <h4>{{MAIN_SERVICE}}</h4>
+      <ul>
+        <li><a href="#{{MAIN_SERVICE}}">Recurring Cleans</a></li>
+        <li><a href="#{{MAIN_SERVICE}}">Deep Cleaning</a></li>
+        <li><a href="#{{MAIN_SERVICE}}">Move-In / Move-Out</a></li>
+        <li><a href="#booking">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">{{LOCATION}}</a></li>
+        <li><a href="tel:4505550123">(450) 555-0123</a></li>
+        <li><a href="mailto:info@nettopropre.ca">info@nettopropre.ca</a></li>
+        <li><a href="#booking">Reserve Your Spot</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>2024 {{BUSINESS_NAME}}. All rights reserved.</p>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .stat-item, .testimonial-card, .booking-info, .booking-form-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

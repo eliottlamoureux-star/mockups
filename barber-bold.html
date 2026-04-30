@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — {{LOCATION}}, Montreal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FDF8F5;
+  --primary: #4A3728;
+  --accent: #C9956C;
+  --surface: #FAF3EE;
+  --text-on-dark: #FAF5F2;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(253, 248, 245, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 20px rgba(74, 55, 40, 0.08);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  transition: color 0.35s ease;
+}
+
+.nav.scrolled .nav-brand {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav.scrolled .nav-links a {
+  color: rgba(74, 55, 40, 0.7);
+}
+
+.nav.scrolled .nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-cta-wrap {
+  justify-self: end;
+}
+
+.btn-accent {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  letter-spacing: 0.01em;
+}
+
+.btn-accent:hover {
+  background: #b8854f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201, 149, 108, 0.35);
+}
+
+/* HERO — Variant C */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 80px;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.78) 65%, rgba(0,0,0,0.85) 100%),
+    url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 780px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px 34px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-hero:hover {
+  background: #b8854f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 149, 108, 0.4);
+}
+
+.link-secondary {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+}
+
+.link-secondary:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 52px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.hero-stat-number {
+  color: var(--accent);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* SECTION UTILITIES */
+.section {
+  padding: 100px 80px;
+}
+
+.section-dark {
+  background: var(--primary);
+  color: var(--text-on-dark);
+}
+
+.section-surface {
+  background: var(--surface);
+}
+
+.section-bg {
+  background: var(--bg);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-label svg {
+  width: 18px;
+  height: 18px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  opacity: 0.75;
+  max-width: 600px;
+}
+
+.section-header-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+/* OUR TREATMENTS */
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 64px;
+}
+
+.treatment-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.treatment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(74, 55, 40, 0.12);
+}
+
+.treatment-card-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.treatment-card-body {
+  padding: 28px;
+}
+
+.treatment-card-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.treatment-card-desc {
+  font-size: 14px;
+  color: rgba(74, 55, 40, 0.65);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.treatment-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(74, 55, 40, 0.08);
+}
+
+.treatment-duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(74, 55, 40, 0.55);
+}
+
+.treatment-duration svg {
+  width: 16px;
+  height: 16px;
+}
+
+.treatment-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* THE SPACE */
+.space-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 240px);
+  gap: 4px;
+}
+
+.space-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.space-grid-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.space-grid-item:first-child {
+  border-top-left-radius: 14px;
+}
+
+.space-grid-item:nth-child(3) {
+  border-top-right-radius: 14px;
+}
+
+.space-grid-item:nth-child(4) {
+  border-bottom-left-radius: 14px;
+}
+
+.space-grid-item:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+.space-grid-item:hover img {
+  transform: scale(1.05);
+}
+
+/* OUR TEAM */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(74, 55, 40, 0.12);
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  border: 3px solid var(--surface);
+}
+
+.team-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.team-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.team-specialty {
+  font-size: 13px;
+  color: rgba(74, 55, 40, 0.6);
+  font-weight: 400;
+}
+
+/* BOOK A SESSION */
+.booking-section {
+  background: var(--primary);
+  color: var(--text-on-dark);
+}
+
+.booking-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.booking-info .section-label {
+  color: var(--accent);
+}
+
+.booking-info .section-title {
+  color: var(--text-on-dark);
+}
+
+.booking-info .section-subtitle {
+  color: rgba(250, 245, 242, 0.65);
+}
+
+.booking-features {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.booking-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(250, 245, 242, 0.8);
+}
+
+.booking-features li svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.booking-form {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(250, 245, 242, 0.7);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.form-group input,
+.form-group select {
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-on-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group select option {
+  background: var(--primary);
+  color: var(--text-on-dark);
+}
+
+.form-group input::placeholder {
+  color: rgba(250, 245, 242, 0.35);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(201, 149, 108, 0.15);
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 16px;
+}
+
+.form-note {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(250, 245, 242, 0.4);
+  margin-top: 16px;
+}
+
+.form-note svg {
+  width: 14px;
+  height: 14px;
+  display: inline;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--accent);
+  color: #fff;
+  padding: 80px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.cta-banner p {
+  font-size: 17px;
+  font-weight: 400;
+  opacity: 0.9;
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: var(--primary);
+  border-radius: 8px;
+  padding: 16px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-white:hover {
+  background: var(--text-on-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  color: var(--text-on-dark);
+  padding: 80px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(250, 245, 242, 0.6);
+  max-width: 320px;
+}
+
+.footer-heading {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: rgba(250, 245, 242, 0.6);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--text-on-dark);
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(250, 245, 242, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: rgba(250, 245, 242, 0.4);
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 245, 242, 0.08);
+  color: rgba(250, 245, 242, 0.6);
+  transition: all 0.2s;
+}
+
+.footer-social a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.footer-social a svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 0 24px 64px;
+  }
+
+  .hero-stats {
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .section {
+    padding: 56px 24px;
+  }
+
+  .treatments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .space-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 180px);
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .booking-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .booking-form {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .space-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 200px);
+  }
+
+  .space-grid-item {
+    border-radius: 0 !important;
+  }
+
+  .space-grid-item:first-child {
+    border-top-left-radius: 14px !important;
+    border-top-right-radius: 14px !important;
+  }
+
+  .space-grid-item:last-child {
+    border-bottom-left-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
+  }
+}
+</style>
+
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#treatments">Services</a></li>
+      <li><a href="#space">The Space</a></li>
+      <li><a href="#book">Book</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="#book" class="btn-accent">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — Variant C -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Sharp Cuts,<br>Zero Wait</h1>
+    <p>Master barbers with 12+ years behind the chair. Walk into {{BUSINESS_NAME}}, book in under 30 seconds, and walk out looking like you mean business. {{LOCATION}}'s destination for men who refuse to settle.</p>
+    <div class="hero-buttons">
+      <a href="#book" class="btn-hero">Book Your Appointment</a>
+      <a href="#treatments" class="link-secondary">Reserve Your Spot</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-number">1,147</div>
+        <div class="hero-stat-label">Loyal Clients</div>
+      </div>
+      <div>
+        <div class="hero-stat-number">4.8</div>
+        <div class="hero-stat-label">Google Rating (437 reviews)</div>
+      </div>
+      <div>
+        <div class="hero-stat-number">14 yrs</div>
+        <div class="hero-stat-label">Average Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR TREATMENTS -->
+<section class="section section-bg" id="treatments">
+  <div class="section-header-center">
+    <div class="section-label">
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Our Treatments
+    </div>
+    <h2 class="section-title">Precision Craftsmanship,<br>Every Single Visit</h2>
+    <p class="section-subtitle">Each service is tailored to your hair type, face shape, and personal style. No rush, no shortcuts — just clean, confident results.</p>
+  </div>
+  <div class="treatments-grid">
+    <div class="treatment-card">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1200&q=85&auto=format&fit=crop" alt="Classic Haircut" class="treatment-card-img">
+      <div class="treatment-card-body">
+        <div class="treatment-card-name">Classic &amp; Modern Cuts</div>
+        <div class="treatment-card-desc">From fades to textured crops, our barbers sculpt each cut to complement your features and lifestyle.</div>
+        <div class="treatment-card-meta">
+          <span class="treatment-duration">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            35 – 45 min
+          </span>
+          <span class="treatment-price">$38 – $52</span>
+        </div>
+      </div>
+    </div>
+    <div class="treatment-card">
+      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=85&auto=format&fit=crop" alt="Beard Trim" class="treatment-card-img">
+      <div class="treatment-card-body">
+        <div class="treatment-card-name">Beard Sculpt &amp; Trim</div>
+        <div class="treatment-card-desc">Sharp lines, clean edges, and a shape that actually suits your jawline. Finished with nourishing beard oil.</div>
+        <div class="treatment-card-meta">
+          <span class="treatment-duration">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            20 – 30 min
+          </span>
+          <span class="treatment-price">$28 – $38</span>
+        </div>
+      </div>
+    </div>
+    <div class="treatment-card">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=85&auto=format&fit=crop" alt="Hot Towel Shave" class="treatment-card-img">
+      <div class="treatment-card-body">
+        <div class="treatment-card-name">Hot Towel Straight Shave</div>
+        <div class="treatment-card-desc">The ritual your grandfather knew. Hot lather, a straight razor, and a finish so smooth you will not stop touching your face.</div>
+        <div class="treatment-card-meta">
+          <span class="treatment-duration">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            40 – 50 min
+          </span>
+          <span class="treatment-price">$45 – $58</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SPACE -->
+<section class="section section-surface" id="space">
+  <div class="section-header-center">
+    <div class="section-label">
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      The Space
+    </div>
+    <h2 class="section-title">Where Plateau Style<br>Meets Old-School Craft</h2>
+    <p class="section-subtitle">Exposed brick, leather chairs, and the sound of sharp scissors. Our shop on the Plateau is built for men who appreciate the details.</p>
+  </div>
+  <div class="space-grid">
+    <div class="space-grid-item">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85&auto=format&fit=crop" alt="Barbershop interior">
+    </div>
+    <div class="space-grid-item">
+      <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=800&q=85&auto=format&fit=crop" alt="Barber tools close-up">
+    </div>
+    <div class="space-grid-item">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=85&auto=format&fit=crop" alt="Grooming products">
+    </div>
+    <div class="space-grid-item">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=85&auto=format&fit=crop" alt="Barber chair detail">
+    </div>
+    <div class="space-grid-item">
+      <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=800&q=85&auto=format&fit=crop" alt="Scissors and combs">
+    </div>
+    <div class="space-grid-item">
+      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=85&auto=format&fit=crop" alt="Shop atmosphere">
+    </div>
+  </div>
+</section>
+
+<!-- OUR TEAM -->
+<section class="section section-bg" id="team">
+  <div class="section-header-center">
+    <div class="section-label">
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Our Team
+    </div>
+    <h2 class="section-title">Three Barbers, 39 Years<br>of Combined Mastery</h2>
+    <p class="section-subtitle">Every barber at {{BUSINESS_NAME}} is hand-picked for skill, consistency, and the ability to actually listen to what you want.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=85&auto=format&fit=crop" alt="Marc-Andre Beaumont" class="team-avatar">
+      <div class="team-name">Marc-Andr&eacute; Beaumont</div>
+      <div class="team-title">Head Barber &amp; Owner</div>
+      <div class="team-specialty">Precision fades, classic side-parts, and razor line work</div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=85&auto=format&fit=crop" alt="Julien Tremblay" class="team-avatar">
+      <div class="team-name">Julien Tremblay</div>
+      <div class="team-title">Senior Barber</div>
+      <div class="team-specialty">Textured crops, beard design, and hot towel shaves</div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=85&auto=format&fit=crop" alt="Samir El-Khoury" class="team-avatar">
+      <div class="team-name">Samir El-Khoury</div>
+      <div class="team-title">Master Barber</div>
+      <div class="team-specialty">Curly hair specialist, skin fades, and grooming consultations</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK A SESSION -->
+<section class="section booking-section" id="book">
+  <div class="booking-wrapper">
+    <div class="booking-info">
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book a Session
+      </div>
+      <h2 class="section-title">30 Seconds to Book.<br>Zero Time Wasted Waiting.</h2>
+      <p class="section-subtitle">Pick your service, pick your time, and show up. We respect your schedule as much as we respect your hair.</p>
+      <ul class="booking-features">
+        <li>
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Instant confirmation — no back-and-forth
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Secure payment via Stripe — pay online or in-shop
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          SMS reminder 1 hour before your slot
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Free rebook if you need to reschedule
+        </li>
+      </ul>
+    </div>
+    <form class="booking-form" onsubmit="event.preventDefault();">
+      <div class="form-group">
+        <label for="service">Service</label>
+        <select id="service">
+          <option value="">Select a service</option>
+          <option value="classic-cut">Classic &amp; Modern Cut — $38–$52</option>
+          <option value="beard-trim">Beard Sculpt &amp; Trim — $28–$38</option>
+          <option value="hot-towel">Hot Towel Straight Shave — $45–$58</option>
+          <option value="cut-beard">Cut + Beard Combo — $58–$78</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label for="time">Time</label>
+          <select id="time">
+            <option value="">Choose a time</option>
+            <option value="9:00">9:00 AM</option>
+            <option value="9:30">9:30 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="10:30">10:30 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="11:30">11:30 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="12:30">12:30 PM</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="13:30">1:30 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="14:30">2:30 PM</option>
+            <option value="15:00">3:00 PM</option>
+            <option value="15:30">3:30 PM</option>
+            <option value="16:00">4:00 PM</option>
+            <option value="16:30">4:30 PM</option>
+            <option value="17:00">5:00 PM</option>
+            <option value="17:30">5:30 PM</option>
+            <option value="18:00">6:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your name">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="(514) 000-0000">
+        </div>
+      </div>
+      <button type="submit" class="btn-accent form-submit">Book Your Appointment</button>
+      <p class="form-note">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Secure checkout powered by Stripe · Your info stays private
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Looking Sharp Starts Here</h2>
+  <p>Join 1,147 men across the Plateau who trust {{BUSINESS_NAME}} for their cut. Book in 30 seconds and skip the wait — your chair is ready.</p>
+  <a href="#book" class="btn-white">Book Your Appointment</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">{{BUSINESS_NAME}}</div>
+      <p class="footer-desc">A neighbourhood barbershop built for men who care about how they look and value their time. Located in the heart of {{LOCATION}}, Montreal.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#treatments">Our Services</a></li>
+        <li><a href="#space">The Space</a></li>
+        <li><a href="#team">Our Barbers</a></li>
+        <li><a href="#book">Book Online</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">4287 Rue Saint-Denis, Montreal, QC</a></li>
+        <li><a href="tel:+15148471234">(514) 847-1234</a></li>
+        <li><a href="mailto:hello@lequartierbarbershop.ca">hello@lequartierbarbershop.ca</a></li>
+        <li><a href="#">Tue – Fri: 9 AM – 7 PM</a></li>
+        <li><a href="#">Sat: 9 AM – 5 PM</a></li>
+        <li><a href="#">Sun – Mon: Closed</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2024 {{BUSINESS_NAME}}. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" aria-label="Google Maps">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+
+// Smooth reveal animation on scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.treatment-card, .team-card, .booking-wrapper, .space-grid-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Stagger animation for grid items
+document.querySelectorAll('.treatments-grid, .team-grid, .space-grid').forEach(grid => {
+  const items = grid.children;
+  Array.from(items).forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.1}s`;
+  });
+});
+</script>
+
+</body>
+</html>

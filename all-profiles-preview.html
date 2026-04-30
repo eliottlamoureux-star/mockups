@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>96 Profiles — Studio Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #f0f0f0; min-height: 100vh; }
+    header { padding: 32px 48px 24px; border-bottom: 1px solid #222; }
+    header h1 { font-size: 22px; font-weight: 700; }
+    header p { font-size: 13px; color: #666; margin-top: 8px; }
+    .stats { display: flex; gap: 32px; margin-top: 14px; flex-wrap: wrap; }
+    .stat { font-size: 13px; color: #888; }
+    .stat strong { color: #f0f0f0; }
+    .filters { padding: 20px 48px; display: flex; gap: 10px; flex-wrap: wrap; border-bottom: 1px solid #1a1a1a; }
+    .filter-btn { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; border: 1.5px solid #333; background: transparent; color: #888; cursor: pointer; transition: all .15s; }
+    .filter-btn:hover, .filter-btn.active { border-color: #527843; color: #82b86a; background: rgba(82,120,67,0.1); }
+    main { padding: 32px 48px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color .2s; }
+    .card:hover { border-color: #444; }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .industry-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+    .tag-restaurant { color: #fb923c; background: rgba(251,146,60,0.12); border: 1px solid rgba(251,146,60,0.3); }
+    .tag-contractor { color: #a3e635; background: rgba(163,230,53,0.1); border: 1px solid rgba(163,230,53,0.25); }
+    .tag-plumbing { color: #38bdf8; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); }
+    .tag-electrician { color: #fbbf24; background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); }
+    .tag-clinic { color: #34d399; background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); }
+    .tag-salon { color: #f472b6; background: rgba(244,114,182,0.1); border: 1px solid rgba(244,114,182,0.25); }
+    .tag-fitness { color: #f87171; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.25); }
+    .tag-retail { color: #818cf8; background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.25); }
+    .tag-consulting { color: #22d3ee; background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.25); }
+    .tag-realestate { color: #a78bfa; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); }
+    .tag-law { color: #94a3b8; background: rgba(148,163,184,0.1); border: 1px solid rgba(148,163,184,0.25); }
+    .tag-other { color: #a3a3a3; background: #262626; border: 1px solid #333; }
+    .new-badge { font-size: 10px; font-weight: 700; color: #527843; background: rgba(82,120,67,0.15); border: 1px solid rgba(82,120,67,0.3); padding: 3px 8px; border-radius: 100px; flex-shrink: 0; }
+    .card h3 { font-size: 16px; font-weight: 700; line-height: 1.3; }
+    .meta { font-size: 12px; color: #666; }
+    .location { font-size: 12px; color: #555; }
+    .service { font-size: 12px; color: #888; line-height: 1.5; border-left: 2px solid #2a2a2a; padding-left: 10px; margin-top: 2px; }
+    .differentiator { font-size: 11px; color: #555; font-style: italic; line-height: 1.5; }
+    .card-footer { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; flex-wrap: wrap; gap: 8px; }
+    .flags { display: flex; gap: 8px; }
+    .flag-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 100px; border: 1px solid; }
+    .flag-booking { color: #60a5fa; border-color: #1d4ed8; background: rgba(29,78,216,0.1); }
+    .flag-payments { color: #a78bfa; border-color: #6d28d9; background: rgba(109,40,217,0.1); }
+    .goal { font-size: 11px; color: #527843; font-weight: 600; }
+    .style { font-size: 11px; color: #666; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Studio &mdash; 96 Test Profiles</h1>
+  <p>8 per industry &middot; 12 industries &middot; Static preview &mdash; no backend needed.</p>
+  <div class="stats">
+    <div class="stat">Showing: <strong id="visible-count">96</strong></div>
+    <div class="stat">Total: <strong>96</strong></div>
+    <div class="stat">Industries: <strong>12</strong></div>
+    <div class="stat">With booking: <strong>77</strong></div>
+    <div class="stat">With payments: <strong>40</strong></div>
+  </div>
+</header>
+<div class="filters">
+  <button class="filter-btn active" onclick="filterAll(this)">All 96</button>
+  <button class="filter-btn" onclick="filterBy(this,'Restaurant')">Restaurant</button>
+  <button class="filter-btn" onclick="filterBy(this,'Contractor')">Contractor</button>
+  <button class="filter-btn" onclick="filterBy(this,'Plumbing')">Plumbing</button>
+  <button class="filter-btn" onclick="filterBy(this,'Electrician')">Electrician</button>
+  <button class="filter-btn" onclick="filterBy(this,'Clinic')">Clinic</button>
+  <button class="filter-btn" onclick="filterBy(this,'Salon')">Salon</button>
+  <button class="filter-btn" onclick="filterBy(this,'Fitness')">Fitness</button>
+  <button class="filter-btn" onclick="filterBy(this,'Retail')">Retail</button>
+  <button class="filter-btn" onclick="filterBy(this,'Consulting')">Consulting</button>
+  <button class="filter-btn" onclick="filterBy(this,'Real Estate')">Real Estate</button>
+  <button class="filter-btn" onclick="filterBy(this,'Law')">Law</button>
+  <button class="filter-btn" onclick="filterBy(this,'Other')">Other</button>
+</div>
+<main>
+<div class="grid" id="grid">
+
+  <!-- RESTAURANT / FOOD -->
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span></div>
+    <h3>Bella Roma Trattoria</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Authentic Italian cuisine — wood-fired pizza, fresh pasta, private dining for groups</div>
+    <div class="differentiator">&ldquo;Wood-fired oven imported from Naples, family recipes passed down since 1987, and a sommelier on staff every evening&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>Café Brûlerie Saint-Henri</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more walkins</div>
+    <div class="location">Saint-Henri, Montreal, QC</div>
+    <div class="service">Specialty coffee, light brunch menu, and in-house roasted beans available for purchase</div>
+    <div class="differentiator">&ldquo;We roast our beans on-site three times a week, offer free wifi with no time limit, and every cup is pulled by a certified barista&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_walkins</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>Le Truck Smash</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more walkins</div>
+    <div class="location">Rosemont, Montreal, QC</div>
+    <div class="service">Smash burgers, loaded fries, and craft sodas served from our food truck at rotating locations across the city</div>
+    <div class="differentiator">&ldquo;All beef sourced from Quebec farms, smash patties cooked to order, and our rotating weekly special always sells out by 1pm&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_walkins</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>Prestige Catering Co.</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Full-service catering for corporate events, weddings, and private dinners — custom menus, staff, and setup included</div>
+    <div class="differentiator">&ldquo;We've catered 400+ events without a single complaint, every menu is custom-built with the client, and we handle everything from setup to cleanup&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>Ramen Tanuki</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more walkins</div>
+    <div class="location">Mile End, Montreal, QC</div>
+    <div class="service">Authentic Japanese ramen — tonkotsu, miso, and shoyu broths, plus gyoza and Japanese craft beers</div>
+    <div class="differentiator">&ldquo;Broth simmered 18 hours daily, noodles made fresh every morning in-house, and a secret spice blend you won't find anywhere else in Montreal&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_walkins</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>La Mie Dorée</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more walkins</div>
+    <div class="location">Saint-Roch, Quebec City, QC</div>
+    <div class="service">Artisan bakery — sourdough loaves, croissants, seasonal pastries, and custom celebration cakes</div>
+    <div class="differentiator">&ldquo;Stone-deck oven, 72-hour cold-fermented sourdough, and every loaf is baked by the same hands that have been at it for 15 years&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_walkins</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>Chez Habib</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more walkins</div>
+    <div class="location">Saint-Laurent, Montreal, QC</div>
+    <div class="service">Authentic Lebanese cuisine — mezze platters, shawarma, fattoush, and family-style weekend brunch</div>
+    <div class="differentiator">&ldquo;All recipes passed down from a Lebanese grandmother, halal-certified kitchen, and the whole menu is made from scratch — no sauces from a jar&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_walkins</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Restaurant">
+    <div class="card-header"><span class="industry-tag tag-restaurant">Restaurant / Food</span><span class="new-badge">NEW</span></div>
+    <h3>The Sunday Co.</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">NDG, Montreal, QC</div>
+    <div class="service">All-day brunch and weekend bottomless brunch — eggs Benedict, smashed avo, pancakes, and craft cocktails</div>
+    <div class="differentiator">&ldquo;Bottomless mimosas every weekend, a rotating seasonal menu updated monthly, and a kids' corner so parents can actually enjoy their meal&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+
+  <!-- CONTRACTOR / CONSTRUCTION -->
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span></div>
+    <h3>Summit Build Group</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more calls</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">Full home renovations — kitchens, bathrooms, basement finishing, and additions</div>
+    <div class="differentiator">&ldquo;Fixed-price contracts with no surprise invoices, dedicated project manager on every job, and 5-year craftsmanship guarantee&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>Toiture Fortin</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more calls</div>
+    <div class="location">Sherbrooke, QC</div>
+    <div class="service">Residential roofing — full roof replacement, emergency repairs, and skylight installation</div>
+    <div class="differentiator">&ldquo;Free inspection within 24 hours, lifetime warranty on labour, and we've been the #1 rated roofer in Sherbrooke for 8 consecutive years&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>Pinceaux &amp; Cie</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more calls</div>
+    <div class="location">Gatineau, QC</div>
+    <div class="service">Interior and exterior residential painting — colour consultation, prep, and cleanup included in every job</div>
+    <div class="differentiator">&ldquo;We move all your furniture, cover everything, and leave the space spotless — our clients say it looks better than when we arrived&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>Verdure Design</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Brossard, QC</div>
+    <div class="service">Residential landscaping — yard design, sod installation, paving, terraces, and seasonal maintenance plans</div>
+    <div class="differentiator">&ldquo;3D design preview before we break ground, fixed-price quotes, and a 3-year plant replacement guarantee&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>BétonPro Fondations</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more calls</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">Foundation repair and waterproofing — crack injections, interior and exterior drainage systems, and underpinning</div>
+    <div class="differentiator">&ldquo;Free camera inspection of your drainage system, written 25-year transferable warranty on all waterproofing work, and we've repaired over 3,000 foundations across the South Shore&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>Fenêtres Crystal</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">Window and exterior door replacement — triple-pane, fibreglass, and PVC systems for homes and commercial buildings</div>
+    <div class="differentiator">&ldquo;Energy Star certified installer, free energy audit before any quote, and average customer saves 22% on heating bills after installation&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>Bois &amp; Terrasse Experts</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Custom deck and patio construction — cedar, composite, and aluminum systems with pergolas, railings, and lighting</div>
+    <div class="differentiator">&ldquo;3D rendering of your deck before we build, all-in turnkey service including permits and cleanup, and a 10-year structural warranty&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Contractor">
+    <div class="card-header"><span class="industry-tag tag-contractor">Contractor / Construction</span><span class="new-badge">NEW</span></div>
+    <h3>Studio Rénov</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Rosemont, Montreal, QC</div>
+    <div class="service">Design-build interior renovations — open-concept conversions, custom millwork, flooring, and complete condo refreshes</div>
+    <div class="differentiator">&ldquo;In-house interior designer on every project, single point of contact from concept to keys, and a fixed-price contract with no surprise extras&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+
+  <!-- PLUMBING / HVAC -->
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span></div>
+    <h3>Rapid Flow Plumbing</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Residential and commercial plumbing — emergency repairs, pipe replacement, water heater installation</div>
+    <div class="differentiator">&ldquo;Guaranteed 90-minute response time, upfront flat-rate pricing, and a 2-year warranty on all work&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>ClimaPro Solutions</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">Commercial HVAC installation and maintenance — offices, retail spaces, warehouses, and multi-unit buildings</div>
+    <div class="differentiator">&ldquo;24/7 emergency response, preventive maintenance contracts, and certified technicians for all major commercial HVAC brands&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>DrainMaster Quebec</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more calls</div>
+    <div class="location">Sainte-Foy, QC</div>
+    <div class="service">Drain cleaning, sewer camera inspection, and pipe lining — residential and commercial</div>
+    <div class="differentiator">&ldquo;Same-day service, upfront flat pricing, and a 1-year guarantee that the problem won't return or we come back for free&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>Plomberie Bolduc</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more calls</div>
+    <div class="location">Trois-Rivières, QC</div>
+    <div class="service">Residential plumbing — faucet repairs, pipe replacements, toilet installs, and full bathroom rough-ins</div>
+    <div class="differentiator">&ldquo;Family business since 1994, flat-rate pricing on all common repairs, and we always explain exactly what we're doing before we start&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>Chauffe-Eau Express</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Blainville, QC</div>
+    <div class="service">Water heater specialists — installation, replacement, and repair of tank and tankless systems for homes and businesses</div>
+    <div class="differentiator">&ldquo;Same-day installation on in-stock units, 10-year warranty on Navien tankless systems, and bilingual service across the North Shore&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>Salle de Bain Plus</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Bathroom renovation plumbing — full rough-ins, shower conversions, soaker tub installations, and heated floor hookups</div>
+    <div class="differentiator">&ldquo;We specialize exclusively in bathrooms — no generalist shortcuts, detailed pre-project plan with every quote, and a coordination service for multi-trade renos&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>Protection Eau Québec</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Backflow prevention, cross-connection testing, and municipal compliance certification for residential and commercial properties</div>
+    <div class="differentiator">&ldquo;RBT-certified testers, digital compliance reports filed same day, and we handle all paperwork with the city on your behalf&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Plumbing">
+    <div class="card-header"><span class="industry-tag tag-plumbing">Plumbing / HVAC</span><span class="new-badge">NEW</span></div>
+    <h3>Inspect &amp; Fix Plomberie</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Brossard, QC</div>
+    <div class="service">Plumbing inspections, thermal leak detection, and pre-purchase home inspections focused on plumbing and drainage</div>
+    <div class="differentiator">&ldquo;Thermal imaging included in every inspection, full written report with photos in 24 hours, and we flag issues before they become expensive emergencies&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+
+  <!-- ELECTRICIAN -->
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span></div>
+    <h3>VoltPro Electric</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more calls</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">Residential electrical work — panel upgrades, EV charger installation, smart home wiring, emergency repairs</div>
+    <div class="differentiator">&ldquo;Master Electrician certified, ESA approved, and the only local electrician offering a 10-year workmanship warranty&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>Ampere Industriel</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Saint-Laurent, Montreal, QC</div>
+    <div class="service">Commercial and industrial electrical — new construction wiring, panel upgrades, generator installation, and energy audits</div>
+    <div class="differentiator">&ldquo;CCQ-certified crew, bonded and insured up to $5M, with in-house project managers to keep timelines on track&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>SoleilTech Quebec</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Trois-Rivières, QC</div>
+    <div class="service">Residential solar panel installation, battery storage systems, and EV charger integration</div>
+    <div class="differentiator">&ldquo;Free energy audit and ROI projection before any commitment, 25-year panel warranty, and average customer saves $1,200/year&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>Domotique Legault</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Brossard, QC</div>
+    <div class="service">Smart home integration — automated lighting, thermostat systems, security cameras, and whole-home audio/video</div>
+    <div class="differentiator">&ldquo;Control4 and Lutron certified installer, free demo session at our showroom, and lifetime tech support included with every installation&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>Éclairage Ambiance</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Outremont, Montreal, QC</div>
+    <div class="service">Architectural LED lighting design and installation for homes, restaurants, and retail — ambient, task, and accent lighting</div>
+    <div class="differentiator">&ldquo;Free lighting design consultation with a certified lighting designer, energy savings analysis with every quote, and average project cuts electricity use by 40%&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>Genco Électrique</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Standby generator installation and maintenance — residential whole-home and commercial systems up to 150kW</div>
+    <div class="differentiator">&ldquo;Generac authorized dealer, 24/7 emergency service line, and annual maintenance plans that keep your generator ready at all times&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>CertifiElec</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">Electrical inspections, compliance certificates, and pre-purchase assessments for residential and commercial properties</div>
+    <div class="differentiator">&ldquo;Report delivered in 24 hours, direct liaison with your insurance company, and we flag every code violation with a prioritized repair list and cost estimate&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Electrician">
+    <div class="card-header"><span class="industry-tag tag-electrician">Electrician</span><span class="new-badge">NEW</span></div>
+    <h3>Terrasseco Électrique</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Terrebonne, QC</div>
+    <div class="service">Outdoor and landscape electrical — terrace lighting, in-ground pool wiring, hot tub hookups, and exterior outlet installation</div>
+    <div class="differentiator">&ldquo;Specializes exclusively in outdoor electrical — every installer is water-zone certified, all work is permit-pulled, and we coordinate directly with pool and deck contractors&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+
+  <!-- CLINIC / HEALTHCARE -->
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span></div>
+    <h3>Clinique Sante Optimale</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Brossard, QC</div>
+    <div class="service">Family medicine and preventive health — annual checkups, chronic disease management, mental health support</div>
+    <div class="differentiator">&ldquo;Same-week appointments guaranteed, bilingual staff (FR/EN), and a patient portal for all records and prescriptions online&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Clinique Dentaire Sourire Plus</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Anjou, Montreal, QC</div>
+    <div class="service">General and cosmetic dentistry — cleanings, whitening, implants, Invisalign, and emergency dental care</div>
+    <div class="differentiator">&ldquo;No-wait booking available online 24/7, sedation dentistry for anxious patients, and direct billing to all major insurance plans&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Physio Mouvement</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Verdun, Montreal, QC</div>
+    <div class="service">Physiotherapy for sports injuries, post-surgery recovery, and chronic pain — in-clinic and mobile home visits</div>
+    <div class="differentiator">&ldquo;Same-week appointments guaranteed, bilingual team, and home visit service for patients who can't travel&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Vision Nette Optométrie</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Terrebonne, QC</div>
+    <div class="service">Eye exams, contact lens fittings, and prescription eyewear — complete eye care for the whole family</div>
+    <div class="differentiator">&ldquo;Lenses ready in 48 hours, over 500 frames in stock, and a kid-friendly exam room that makes eye tests stress-free for children&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Clinique Vétérinaire du Parc</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Saint-Lambert, QC</div>
+    <div class="service">Full-service veterinary care for dogs and cats — wellness exams, vaccines, surgery, dental cleaning, and emergency care</div>
+    <div class="differentiator">&ldquo;Same-day sick appointments available, fear-free certified team, and pet insurance billing handled directly — no out-of-pocket hassle&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Clinique Chiropratique Horizon</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Repentigny, QC</div>
+    <div class="service">Chiropractic care for back pain, neck pain, headaches, and posture correction — adults and pediatric</div>
+    <div class="differentiator">&ldquo;Evening and Saturday appointments available, direct billing to most insurers, and a personalized treatment plan for every new patient from day one&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Centre Psy Montréal</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Plateau-Mont-Royal, Montreal, QC</div>
+    <div class="service">Individual psychotherapy for anxiety, depression, trauma, and relationship issues — in-person and online sessions</div>
+    <div class="differentiator">&ldquo;Bilingual team (FR/EN), sliding-scale fees available, and a first-session fit guarantee — if it's not the right match, your first session is free&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Clinic">
+    <div class="card-header"><span class="industry-tag tag-clinic">Clinic / Healthcare</span><span class="new-badge">NEW</span></div>
+    <h3>Équilibre Nutrition</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">Registered dietitian consultations — weight management, sports nutrition, chronic disease management, and eating disorder support</div>
+    <div class="differentiator">&ldquo;All dietitians are ordre professionnel registered, virtual sessions available province-wide, and covered by most group insurance plans&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+
+  <!-- SALON / SPA / BEAUTY -->
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span></div>
+    <h3>Lumiere Beauty Studio</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Verdun, Montreal, QC</div>
+    <div class="service">Hair coloring, cuts, skincare facials, and luxury nail treatments in a boutique studio setting</div>
+    <div class="differentiator">&ldquo;Organic and cruelty-free products only, private styling suites available, and a complimentary glass of wine with every appointment&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Le Quartier Barbershop</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Plateau-Mont-Royal, Montreal, QC</div>
+    <div class="service">Classic and modern haircuts, beard trims, hot towel shaves, and grooming products for men</div>
+    <div class="differentiator">&ldquo;Book online in under 30 seconds, no long waits, and our master barbers average 12 years of experience each&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Ongles &amp; Co.</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Dollard-des-Ormeaux, QC</div>
+    <div class="service">Gel nails, nail art, pedicures, and nail extensions using non-toxic, vegan-certified products</div>
+    <div class="differentiator">&ldquo;100% vegan and cruelty-free products, walk-ins welcome for touch-ups, and a loyalty program that rewards every 5th visit&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Zensations Massage</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Therapeutic and relaxation massage — Swedish, deep tissue, prenatal, and hot stone treatments</div>
+    <div class="differentiator">&ldquo;All therapists are RMT certified, direct billing to most insurance plans, and a loyalty program that gives your 6th session free&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Studio Lash &amp; Brow</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Plateau-Mont-Royal, Montreal, QC</div>
+    <div class="service">Lash extensions, lash lifts, microblading, and eyebrow lamination by certified beauty technicians</div>
+    <div class="differentiator">&ldquo;Patch test included with every first lash booking, touch-up within 72 hours if needed at no charge, and all products are hypoallergenic and cruelty-free&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Fard &amp; Art</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Professional makeup artistry for weddings, events, editorial shoots, and individual glam sessions</div>
+    <div class="differentiator">&ldquo;Trial session included with every wedding booking, on-location service anywhere in Quebec, and 10+ years of editorial and bridal experience across 300+ events&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Clinique Éclat Médispa</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Medical aesthetic treatments — Botox, filler, laser hair removal, microneedling, and chemical peels under medical supervision</div>
+    <div class="differentiator">&ldquo;Nurse injectors supervised by a physician, free consultation before every first treatment, and a natural results guarantee — we'll adjust for free if you're not satisfied&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Salon">
+    <div class="card-header"><span class="industry-tag tag-salon">Salon / Spa / Beauty</span><span class="new-badge">NEW</span></div>
+    <h3>Chroma Hair Studio</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Mile End, Montreal, QC</div>
+    <div class="service">High-end hair coloring and cutting — balayage, vivid color, colour corrections, and precision haircuts</div>
+    <div class="differentiator">&ldquo;All stylists trained in Paris and NYC, detailed colour consultation before every new client, and a colour protection guarantee for 6 weeks&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+
+  <!-- FITNESS / PERSONAL TRAINING -->
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span></div>
+    <h3>IronEdge Training</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Plateau-Mont-Royal, Montreal, QC</div>
+    <div class="service">1-on-1 personal training, small group strength classes, and custom nutrition plans</div>
+    <div class="differentiator">&ldquo;Every client gets a custom 12-week program built around their schedule, and we guarantee visible results in 30 days or your money back&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>Studio Sattva Yoga</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Outremont, Montreal, QC</div>
+    <div class="service">Hot yoga, vinyasa, and yin classes — drop-in sessions and monthly memberships for all levels</div>
+    <div class="differentiator">&ldquo;Classes capped at 14 people for a personal feel, infrared heated rooms, and your first class is always free&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>Uppercut Boxing Club</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Hochelaga, Montreal, QC</div>
+    <div class="service">Boxing training for fitness and competition — beginner classes, sparring sessions, and 1-on-1 coaching</div>
+    <div class="differentiator">&ldquo;Certified boxing coaches, no experience required for beginner classes, and we guarantee you'll lose 10 lbs in your first month or get a full refund&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>Pur Pilates Studio</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Outremont, Montreal, QC</div>
+    <div class="service">Reformer Pilates classes — beginner, intermediate, and advanced levels, plus private sessions and prenatal Pilates</div>
+    <div class="differentiator">&ldquo;Maximum 6 people per reformer class, certified STOTT Pilates instructors, and your first private session is complimentary to assess your level&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>CrossFit Nordique</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">CrossFit classes for all levels — foundation classes for beginners, competitive programming for athletes, and open gym</div>
+    <div class="differentiator">&ldquo;Level 2 CrossFit coaches only, free foundations course for every new member, and a community culture where nobody gets left behind&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>École de Danse Mouvement</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Verdun, Montreal, QC</div>
+    <div class="service">Dance classes for adults and children — salsa, bachata, contemporary, hip-hop, and competitive ballroom</div>
+    <div class="differentiator">&ldquo;Classes grouped by real skill level (not just age), free trial class for new students, and annual recital with professional stage and costumes included&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>Académie Arts Martiaux Québec</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">BJJ, Muay Thai, and MMA training for adults and kids — beginner to competition-level programs</div>
+    <div class="differentiator">&ldquo;Black belt instructors with pro fight experience, no contract memberships, and a kids anti-bullying program backed by local school boards&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Fitness">
+    <div class="card-header"><span class="industry-tag tag-fitness">Fitness / Personal Training</span><span class="new-badge">NEW</span></div>
+    <h3>AquaForm Centre</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Brossard, QC</div>
+    <div class="service">Swimming lessons for all ages — beginner to lifeguard certification, plus aquafitness classes and lane rental for lap swimmers</div>
+    <div class="differentiator">&ldquo;Lifesaving Society certified instructors, heated 25m pool, and a progress report card after every 8-week session so parents see exactly where their child stands&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+
+  <!-- RETAIL / E-COMMERCE -->
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span></div>
+    <h3>Maison Nordique</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more sales</div>
+    <div class="location">Outremont, Montreal, QC</div>
+    <div class="service">Handcrafted Scandinavian-inspired home decor — candles, ceramics, textiles, and furniture pieces</div>
+    <div class="differentiator">&ldquo;All pieces are made in small batches by independent Quebec artisans, with free shipping on orders over $75 and 30-day free returns&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_sales</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>Atelier Mode</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more sales</div>
+    <div class="location">Mile End, Montreal, QC</div>
+    <div class="service">Curated women's clothing boutique — independent Quebec designers, sustainable fabrics, and limited-edition pieces</div>
+    <div class="differentiator">&ldquo;Every piece is produced in Quebec in runs under 100 units, free alteration on all full-price purchases, and free returns within 30 days&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_sales</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>Patte &amp; Compagnie</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more sales</div>
+    <div class="location">Sainte-Julie, QC</div>
+    <div class="service">Premium pet food, accessories, and grooming products for dogs and cats — in-store and online delivery</div>
+    <div class="differentiator">&ldquo;Vet-approved product selection, subscription auto-refill with 15% savings, and same-day local delivery for orders before 2pm&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_sales</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>Librairie du Coin</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more walkins</div>
+    <div class="location">Saint-Sauveur, QC</div>
+    <div class="service">Independent bookshop — curated French and English titles, book clubs, author events, and online ordering</div>
+    <div class="differentiator">&ldquo;Every purchase comes with a handwritten recommendation from our staff, free local delivery on orders over $40, and a monthly book subscription box&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_walkins</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>Fleurs Sauvages Atelier</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more sales</div>
+    <div class="location">Westmount, Montreal, QC</div>
+    <div class="service">Custom floral arrangements for weddings, events, and everyday gifting — online ordering with same-day Montreal delivery</div>
+    <div class="differentiator">&ldquo;All flowers sourced from Quebec growers or ethical importers, same-day delivery in Montreal, and wedding consultations available 7 days a week&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_sales</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>La Caverne des Merveilles</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more walkins</div>
+    <div class="location">Plateau-Mont-Royal, Montreal, QC</div>
+    <div class="service">Curated vintage and antique shop — furniture, clothing, records, ceramics, and collectibles from the 1920s–1990s</div>
+    <div class="differentiator">&ldquo;New inventory drops every Tuesday, online browsing with local pickup, and a sourcing request service — tell us what you're looking for and we'll find it&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_walkins</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>Marché Naturel Vida</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more walkins</div>
+    <div class="location">NDG, Montreal, QC</div>
+    <div class="service">Organic and natural grocery store — bulk foods, local produce, supplements, natural skincare, and zero-waste products</div>
+    <div class="differentiator">&ldquo;60% of products sourced from Quebec producers, zero single-use plastic throughout the store, and a price-match guarantee on certified organic staples&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_walkins</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Retail">
+    <div class="card-header"><span class="industry-tag tag-retail">Retail / E-commerce</span><span class="new-badge">NEW</span></div>
+    <h3>Momentum Sports</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more sales</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Sporting goods for hockey, soccer, running, and outdoor sports — equipment, apparel, and custom team orders</div>
+    <div class="differentiator">&ldquo;In-store skate sharpening and equipment fitting, custom team jersey program with 10-day turnaround, and a trade-in program for used hockey gear&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_sales</span><span class="style">Bold</span></div>
+  </div>
+
+  <!-- CONSULTING / PROFESSIONAL SERVICES -->
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span></div>
+    <h3>Apex Strategy Group</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Downtown Montreal, QC</div>
+    <div class="service">Business growth consulting for SMEs — market strategy, operational efficiency, and revenue optimization</div>
+    <div class="differentiator">&ldquo;We only take 8 clients per year, every engagement includes a 90-day ROI guarantee, and our average client sees 34% revenue growth in 6 months&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Talent Nord RH</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">HR consulting for growing businesses — hiring processes, employee onboarding, policy writing, and conflict resolution</div>
+    <div class="differentiator">&ldquo;Bilingual HR team, fractional HR packages starting at 8 hours/month, and we've helped 120+ Quebec businesses build cultures people don't quit&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Nexus IT Solutions</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">IT consulting for SMEs — cloud migration, cybersecurity audits, Microsoft 365 setup, and managed IT support</div>
+    <div class="differentiator">&ldquo;Flat monthly support fee, 2-hour response SLA, and we proactively fix problems before they affect your team&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Comptabilité Richer</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Granby, QC</div>
+    <div class="service">Accounting and tax services for self-employed workers and small businesses — bookkeeping, tax returns, and payroll</div>
+    <div class="differentiator">&ldquo;Fixed monthly fees with no hourly billing surprises, cloud accounting setup included, and guaranteed filing 3 weeks before any deadline&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Fiducie Lapointe CPA</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">CPA firm for growing companies — financial statements, corporate tax, M&A due diligence, and CFO-on-demand services</div>
+    <div class="differentiator">&ldquo;Dedicated CPA partner on every file, proactive tax planning saves clients an average of $18,000/year, and bilingual reporting in FR and EN&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Assurance Prévoyance Plus</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Life insurance, disability coverage, and group benefits for individuals and small businesses across Quebec</div>
+    <div class="differentiator">&ldquo;Independent broker — we compare 12+ insurers to find your best rate, no sales pressure, and virtual consultations available province-wide&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Agence Propulsive</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Digital marketing for SMEs — Google Ads, SEO, social media management, and email marketing campaigns</div>
+    <div class="differentiator">&ldquo;No long-term contracts, monthly performance reports in plain language, and average client sees 3× return on ad spend within 90 days&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Consulting">
+    <div class="card-header"><span class="industry-tag tag-consulting">Consulting</span><span class="new-badge">NEW</span></div>
+    <h3>Contenu &amp; Co.</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">Social media management for local businesses — content creation, scheduling, community management, and growth strategy</div>
+    <div class="differentiator">&ldquo;Flat monthly fee, unlimited content revisions, and a bilingual content team that makes every post sound like you — not a marketing agency&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+
+  <!-- REAL ESTATE -->
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span></div>
+    <h3>Marc Leblanc Real Estate</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">West Island, Montreal, QC</div>
+    <div class="service">Residential real estate — buying, selling, and investment properties in the Greater Montreal area</div>
+    <div class="differentiator">&ldquo;17 years of local market expertise, a 97.3% list-to-sale price ratio, and a guarantee to sell your home in 30 days or I cut my commission&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Groupe Immobilier Lumex</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Downtown Montreal, QC</div>
+    <div class="service">Commercial real estate brokerage — office leasing, retail spaces, industrial properties, and investment sales</div>
+    <div class="differentiator">&ldquo;25 years of commercial market expertise, exclusive off-market listings, and a transaction team that handles everything from offer to closing&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Gestion Habitat Plus</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">Residential property management — tenant screening, rent collection, maintenance coordination, and legal compliance</div>
+    <div class="differentiator">&ldquo;Full-service management for a flat 7% fee, 24/7 tenant support line, and a vacancy guarantee — we fill empty units in under 21 days&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Développements Habitat Neuf</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">New construction homes and townhouses — semi-custom builds with standard and premium finish packages</div>
+    <div class="differentiator">&ldquo;Guaranteed delivery dates written into every contract, a dedicated client portal to track construction progress, and Garantie Qualité Habitation certified&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Mise en Valeur Pro</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">West Island, Montreal, QC</div>
+    <div class="service">Home staging for sellers — furniture rental, styling, decluttering coaching, and virtual staging for online listings</div>
+    <div class="differentiator">&ldquo;Staged homes sell for 6–10% more on average, full service in 48 hours, and a money-back guarantee if your home doesn't sell in 60 days&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Courtier Hypothécaire Viau</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Mortgage brokerage — purchase financing, renewals, refinancing, and investment property mortgages across Quebec</div>
+    <div class="differentiator">&ldquo;Access to 30+ lenders including B-lenders for hard-to-place files, completely free service (paid by the lender), and approval in 24 hours for standard files&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Locat+</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Gatineau, QC</div>
+    <div class="service">Tenant placement and rental management — listing, screening, lease preparation, and optional ongoing management</div>
+    <div class="differentiator">&ldquo;Average unit rented in under 14 days, criminal and credit screening included, and a 12-month tenant guarantee — we re-place for free if the tenant leaves early&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Real Estate">
+    <div class="card-header"><span class="industry-tag tag-realestate">Real Estate</span><span class="new-badge">NEW</span></div>
+    <h3>Synergie Copropriété</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Longueuil, QC</div>
+    <div class="service">Condo syndicate management — budget planning, contractor coordination, owner communications, and legal compliance for divided co-ownership</div>
+    <div class="differentiator">&ldquo;Certified co-ownership manager (RGCQ member), 24/7 emergency line for urgent building issues, and transparent monthly financial statements with every invoice attached&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+
+  <!-- LAW / LEGAL SERVICES -->
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span></div>
+    <h3>Beaumont &amp; Associates Law</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Old Montreal, QC</div>
+    <div class="service">Business law and civil litigation — contracts, corporate disputes, real estate transactions, and employment law</div>
+    <div class="differentiator">&ldquo;Flat-fee billing on all standard matters, bilingual (FR/EN) legal team, and a free 30-minute initial consultation with a senior partner&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Droit Immigration Quebec</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Immigration law services — study permits, work permits, permanent residency, citizenship, and refugee claims</div>
+    <div class="differentiator">&ldquo;Multilingual team (FR/EN/ES/AR), 95% approval rate on filed applications, and transparent flat fees with no surprise billing&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Cabinet Bergeron Famille</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Sherbrooke, QC</div>
+    <div class="service">Family law — divorce, child custody, child support, adoption, and cohabitation agreements</div>
+    <div class="differentiator">&ldquo;We prioritize mediation first to save time and money, offer virtual consultations across Quebec, and a free 30-minute assessment for new clients&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Droits et Recours Québec</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Personal injury law — car accidents, slip and falls, workplace injuries, and SAAQ claims</div>
+    <div class="differentiator">&ldquo;Contingency fee only — you pay nothing unless we win, free consultation within 24 hours, and bilingual team handling SAAQ and CNESST files&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Défense Avocats Montréal</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Criminal defence — DUI, assault, drug charges, fraud, and bail hearings across Quebec courts</div>
+    <div class="differentiator">&ldquo;Former Crown prosecutors on our team, 24/7 emergency line for arrests and bail hearings, and a free first consultation with a senior criminal lawyer&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Héritages &amp; Testament</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Quebec City, QC</div>
+    <div class="service">Wills, powers of attorney, estate planning, and probate administration for individuals and families</div>
+    <div class="differentiator">&ldquo;Fixed flat fee for standard wills and mandates, home visits for clients with mobility issues, and a secure digital vault for all your documents&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Tribunal Travail QC</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Laval, QC</div>
+    <div class="service">Employment law for employees and employers — wrongful dismissal, harassment complaints, non-compete clauses, and CNESST appeals</div>
+    <div class="differentiator">&ldquo;Bilingual team (FR/EN), free 30-min case evaluation, and a track record of 87% favourable outcomes at the Commission des droits&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Law">
+    <div class="card-header"><span class="industry-tag tag-law">Law / Legal Services</span><span class="new-badge">NEW</span></div>
+    <h3>Fiscalité Clémence</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more calls</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Tax law and dispute resolution — CRA audits, tax objections, voluntary disclosures, and corporate tax restructuring</div>
+    <div class="differentiator">&ldquo;Former tax auditor on our team, success rate of 91% on objections filed, and a free audit response strategy session before any engagement&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_calls</span><span class="style">Professional</span></div>
+  </div>
+
+  <!-- OTHER -->
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span></div>
+    <h3>PhotoCraft Studio</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Saint-Laurent, Montreal, QC</div>
+    <div class="service">Professional photography — corporate headshots, product photography, event coverage, and personal branding shoots</div>
+    <div class="differentiator">&ldquo;Same-week turnaround on all shoots, unlimited selects included in every package, and a dedicated online gallery for easy sharing and downloading&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Réussite Académique</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Boucherville, QC</div>
+    <div class="service">Private tutoring for students in grades 4–12 — math, French, English, science, and exam prep</div>
+    <div class="differentiator">&ldquo;All tutors are certified teachers or education students, sessions available in-home or online, and we guarantee one full grade level improvement in one semester&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Netto Propre Services</h3>
+    <div class="meta">Professional & Corporate &middot; Goal: more bookings</div>
+    <div class="location">Repentigny, QC</div>
+    <div class="service">Residential and commercial cleaning — recurring weekly/biweekly visits, deep cleans, and move-in/move-out cleans</div>
+    <div class="differentiator">&ldquo;Fully insured and bonded, all eco-friendly products, and we guarantee satisfaction or reclean for free within 24 hours&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Professional</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Horizon Événements</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Corporate and private event planning — conferences, gala dinners, product launches, and birthday celebrations</div>
+    <div class="differentiator">&ldquo;500+ events executed flawlessly, dedicated event manager assigned from day one, and a vendor network that saves clients an average of 20% on catering and décor&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Garage Mécanique Prévost</h3>
+    <div class="meta">Bold & Vibrant &middot; Goal: more bookings</div>
+    <div class="location">Saint-Jérôme, QC</div>
+    <div class="service">Auto repair and maintenance — oil changes, brake work, tire swaps, engine diagnostics, and safety inspections</div>
+    <div class="differentiator">&ldquo;Photo inspection report sent to your phone before we touch anything, flat-rate pricing on all common repairs, and a shuttle service while you wait&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span></div><span class="goal">more_bookings</span><span class="style">Bold</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Le Bilan Hebdo</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more walkins</div>
+    <div class="location">Montreal, QC</div>
+    <div class="service">Weekly personal finance blog for Quebecers — budgeting tips, investing basics, and real money stories</div>
+    <div class="differentiator">&ldquo;Every post based on real numbers and reader submissions, no affiliate conflicts, and a free downloadable budget template with every newsletter signup&rdquo;</div>
+    <div class="card-footer"><div class="flags"></div><span class="goal">more_walkins</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Lumière &amp; Cadre</h3>
+    <div class="meta">Modern & Minimalist &middot; Goal: more bookings</div>
+    <div class="location">Gatineau, QC</div>
+    <div class="service">Wedding and lifestyle photography — engagement shoots, full-day wedding coverage, and family portraits</div>
+    <div class="differentiator">&ldquo;Gallery delivered in 2 weeks (not 3 months), all photos individually edited, and a complimentary engagement session with every full wedding package&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Modern</span></div>
+  </div>
+  <div class="card" data-industry="Other">
+    <div class="card-header"><span class="industry-tag tag-other">Other</span><span class="new-badge">NEW</span></div>
+    <h3>Réseau Féminin Québec</h3>
+    <div class="meta">Warm & Approachable &middot; Goal: more bookings</div>
+    <div class="location">Quebec (province-wide)</div>
+    <div class="service">Online community and networking platform for women entrepreneurs in Quebec — events, mentorship, and resource library</div>
+    <div class="differentiator">&ldquo;600+ active members, monthly in-person meetups in 8 cities, and a vetted mentorship program that matches new members with 5+ year veterans&rdquo;</div>
+    <div class="card-footer"><div class="flags"><span class="flag-pill flag-booking">Booking</span><span class="flag-pill flag-payments">Payments</span></div><span class="goal">more_bookings</span><span class="style">Warm</span></div>
+  </div>
+
+</div>
+</main>
+<script>
+  function updateCount() {
+    const visible = document.querySelectorAll('.card:not([style*="display: none"]):not([style*="display:none"])').length;
+    const el = document.getElementById('visible-count');
+    if (el) el.textContent = visible;
+  }
+  function filterAll(btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(c => c.style.display = '');
+    updateCount();
+  }
+  function filterBy(btn, keyword) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(c => {
+      const ind = c.dataset.industry || '';
+      c.style.display = ind.includes(keyword) ? '' : 'none';
+    });
+    updateCount();
+  }
+</script>
+</body>
+</html>

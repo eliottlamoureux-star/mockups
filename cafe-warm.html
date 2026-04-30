@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} | Freshly Roasted Coffee in Montreal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F0A0A;
+  --primary: #C8102E;
+  --accent: #E8C97A;
+  --surface: #1A1010;
+  --text-on-dark: #F5F0E8;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-on-dark);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(15, 10, 10, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: white;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary:hover {
+  background: #d4b462;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 201, 122, 0.3);
+}
+
+.btn-secondary {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 10px 22px;
+  display: inline-block;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: rgba(232, 201, 122, 0.1);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 80px;
+  position: relative;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.78) 65%, rgba(0,0,0,0.85) 100%),
+    url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 720px;
+  z-index: 2;
+}
+
+.hero-badge {
+  position: absolute;
+  top: -340px;
+  right: -200px;
+  background: var(--primary);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(200, 16, 46, 0.4);
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(245, 240, 232, 0.8);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 560px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* MENU SECTION */
+.section-menu {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: rgba(245, 240, 232, 0.65);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  background: var(--bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-card-body {
+  padding: 24px;
+}
+
+.menu-card-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.menu-card-desc {
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.6);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.menu-card-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* EXPERIENCE SECTION */
+.section-experience {
+  padding: 100px 80px;
+  background: var(--bg);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.experience-img-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.experience-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.experience-content .section-label {
+  text-align: left;
+}
+
+.experience-content .section-title {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.experience-text {
+  font-size: 16px;
+  color: rgba(245, 240, 232, 0.7);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.experience-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.5);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* FIND US SECTION */
+.section-find {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+
+.find-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.find-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.find-address {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.75);
+  margin-bottom: 32px;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hours-table td {
+  padding: 12px 0;
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.7);
+}
+
+.hours-table td:first-child {
+  font-weight: 600;
+  color: var(--text-on-dark);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+}
+
+.map-placeholder {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  padding: 40px;
+}
+
+.map-placeholder svg {
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.map-placeholder .map-text {
+  font-size: 15px;
+  color: rgba(245, 240, 232, 0.4);
+  font-weight: 500;
+}
+
+.map-placeholder .map-address {
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.3);
+  margin-top: 8px;
+}
+
+/* CTA BANNER */
+.section-cta {
+  padding: 80px;
+  background: var(--accent);
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--bg);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.cta-desc {
+  font-size: 16px;
+  color: rgba(15, 10, 10, 0.7);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.btn-cta-dark {
+  background: var(--bg);
+  color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-cta-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.cta-link {
+  display: inline-block;
+  margin-left: 20px;
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 2px solid rgba(15, 10, 10, 0.3);
+  transition: border-color 0.2s;
+}
+
+.cta-link:hover {
+  border-color: var(--bg);
+}
+
+/* FOOTER */
+.footer {
+  padding: 80px 80px 40px;
+  background: var(--bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-brand {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.5);
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.6);
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-contact-item {
+  font-size: 14px;
+  color: rgba(245, 240, 232, 0.6);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.3);
+}
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 0 24px 64px;
+  }
+
+  .hero-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 24px;
+    display: inline-flex;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .section-menu,
+  .section-experience,
+  .section-find {
+    padding: 56px 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .experience-img-wrap {
+    min-height: 300px;
+  }
+
+  .find-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .section-cta {
+    padding: 56px 24px;
+  }
+
+  .cta-link {
+    display: block;
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .experience-stats {
+    gap: 24px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#menu">Our Menu</a></li>
+      <li><a href="#experience">The Experience</a></li>
+      <li><a href="#find">Find Us</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#find" class="btn-primary">Visit the Shop</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Roasted Fresh On-Site
+    </div>
+    <h1>Your cup starts<br>with the <span>roast</span></h1>
+    <p class="hero-sub">Beans roasted in-house three times a week. Free wifi, no time limits, and every cup pulled by a certified barista — right here in {{LOCATION}}, Montreal.</p>
+    <div class="hero-buttons">
+      <a href="#find" class="btn-primary" style="padding:14px 30px;font-size:15px;">Visit the Shop</a>
+      <a href="#find" class="btn-secondary">Find Us Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR MENU -->
+<section class="section-menu" id="menu">
+  <div class="section-header fade-up">
+    <div class="section-label">Our Menu</div>
+    <h2 class="section-title">Three reasons to pull up a chair</h2>
+    <p class="section-desc">Light brunch plates designed to pair with our single-origin roasts — nothing fussy, everything fresh.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card fade-up">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1200&q=85&auto=format&fit=crop" alt="Avocado Toast with Poached Eggs">
+      <div class="menu-card-body">
+        <div class="menu-card-name">Avocado Toast {{LOCATION}}</div>
+        <div class="menu-card-desc">Sourdough, smashed avocado, poached eggs, chili flakes, and pickled shallots</div>
+        <div class="menu-card-price">$14 – $18</div>
+      </div>
+    </div>
+    <div class="menu-card fade-up">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=85&auto=format&fit=crop" alt="Maple Latte">
+      <div class="menu-card-body">
+        <div class="menu-card-name">Maple Oat Latte</div>
+        <div class="menu-card-desc">Double shot of our house espresso, steamed oat milk, and Quebec maple syrup</div>
+        <div class="menu-card-price">$6 – $8</div>
+      </div>
+    </div>
+    <div class="menu-card fade-up">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=1200&q=85&auto=format&fit=crop" alt="French Toast Brunch Plate">
+      <div class="menu-card-body">
+        <div class="menu-card-name">Brioche French Toast</div>
+        <div class="menu-card-desc">Thick-cut brioche, caramelized bananas, candied pecans, and crème fraîche</div>
+        <div class="menu-card-price">$16 – $20</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIENCE -->
+<section class="section-experience" id="experience">
+  <div class="experience-grid">
+    <div class="experience-img-wrap fade-up">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=85&auto=format&fit=crop" alt="{{BUSINESS_NAME}} Interior">
+    </div>
+    <div class="experience-content fade-up">
+      <div class="section-label">The Experience</div>
+      <h2 class="section-title">A neighbourhood café built for staying</h2>
+      <p class="experience-text">We opened in 2017 because {{LOCATION}} deserved a place where the coffee was roasted with intention and the doors stayed open for people who needed somewhere to think, create, or just be. Our Probat roaster fires up on Mondays, Wednesdays, and Fridays — you can smell it from the sidewalk.</p>
+      <p class="experience-text">Every barista on our team holds an SCA certification. That means your pour-over, your cortado, your flat white — it's made by someone who genuinely cares about extraction times and grind consistency. Grab a bag of our freshly roasted beans on the way out.</p>
+      <div class="experience-stats">
+        <div class="stat">
+          <div class="stat-number">53</div>
+          <div class="stat-label">Seats inside + terrace</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">on Google · 287 reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="section-find" id="find">
+  <div class="section-header fade-up">
+    <div class="section-label">Find Us</div>
+    <h2 class="section-title">Drop by anytime — we saved you a seat</h2>
+  </div>
+  <div class="find-grid">
+    <div class="find-info fade-up">
+      <h3>Address</h3>
+      <div class="find-address">
+        3615 Rue Notre-Dame Ouest<br>
+        {{LOCATION}} H4C 1P8<br>
+        Near Lionel-Groulx Metro
+      </div>
+      <h3>Hours</h3>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>7:00 AM – 6:00 PM</td></tr>
+        <tr><td>Tuesday</td><td>7:00 AM – 6:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>7:00 AM – 7:00 PM</td></tr>
+        <tr><td>Thursday</td><td>7:00 AM – 7:00 PM</td></tr>
+        <tr><td>Friday</td><td>7:00 AM – 7:00 PM</td></tr>
+        <tr><td>Saturday</td><td>8:00 AM – 6:00 PM</td></tr>
+        <tr><td>Sunday</td><td>8:00 AM – 5:00 PM</td></tr>
+      </table>
+    </div>
+    <div class="map-placeholder fade-up">
+      <svg width="48" height="48" viewBox="0 0 24 24" stroke="var(--text-on-dark)" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <div class="map-text">Google Maps</div>
+      <div class="map-address">3615 Rue Notre-Dame Ouest, {{LOCATION}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="section-cta">
+  <div class="cta-inner">
+    <h2 class="cta-title">The roast is fresh. The wifi is free. The seat is yours.</h2>
+    <p class="cta-desc">Walk in, plug in, and let our baristas handle the rest. We're two blocks from Lionel-Groulx Metro — no excuse not to stop by.</p>
+    <a href="#find" class="btn-cta-dark">Visit the Shop</a>
+    <a href="#find" class="cta-link">Find Us Today →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">{{BUSINESS_NAME}}</div>
+      <p class="footer-tagline">Roasted in-house. Pulled with care. A neighbourhood coffee shop in the heart of {{LOCATION}}, Montreal — open since 2017.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#experience">The Experience</a></li>
+        <li><a href="#find">Find Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">3615 Rue Notre-Dame Ouest<br>{{LOCATION}} H4C 1P8</div>
+      <div class="footer-contact-item">(514) 439-7816</div>
+      <div class="footer-contact-item">hello@bruleriesainthenri.ca</div>
+      <div class="footer-contact-item" style="margin-top:16px;color:rgba(245,240,232,0.4);font-size:13px;">Mon–Fri 7AM–6/7PM<br>Sat 8AM–6PM · Sun 8AM–5PM</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2024 {{BUSINESS_NAME}}. All rights reserved.
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Intersection Observer for fade-up animations
+const faders = document.querySelectorAll('.fade-up');
+const appearOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

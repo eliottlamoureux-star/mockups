@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{BUSINESS_NAME}} — Commercial Construction & Tenant Fit-Outs in {{LOCATION}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #111214;
+      --primary: #1A1C20;
+      --accent: #FF6B35;
+      --surface: #18191D;
+      --text-on-dark: #F0F0F0;
+      --accent-15: rgba(255,107,53,0.15);
+      --accent-hover: #e55a25;
+      --border: rgba(255,255,255,0.08);
+      --muted: #8A8D95;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-on-dark);
+      line-height: 1.55;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav.scrolled {
+      background: rgba(17,18,20,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--text-on-dark);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a {
+      color: rgba(240,240,240,0.75);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-on-dark); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 13px;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=85&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 40%;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(17,18,20,0.55) 0%,
+        rgba(17,18,20,0.70) 50%,
+        rgba(17,18,20,0.90) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 0 24px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-15);
+      border: 1px solid rgba(255,107,53,0.35);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-on-dark);
+      margin-bottom: 20px;
+    }
+
+    .accent-word {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(240,240,240,0.72);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-on-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 26px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 80px 40px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-on-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    /* ─── PROJECTS ─── */
+    #projects {
+      background: var(--primary);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, border-color 0.25s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,107,53,0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover; object-position: center 20%;
+      display: block;
+    }
+
+    .project-card-body {
+      padding: 22px 24px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      background: var(--accent-15);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-on-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-meta span {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .project-meta span::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    /* ─── HOW WE WORK ─── */
+    #process {
+      background: var(--bg);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 56px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: calc(12.5% + 16px);
+      right: calc(12.5% + 16px);
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), rgba(255,107,53,0.3));
+      z-index: 0;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .timeline-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .timeline-step:nth-child(1) { transition-delay: 0s; }
+    .timeline-step:nth-child(2) { transition-delay: 0.1s; }
+    .timeline-step:nth-child(3) { transition-delay: 0.2s; }
+    .timeline-step:nth-child(4) { transition-delay: 0.3s; }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-step h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-on-dark);
+      margin-bottom: 8px;
+    }
+
+    .timeline-step p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── TRUST BADGES ─── */
+    #trust {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .trust-item {
+      background: var(--surface);
+      padding: 44px 32px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .trust-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .trust-item:nth-child(1) { transition-delay: 0s; }
+    .trust-item:nth-child(2) { transition-delay: 0.1s; }
+    .trust-item:nth-child(3) { transition-delay: 0.2s; }
+    .trust-item:nth-child(4) { transition-delay: 0.3s; }
+
+    .trust-number {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .trust-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-on-dark);
+      margin-bottom: 4px;
+    }
+
+    .trust-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── BOOKING ─── */
+    #booking {
+      background: var(--primary);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .booking-left h2 {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+
+    .booking-left p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .booking-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .booking-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(240,240,240,0.8);
+    }
+
+    .booking-points li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .booking-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: var(--text-on-dark);
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8D95' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(255,107,53,0.5);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--muted);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { background: var(--accent-hover); }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, #c94d1d 100%);
+      padding: 72px 40px;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.82);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .cta-banner-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-white:hover { background: rgba(255,255,255,0.9); }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 26px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline-white:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--primary);
+      border-top: 1px solid var(--border);
+      padding: 64px 40px 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1120px;
+      margin: 0 auto 48px;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    .footer-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .footer-contact a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(240,240,240,0.7);
+      text-decoration: none;
+      font-size: 13.5px;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-contact a:hover { color: var(--text-on-dark); }
+
+    .footer-col h5 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      color: rgba(240,240,240,0.65);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--text-on-dark); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-badges {
+      display: flex;
+      gap: 12px;
+    }
+
+    .badge {
+      background: var(--accent-15);
+      border: 1px solid rgba(255,107,53,0.25);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* ─── SUCCESS MESSAGE ─── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success .success-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+    }
+
+    .form-success h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-on-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-success p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      section { padding: 60px 24px; }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .timeline::before { display: none; }
+
+      .trust-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      section { padding: 48px 20px; }
+
+      .hero h1 { font-size: 2.4rem; }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <style id="studio-polish">
+    html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+    h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+    h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+    h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+    h4, h5, h6 { font-size: 1rem !important; }
+    body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+    a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+    button, button[class*="btn"], input[type="submit"], input[type="button"] {
+      padding: 9px 18px !important; font-size: 13px !important; font-weight: 600 !important;
+      border-radius: 8px !important; letter-spacing: 0.01em !important; line-height: 1.35 !important;
+      display: inline-flex !important; align-items: center !important; justify-content: center !important;
+      width: auto !important; min-width: 0 !important; max-width: max-content !important;
+      box-shadow: none !important; transform: none !important; gap: 6px !important;
+    }
+    nav a, header a, .nav a { font-size: 13px !important; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.55rem !important; } h2 { font-size: 1.2rem !important; }
+      body, p, li, span { font-size: 14.5px !important; }
+      section, .hero { padding-top: 28px !important; padding-bottom: 28px !important; }
+      nav ul, .nav-links { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-brand">{{BUSINESS_NAME}}<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#trust">About</a></li>
+      <li><a href="#booking">Contact</a></li>
+    </ul>
+    <a href="#booking" class="nav-cta">Request a Tender</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Commercial Construction Partner in {{LOCATION}}</div>
+      <h1>Built for <span class="accent-word">Business.</span></h1>
+      <p class="hero-sub">
+        From ground-up commercial builds to complex tenant fit-outs — we deliver projects on schedule with zero compromises on quality or safety. CCDC contracts available.
+      </p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn-primary">Request a Tender</a>
+        <a href="tel:+15145550100" class="btn-ghost">Call Our Project Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Recent Work</div>
+        <h2 class="section-title">Projects That Speak for Themselves</h2>
+        <p class="section-sub">Commercial builds across the Greater Montreal area — delivered on time, on budget.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop"
+            alt="Office Tower Fit-Out — Downtown Montreal"
+            loading="lazy"
+          />
+          <div class="project-card-body">
+            <span class="project-tag">Office Fit-Out</span>
+            <h3>Office Tower Fit-Out</h3>
+            <p>Full tenant fit-out across three floors in a downtown Montreal high-rise. Delivered on schedule with premium finishes.</p>
+            <div class="project-meta">
+              <span>Downtown Montreal</span>
+              <span>14,000 sq ft</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&auto=format&fit=crop"
+            alt="Retail Strip Mall — Laval"
+            loading="lazy"
+          />
+          <div class="project-card-body">
+            <span class="project-tag">Retail Construction</span>
+            <h3>Retail Strip Mall</h3>
+            <p>New retail complex with 8 tenant units, shared parking structure, and full MEP systems. Completed 3 weeks ahead of schedule.</p>
+            <div class="project-meta">
+              <span>Laval, QC</span>
+              <span>3 Weeks Early</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <img
+            src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80&auto=format&fit=crop"
+            alt="Industrial Warehouse Expansion — Longueuil"
+            loading="lazy"
+          />
+          <div class="project-card-body">
+            <span class="project-tag">Industrial</span>
+            <h3>Industrial Warehouse Expansion</h3>
+            <p>Structural expansion of an existing warehouse facility, adding 22,000 sq ft of conditioned storage and loading infrastructure.</p>
+            <div class="project-meta">
+              <span>Longueuil, QC</span>
+              <span>$2.1M Project</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section id="process">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-label" style="text-align:center;">Our Process</div>
+        <h2 class="section-title" style="text-align:center;">How We Work</h2>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">A structured process built to protect your timeline, budget, and peace of mind.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-step">
+          <div class="step-number">01</div>
+          <h4>Site Assessment</h4>
+          <p>We evaluate your site, scope, and constraints before a single dollar is committed. No surprises later.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-number">02</div>
+          <h4>Engineering & Permits</h4>
+          <p>Full permit coordination with municipal authorities. We handle the paperwork so your project starts clean.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-number">03</div>
+          <h4>Construction Phase</h4>
+          <p>Active site management with weekly progress reports, quality controls, and safety compliance at every stage.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-number">04</div>
+          <h4>Commissioning</h4>
+          <p>Final inspections, deficiency walkthroughs, and full occupancy support. We don't leave until it's done right.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BADGES -->
+  <section id="trust" style="padding:0;">
+    <div class="trust-grid">
+
+      <div class="trust-item">
+        <div class="trust-number">CCDC</div>
+        <div class="trust-label">CCDC Certified</div>
+        <div class="trust-sub">Industry-standard contracts for every commercial project</div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-number">$50M+</div>
+        <div class="trust-label">Projects Delivered</div>
+        <div class="trust-sub">Across commercial, retail, and industrial sectors</div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-number">20 Yrs</div>
+        <div class="trust-label">Operating in {{LOCATION}}</div>
+        <div class="trust-sub">Two decades of project delivery experience</div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-number">100%</div>
+        <div class="trust-label">Bonded & Insured</div>
+        <div class="trust-sub">Full liability coverage and performance bonds available</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section id="booking">
+    <div class="container">
+      <div class="booking-grid">
+
+        <div class="booking-left">
+          <div class="section-label">Get in Touch</div>
+          <h2>Request a <span class="accent-word">Tender</span></h2>
+          <p>Tell us about your project and our estimating team will prepare a detailed scope and budget within 48 hours. No obligation.</p>
+          <ul class="booking-points">
+            <li>CCDC contract framework available for all projects</li>
+            <li>Fixed-price and design-build delivery options</li>
+            <li>Bonded and insured — full compliance documentation on request</li>
+            <li>Projects from $250K to $5M+ across commercial sectors</li>
+            <li>Active in Montreal, Laval, Longueuil, and the surrounding region</li>
+          </ul>
+        </div>
+
+        <div class="booking-right">
+          <div class="booking-form">
+            <form id="tender-form">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">First Name</label>
+                  <input type="text" id="first-name" name="first_name" placeholder="Marc" required />
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="last_name" placeholder="Tremblay" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="company">Company / Organization</label>
+                <input type="text" id="company" name="company" placeholder="Tremblay Holdings Inc." />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="marc@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="514-555-0100" />
+              </div>
+
+              <div class="form-group">
+                <label for="project-type">Project Type</label>
+                <select id="project-type" name="project_type" required>
+                  <option value="" disabled selected>Select project type…</option>
+                  <option value="office">Office Fit-Out</option>
+                  <option value="retail">Retail Construction</option>
+                  <option value="industrial">Industrial Build</option>
+                  <option value="restaurant">Restaurant Build-Out</option>
+                  <option value="other">Other Commercial</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="timeline">Project Timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option value="" disabled selected>Timeline…</option>
+                    <option value="asap">ASAP / Flexible</option>
+                    <option value="1-3mo">1–3 Months</option>
+                    <option value="3-6mo">3–6 Months</option>
+                    <option value="6-12mo">6–12 Months</option>
+                    <option value="12mo+">12+ Months</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="budget">Estimated Budget</label>
+                  <select id="budget" name="budget">
+                    <option value="" disabled selected>Budget range…</option>
+                    <option value="250-500k">$250K – $500K</option>
+                    <option value="500k-1m">$500K – $1M</option>
+                    <option value="1m-2.5m">$1M – $2.5M</option>
+                    <option value="2.5m-5m">$2.5M – $5M</option>
+                    <option value="5m+">$5M+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Project Description</label>
+                <textarea id="message" name="message" placeholder="Briefly describe your project — location, scope, special requirements…"></textarea>
+              </div>
+
+              <button type="submit" class="form-submit">Submit Tender Request →</button>
+              <p class="form-note">We respond within 1 business day. All inquiries are confidential.</p>
+
+            </form>
+
+            <div class="form-success" id="form-success">
+              <div class="success-icon">✓</div>
+              <h3>Request Received</h3>
+              <p>Our estimating team will review your project and follow up within 1 business day.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="container">
+      <h2>Ready to Break Ground?</h2>
+      <p>Let's talk about your commercial project. Our team is available for site visits, budgeting calls, and CCDC contract discussions.</p>
+      <div class="cta-banner-actions">
+        <a href="#booking" class="btn-white">Get a Free Estimate</a>
+        <a href="tel:+15145550100" class="btn-outline-white">Call Our Project Team</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand">{{BUSINESS_NAME}}<span>.</span></div>
+        <p class="footer-desc">Commercial construction and tenant fit-outs in {{LOCATION}}. CCDC contracts. Bonded and insured. Two decades of delivery excellence.</p>
+        <div class="footer-contact">
+          <a href="tel:+15145550100">📞 514-555-0100</a>
+          <a href="mailto:info@{{BUSINESS_NAME}}.ca">✉ info@{{BUSINESS_NAME}}.ca</a>
+          <a href="#">📍 {{LOCATION}}, QC</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Office Fit-Outs</a></li>
+          <li><a href="#">Retail Construction</a></li>
+          <li><a href="#">Industrial Builds</a></li>
+          <li><a href="#">Restaurant Build-Outs</a></li>
+          <li><a href="#">Design-Build</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#projects">Our Projects</a></li>
+          <li><a href="#process">How We Work</a></li>
+          <li><a href="#booking">Request a Tender</a></li>
+          <li><a href="#">CCDC Contracts</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 {{BUSINESS_NAME}}. All rights reserved. | {{LOCATION}}, QC</p>
+      <div class="footer-badges">
+        <span class="badge">CCDC Certified</span>
+        <span class="badge">Bonded & Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAV SCROLL
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // ─── SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ─── INTERSECTION OBSERVER FADE-IN
+    const fadeEls = document.querySelectorAll('.project-card, .timeline-step, .trust-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ─── FORM SUBMIT (FAKE)
+    const form = document.getElementById('tender-form');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }, 1200);
+    });
+  </script>
+
+</body>
+</html>

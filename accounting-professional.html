@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{BUSINESS_NAME}} — Tenue de livres, impôts et paie à {{LOCATION}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFCFB;
+  --primary: #2F3E46;
+  --accent: #52B788;
+  --surface: #EDF7F2;
+  --text-on-dark: #F2F9F5;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(47, 62, 70, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.12);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background: #43a076;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(82, 183, 136, 0.35);
+}
+
+.btn-large {
+  padding: 16px 36px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.btn-secondary-link {
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary-link:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+  padding: 140px 80px 80px;
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left h1 {
+  font-size: clamp(32px, 4.2vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.12;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.hero-left h1 span {
+  color: var(--accent);
+}
+
+.hero-left p {
+  color: rgba(255,255,255,0.82);
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+}
+
+.stars svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-card-rating span {
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero-stat {
+  color: #fff;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+
+.hero-stat-label {
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.hero-credentials {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-credentials li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.88);
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.hero-credentials li svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* SERVICES */
+.section-services {
+  background: var(--bg);
+  padding: 100px 80px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.18;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  color: #5a6b70;
+  font-size: 17px;
+  max-width: 580px;
+  margin-bottom: 56px;
+  line-height: 1.65;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+}
+
+.service-card {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 40px 32px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(47, 62, 70, 0.1);
+  border-color: var(--accent);
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.service-icon svg {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+}
+
+.service-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.service-card p {
+  color: #5a6b70;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* PROCESS */
+.section-process {
+  background: var(--primary);
+  padding: 100px 80px;
+}
+
+.section-process .section-tag {
+  color: var(--accent);
+}
+
+.section-process .section-title {
+  color: var(--text-on-dark);
+}
+
+.section-process .section-subtitle {
+  color: rgba(242, 249, 245, 0.6);
+}
+
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 1100px;
+  position: relative;
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+  padding: 0 32px;
+}
+
+.process-step::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  right: -2px;
+  width: calc(100%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(82,183,136,0.2));
+  z-index: 0;
+}
+
+.process-step:last-child::after {
+  display: none;
+}
+
+.step-number {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(82, 183, 136, 0.15);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-number span {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.process-step h3 {
+  color: var(--text-on-dark);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.process-step p {
+  color: rgba(242, 249, 245, 0.6);
+  font-size: 14.5px;
+  line-height: 1.6;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.process-arrow {
+  position: absolute;
+  top: 28px;
+  right: -14px;
+  z-index: 2;
+  color: var(--accent);
+}
+
+/* RESULTS */
+.section-results {
+  background: var(--surface);
+  padding: 100px 80px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  max-width: 1000px;
+}
+
+.result-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 40px 36px;
+  border: 1px solid rgba(47,62,70,0.06);
+  transition: all 0.25s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(47,62,70,0.1);
+}
+
+.result-tag {
+  display: inline-block;
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+
+.result-metrics {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.metric-before {
+  font-size: 28px;
+  font-weight: 700;
+  color: #a0aeb2;
+  text-decoration: line-through;
+  text-decoration-color: rgba(160,174,178,0.5);
+}
+
+.metric-arrow {
+  color: var(--accent);
+}
+
+.metric-arrow svg {
+  width: 28px;
+  height: 28px;
+}
+
+.metric-after {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.result-period {
+  font-size: 13px;
+  color: #5a6b70;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.result-method {
+  font-size: 15px;
+  color: var(--primary);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* FORM */
+.section-form {
+  background: var(--primary);
+  padding: 100px 80px;
+}
+
+.section-form .section-tag {
+  color: var(--accent);
+}
+
+.section-form .section-title {
+  color: var(--text-on-dark);
+}
+
+.section-form .section-subtitle {
+  color: rgba(242,249,245,0.6);
+}
+
+.form-container {
+  max-width: 680px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: rgba(242,249,245,0.7);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-on-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(82,183,136,0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-submit {
+  margin-top: 28px;
+}
+
+/* CTA BANNER */
+.section-cta {
+  background: var(--accent);
+  padding: 80px;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: -0.4px;
+}
+
+.cta-content p {
+  color: rgba(255,255,255,0.88);
+  font-size: 17px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+.btn-cta-white {
+  background: #fff;
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-cta-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--primary);
+  padding: 72px 80px 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 48px;
+}
+
+.footer-brand h3 {
+  color: var(--text-on-dark);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.footer-brand p {
+  color: rgba(242,249,245,0.55);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  color: var(--text-on-dark);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col ul li a {
+  color: rgba(242,249,245,0.55);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  color: rgba(242,249,245,0.35);
+  font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 120px 24px 64px;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-left p {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section-services,
+  .section-results {
+    padding: 56px 24px;
+  }
+
+  .section-process,
+  .section-form {
+    padding: 56px 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .process-step::after {
+    display: none;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-cta {
+    padding: 56px 24px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+</style>
+
+
+<style id="studio-polish">
+/* Studio universal polish — cap oversized typography + buttons, tighten mobile. */
+
+/* Kill any sub-pixel horizontal overflow (negative margins, transforms, etc.) */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+/* Body baseline */
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+/* Buttons & CTAs — real anchors/buttons only, not wrapper containers. */
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+/* Navigation links smaller */
+nav a, header a, .nav a { font-size: 13px !important; }
+
+/* Tight mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  /* Hide nav links on mobile, keep only the primary CTA */
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hero stacking */
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  /* Remove absolute-positioned decorative pills from hero on mobile */
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  /* Wide decorative sections trim padding */
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Images max-width */
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">{{BUSINESS_NAME}}</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Processus</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>Vos livres, vos impôts, votre paie — <span>tout réglé à prix fixe.</span></h1>
+    <p>Travailleurs autonomes et propriétaires de PME à {{LOCATION}} : arrêtez de jongler avec vos chiffres. {{BUSINESS_NAME}} s'occupe de votre tenue de livres, vos déclarations d'impôts et votre paie — le tout avec des frais mensuels fixes, sans mauvaises surprises.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary btn-large">Book Your Appointment</a>
+      <a href="#contact" class="btn-secondary-link">Reserve Your Spot</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-rating">
+      <div class="stars">
+        <svg viewBox="0 0 24 24" fill="#52B788" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#52B788" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#52B788" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#52B788" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="#52B788" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <span>4.9 sur Google (187 avis)</span>
+    </div>
+    <div class="hero-stat">347+</div>
+    <div class="hero-stat-label">entreprises et travailleurs autonomes accompagnés depuis 2016</div>
+    <ul class="hero-credentials">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Frais mensuels fixes — aucune facturation à l'heure
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Configuration infonuagique incluse (QuickBooks, Dext)
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Production garantie 3 semaines avant chaque échéance
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-services" id="services">
+  <span class="section-tag">Comment on vous aide</span>
+  <h2 class="section-title">Trois services, zéro casse-tête comptable</h2>
+  <p class="section-subtitle">Tout ce qu'il vous faut pour garder vos finances en ordre — pendant que vous faites tourner votre entreprise.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l8-4 8 4V2a2 2 0 00-2-2H6a2 2 0 00-2 2z"/><path d="M9 10h6"/><path d="M12 7v6"/></svg>
+      </div>
+      <h3>Tenue de livres</h3>
+      <p>Vos revenus, dépenses et comptes conciliés chaque mois dans le nuage. Vous avez toujours un portrait clair et à jour de votre situation financière.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20"/><path d="M9 21V9"/></svg>
+      </div>
+      <h3>Déclarations d'impôts</h3>
+      <p>Impôts de particuliers, travailleurs autonomes et sociétés — produits et transmis au minimum 3 semaines avant la date limite, chaque année.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Gestion de la paie</h3>
+      <p>Relevés de paie, retenues à la source, T4 et Relevé 1 — tout est calculé, produit et remis à temps pour vos employés et les gouvernements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-process" id="process">
+  <span class="section-tag">Le processus</span>
+  <h2 class="section-title">De la paperasse au pilote automatique en 3 étapes</h2>
+  <p class="section-subtitle">Pas de jargon, pas de délai. Voici exactement comment on travaille ensemble.</p>
+  <div class="process-timeline">
+    <div class="process-step">
+      <div class="step-number"><span>1</span></div>
+      <h3>Appel découverte</h3>
+      <p>On analyse votre situation actuelle : structure d'entreprise, volume de transactions, outils utilisés. 30 minutes, sans frais, sans engagement.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number"><span>2</span></div>
+      <h3>Plan et configuration</h3>
+      <p>On établit votre forfait mensuel fixe et on configure vos outils infonuagiques (QuickBooks, Dext). Vos accès sont prêts en 48 heures.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number"><span>3</span></div>
+      <h3>Exécution et tranquillité</h3>
+      <p>Chaque mois, vos livres sont à jour. Chaque année, vos impôts sont produits 3 semaines d'avance. Vous, vous gérez votre business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section-results" id="results">
+  <span class="section-tag">Résultats concrets</span>
+  <h2 class="section-title">Ce que ça change pour nos clients</h2>
+  <p class="section-subtitle">Des chiffres réels tirés de dossiers traités à notre bureau de {{LOCATION}}.</p>
+  <div class="results-grid">
+    <div class="result-card">
+      <span class="result-tag">Travailleuse autonome · Design graphique</span>
+      <div class="result-metrics">
+        <span class="metric-before">12 h/mois</span>
+        <span class="metric-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+        <span class="metric-after">45 min/mois</span>
+      </div>
+      <p class="result-period">Temps consacré à la comptabilité — réduction en 2 mois</p>
+      <p class="result-method">Migration vers QuickBooks en ligne + automatisation de la réception des factures avec Dext. Forfait fixe de 197 $/mois, tout inclus.</p>
+    </div>
+    <div class="result-card">
+      <span class="result-tag">PME · Entreprise de rénovation · 6 employés</span>
+      <div class="result-metrics">
+        <span class="metric-before">4 280 $ pénalités</span>
+        <span class="metric-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+        <span class="metric-after">0 $ pénalités</span>
+      </div>
+      <p class="result-period">Première année complète avec {{BUSINESS_NAME}}</p>
+      <p class="result-method">Reprise complète de la tenue de livres, paie externalisée et production d'impôts 3 semaines avant chaque date limite. Plus aucun retard en 18 mois.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section-form" id="contact">
+  <div class="form-container">
+    <span class="section-tag">Première étape</span>
+    <h2 class="section-title">Réservez votre appel découverte gratuit</h2>
+    <p class="section-subtitle">Dites-nous en 30 secondes ce qui vous préoccupe. On vous revient dans les 24 heures pour planifier un appel.</p>
+    <form onsubmit="event.preventDefault(); document.getElementById('form-success').style.display='block'; this.style.display='none';">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Votre nom</label>
+          <input type="text" id="name" placeholder="Jean Tremblay" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Nom de l'entreprise</label>
+          <input type="text" id="company" placeholder="Rénovations JT inc.">
+        </div>
+        <div class="form-group">
+          <label for="email">Courriel</label>
+          <input type="email" id="email" placeholder="jean@monentreprise.ca" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone (optionnel)</label>
+          <input type="tel" id="phone" placeholder="450-000-0000">
+        </div>
+        <div class="form-group full-width">
+          <label for="challenge">Votre principal défi comptable en ce moment</label>
+          <textarea id="challenge" placeholder="Ex. : Je suis en retard dans mes livres et j'ai peur de manquer la date limite des impôts..."></textarea>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary btn-large">Book Your Appointment</button>
+      </div>
+    </form>
+    <div id="form-success" style="display:none; padding: 40px 0;">
+      <h3 style="color: var(--accent); font-size: 22px; font-weight: 700; margin-bottom: 10px;">Demande envoyée avec succès</h3>
+      <p style="color: rgba(242,249,245,0.7); font-size: 16px;">On vous contacte dans les prochaines 24 heures pour fixer votre appel découverte. Merci!</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="section-cta">
+  <div class="cta-content">
+    <h2>Arrêtez de payer à l'heure. Commencez à respirer.</h2>
+    <p>Forfaits mensuels fixes, production garantie d'avance, et un comptable qui répond quand vous appelez. Basé à {{LOCATION}}, au service de votre tranquillité.</p>
+    <a href="#contact" class="btn-cta-white">Book Your Appointment</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>{{BUSINESS_NAME}}</h3>
+      <p>Tenue de livres, impôts et paie pour travailleurs autonomes et PME à {{LOCATION}}. Des frais fixes. Des délais respectés. La paix d'esprit.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Tenue de livres</a></li>
+        <li><a href="#services">Déclarations d'impôts</a></li>
+        <li><a href="#services">Gestion de la paie</a></li>
+        <li><a href="#services">Configuration infonuagique</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#contact">Appel découverte gratuit</a></li>
+        <li><a href="mailto:info@comptabilitericher.ca">info@comptabilitericher.ca</a></li>
+        <li><a href="tel:4507770000">450-777-0000</a></li>
+        <li><a href="#">{{LOCATION}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 {{BUSINESS_NAME}}. Tous droits réservés.</p>
+    <p>{{LOCATION}}, Québec · Service en français et en anglais</p>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.service-card, .process-step, .result-card, .form-container').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
