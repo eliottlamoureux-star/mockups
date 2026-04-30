@@ -232,61 +232,21 @@ a {
   line-height: 1.7;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
 
-.project-card {
-  background: var(--bg);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
 
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
-}
 
-.project-card-img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-}
 
-.project-card-body {
-  padding: 24px;
-}
 
-.project-tag {
-  display: inline-block;
-  background: var(--accent-15);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  margin-bottom: 12px;
-}
 
-.project-location {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-on-dark);
-  margin-bottom: 6px;
-}
 
-.project-result {
-  font-size: 14px;
-  color: rgba(245, 242, 237, 0.55);
-  font-weight: 400;
-}
+
+
+
+
+
+
+
+
 
 /* HOW WE WORK */
 .section-how {
@@ -742,9 +702,7 @@ a {
     padding: 56px 24px;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+  
 
   .timeline {
     grid-template-columns: 1fr;
@@ -795,6 +753,88 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* PORTFOLIO — alternating layout */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.project-row.reverse { direction: rtl; }
+.project-row.reverse > * { direction: ltr; }
+.project-row__img-wrap { position: relative; overflow: hidden; }
+.project-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-height: 420px;
+}
+.project-row__tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--accent, #333);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 2;
+}
+.project-row__body {
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg, #fff);
+}
+.project-row__title {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  color: var(--primary, #111);
+}
+.project-row__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text, #666);
+  margin-bottom: 10px;
+}
+.project-row__result {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text, #666);
+  padding: 12px 16px;
+  background: var(--surface, #f5f5f5);
+  border-radius: 8px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .project-row { grid-template-columns: 1fr; }
+  .project-row.reverse { direction: ltr; }
+  .project-row__img { min-height: 260px; }
+  .project-row__body { padding: 32px 24px; }
+}
+
 </style>
 
 
@@ -908,28 +948,37 @@ nav a, header a, .nav a { font-size: 13px !important; }
   <h2 class="section-title">Roofs Built to Last Across the Eastern Townships</h2>
   <p class="section-desc">From emergency storm repairs to complete roof replacements, here's a look at the work we're proudest of.</p>
   <div class="projects-grid">
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1661930941624-f4b43e3079f1?w=1200&q=85&auto=format&fit=crop" alt="Full roof replacement in {{LOCATION}}" class="project-card-img">
-      <div class="project-card-body">
-        <span class="project-tag">Full Replacement</span>
-        <div class="project-location">Rue King Ouest, {{LOCATION}}</div>
-        <div class="project-result">30-year architectural shingles installed in 2 days flat</div>
+    <div class="project-row">
+      <div class="project-row__img-wrap">
+        <img class="project-row__img" src="https://images.unsplash.com/photo-1661930941624-f4b43e3079f1?w=1200&q=85&auto=format&fit=crop" alt="Full roof replacement in {{LOCATION}}">
+        <span class="project-row__tag">Full Replacement</span>
+      </div>
+      <div class="project-row__body">
+        <h3 class="project-row__title">Full Replacement</h3>
+        <div class="project-row__meta">Rue King Ouest, {{LOCATION}}</div>
+        <div class="project-row__result">30-year architectural shingles installed in 2 days flat</div>
       </div>
     </div>
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1726589004565-bedfba94d3a2?w=1200&q=85&auto=format&fit=crop" alt="Skylight installation project" class="project-card-img">
-      <div class="project-card-body">
-        <span class="project-tag">Skylight Installation</span>
-        <div class="project-location">Magog, Eastern Townships</div>
-        <div class="project-result">3 VELUX skylights added, zero leaks — guaranteed</div>
+    <div class="project-row reverse">
+      <div class="project-row__img-wrap">
+        <img class="project-row__img" src="https://images.unsplash.com/photo-1726589004565-bedfba94d3a2?w=1200&q=85&auto=format&fit=crop" alt="Skylight installation project">
+        <span class="project-row__tag">Skylight Installation</span>
+      </div>
+      <div class="project-row__body">
+        <h3 class="project-row__title">Skylight Installation</h3>
+        <div class="project-row__meta">Magog, Eastern Townships</div>
+        <div class="project-row__result">3 VELUX skylights added, zero leaks — guaranteed</div>
       </div>
     </div>
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1503594384566-461fe158e797?w=1200&q=85&auto=format&fit=crop" alt="Emergency roof repair" class="project-card-img">
-      <div class="project-card-body">
-        <span class="project-tag">Emergency Repair</span>
-        <div class="project-location">Lennoxville, {{LOCATION}}</div>
-        <div class="project-result">Storm damage patched within 6 hours of the first call</div>
+    <div class="project-row">
+      <div class="project-row__img-wrap">
+        <img class="project-row__img" src="https://images.unsplash.com/photo-1503594384566-461fe158e797?w=1200&q=85&auto=format&fit=crop" alt="Emergency roof repair">
+        <span class="project-row__tag">Emergency Repair</span>
+      </div>
+      <div class="project-row__body">
+        <h3 class="project-row__title">Emergency Repair</h3>
+        <div class="project-row__meta">Lennoxville, {{LOCATION}}</div>
+        <div class="project-row__result">Storm damage patched within 6 hours of the first call</div>
       </div>
     </div>
   </div>

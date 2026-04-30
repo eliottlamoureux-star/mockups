@@ -259,62 +259,23 @@ img {
   background: var(--bg);
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
 
-.project-card {
-  background: var(--surface);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.05);
-}
 
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  border-color: rgba(253, 203, 110, 0.15);
-}
 
-.project-image {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-}
+
+
+
+
 
 .project-info {
   padding: 24px;
 }
 
-.project-tag {
-  display: inline-block;
-  background: rgba(253, 203, 110, 0.1);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 100px;
-  margin-bottom: 12px;
-  letter-spacing: 0.3px;
-}
 
-.project-location {
-  font-size: 14px;
-  color: rgba(245, 242, 237, 0.5);
-  margin-bottom: 8px;
-  font-weight: 500;
-}
 
-.project-result {
-  font-size: 15px;
-  color: var(--text-on-dark);
-  font-weight: 500;
-  line-height: 1.5;
-}
+
+
+
 
 /* HOW WE WORK */
 .process-section {
@@ -741,10 +702,7 @@ img {
     padding: 56px 24px;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+  
 
   .timeline {
     grid-template-columns: 1fr;
@@ -812,6 +770,88 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+/* PORTFOLIO — alternating layout */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.project-row.reverse { direction: rtl; }
+.project-row.reverse > * { direction: ltr; }
+.project-row__img-wrap { position: relative; overflow: hidden; }
+.project-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-height: 420px;
+}
+.project-row__tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--accent, #333);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 2;
+}
+.project-row__body {
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg, #fff);
+}
+.project-row__title {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  color: var(--primary, #111);
+}
+.project-row__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text, #666);
+  margin-bottom: 10px;
+}
+.project-row__result {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text, #666);
+  padding: 12px 16px;
+  background: var(--surface, #f5f5f5);
+  border-radius: 8px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .project-row { grid-template-columns: 1fr; }
+  .project-row.reverse { direction: ltr; }
+  .project-row__img { min-height: 260px; }
+  .project-row__body { padding: 32px 24px; }
+}
+
 </style>
 
 
@@ -931,33 +971,40 @@ nav a, header a, .nav a { font-size: 13px !important; }
     <p class="section-subtitle">Every project is managed by a single point of contact — from the first sketch to the moment we hand you the keys.</p>
 
     <div class="projects-grid">
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85&auto=format&fit=crop" alt="Open-concept kitchen renovation" class="project-image">
-        <div class="project-info">
-          <span class="project-tag">Open-Concept Kitchen</span>
-          <p class="project-location">3 1/2 Condo · {{LOCATION}}-La Petite-Patrie</p>
-          <p class="project-result">Wall removed, custom island millwork installed — delivered in 4 weeks, on budget.</p>
-        </div>
+    <div class="project-row">
+      <div class="project-row__img-wrap">
+        <img class="project-row__img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85&auto=format&fit=crop" alt="Open-concept kitchen renovation">
+        <span class="project-row__tag">Open-Concept Kitchen</span>
       </div>
-
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&q=85&auto=format&fit=crop" alt="Complete condo refresh" class="project-image">
-        <div class="project-info">
-          <span class="project-tag">Complete Condo Refresh</span>
-          <p class="project-location">4 1/2 Condo · Plateau-Mont-Royal</p>
-          <p class="project-result">Full flooring, lighting, and bathroom overhaul — finished 3 days ahead of schedule.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&q=85&auto=format&fit=crop" alt="Custom millwork living space" class="project-image">
-        <div class="project-info">
-          <span class="project-tag">Custom Millwork + Flooring</span>
-          <p class="project-location">Detached Home · Villeray</p>
-          <p class="project-result">Built-in wall unit and engineered hardwood throughout — seamless 5-week execution.</p>
-        </div>
+      <div class="project-row__body">
+        <h3 class="project-row__title">Open-Concept Kitchen</h3>
+        
+        
       </div>
     </div>
+    <div class="project-row reverse">
+      <div class="project-row__img-wrap">
+        <img class="project-row__img" src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&q=85&auto=format&fit=crop" alt="Complete condo refresh">
+        <span class="project-row__tag">Complete Condo Refresh</span>
+      </div>
+      <div class="project-row__body">
+        <h3 class="project-row__title">Complete Condo Refresh</h3>
+        
+        
+      </div>
+    </div>
+    <div class="project-row">
+      <div class="project-row__img-wrap">
+        <img class="project-row__img" src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&q=85&auto=format&fit=crop" alt="Custom millwork living space">
+        <span class="project-row__tag">Custom Millwork + Flooring</span>
+      </div>
+      <div class="project-row__body">
+        <h3 class="project-row__title">Custom Millwork + Flooring</h3>
+        
+        
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 

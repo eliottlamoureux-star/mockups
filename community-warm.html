@@ -257,25 +257,12 @@ section {
   line-height: 1.65;
 }
 
-/* {{MAIN_SERVICE}} */
-.{{MAIN_SERVICE}} {
-  background: var(--surface);
-}
-
 .{{MAIN_SERVICE}}-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .{{MAIN_SERVICE}}-header .section-subtitle {
-  margin: 0 auto;
-}
-
-.{{MAIN_SERVICE}}-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -732,11 +719,6 @@ section {
     align-items: center;
   }
 
-  .{{MAIN_SERVICE}}-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .proof-top {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -797,6 +779,79 @@ section {
 .fade-up.visible {
   animation: fadeUp 0.6s ease forwards;
 }
+
+/* SERVICES — alternating layout */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+.service-row.reverse { direction: rtl; }
+.service-row.reverse > * { direction: ltr; }
+.service-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-height: 440px;
+}
+.service-row__body {
+  padding: 56px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg, #fff);
+}
+.service-row__label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent, #555);
+  margin-bottom: 12px;
+}
+.service-row__title {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--primary, #111);
+}
+.service-row__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text, #555);
+  margin-bottom: 28px;
+}
+.service-row__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent, #555);
+  text-decoration: none;
+}
+.service-row__link:hover { gap: 10px; }
+@media (max-width: 768px) {
+  .service-row { grid-template-columns: 1fr; }
+  .service-row.reverse { direction: ltr; }
+  .service-row__img { min-height: 260px; }
+  .service-row__body { padding: 36px 28px; }
+}
+
 </style>
 
 
@@ -914,32 +969,35 @@ nav a, header a, .nav a { font-size: 13px !important; }
     <h2 class="section-title">Tout ce dont vous avez besoin pour réussir</h2>
     <p class="section-subtitle">Des outils concrets et une communauté bienveillante pour chaque étape de votre parcours entrepreneurial au Québec.</p>
   </div>
-  <div class="{{MAIN_SERVICE}}-grid">
-    <div class="service-card fade-up">
-      <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&q=85&auto=format&fit=crop" alt="Rencontres réseau femmes">
-      <div class="service-card-body">
-        <h3>Rencontres mensuelles en personne</h3>
-        <p>Des événements de réseautage organisés chaque mois dans 8 villes du Québec — Montréal, Québec, Sherbrooke, Gatineau, Trois-Rivières, Saguenay, Drummondville et Rimouski.</p>
-        <a href="#rejoindre" class="card-link">Voir le calendrier →</a>
+  <div class="services-grid">
+    <div class="service-row">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&q=85&auto=format&fit=crop" alt="Rencontres réseau femmes">
+      <div class="service-row__body">
+        <div class="service-row__label">Rencontres mensuelles en personne</div>
+        <h3 class="service-row__title">Rencontres mensuelles en personne</h3>
+        <p class="service-row__desc">Des événements de réseautage organisés chaque mois dans 8 villes du Québec — Montréal, Québec, Sherbrooke, Gatineau, Trois-Rivières, Saguenay, Drummondville et Rimouski.</p>
+        <a href="#rejoindre" class="service-row__link">Voir le calendrier → <span>→</span></a>
       </div>
     </div>
-    <div class="service-card fade-up" style="animation-delay:0.1s">
-      <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=85&auto=format&fit=crop" alt="Programme mentorat femmes entrepreneures">
-      <div class="service-card-body">
-        <h3>Programme de mentorat vérifié</h3>
-        <p>Soyez jumelée avec une mentore ayant plus de 5 ans d'expérience entrepreneuriale. Notre processus de sélection rigoureux assure des pairages qui génèrent de vrais résultats.</p>
-        <a href="#rejoindre" class="card-link">Demander une mentore →</a>
+    <div class="service-row reverse">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=85&auto=format&fit=crop" alt="Programme mentorat femmes entrepreneures">
+      <div class="service-row__body">
+        <div class="service-row__label">Programme de mentorat vérifié</div>
+        <h3 class="service-row__title">Programme de mentorat vérifié</h3>
+        <p class="service-row__desc">Soyez jumelée avec une mentore ayant plus de 5 ans d'expérience entrepreneuriale. Notre processus de sélection rigoureux assure des pairages qui génèrent de vrais résultats.</p>
+        <a href="#rejoindre" class="service-row__link">Demander une mentore → <span>→</span></a>
       </div>
     </div>
-    <div class="service-card fade-up" style="animation-delay:0.2s">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=85&auto=format&fit=crop" alt="Bibliothèque ressources entrepreneuriales">
-      <div class="service-card-body">
-        <h3>Bibliothèque de ressources</h3>
-        <p>Accédez à plus de 140 guides, gabarits et formations en ligne — du plan d'affaires à la stratégie numérique, le tout en français et adapté au marché québécois.</p>
-        <a href="#rejoindre" class="card-link">Explorer les ressources →</a>
+    <div class="service-row">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=85&auto=format&fit=crop" alt="Bibliothèque ressources entrepreneuriales">
+      <div class="service-row__body">
+        <div class="service-row__label">Bibliothèque de ressources</div>
+        <h3 class="service-row__title">Bibliothèque de ressources</h3>
+        <p class="service-row__desc">Accédez à plus de 140 guides, gabarits et formations en ligne — du plan d'affaires à la stratégie numérique, le tout en français et adapté au marché québécois.</p>
+        <a href="#rejoindre" class="service-row__link">Explorer les ressources → <span>→</span></a>
       </div>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- SOCIAL PROOF -->

@@ -207,12 +207,6 @@ body {
   font-size: 16px;
 }
 
-/* {{MAIN_SERVICE}} */
-.{{MAIN_SERVICE}} {
-  padding: 100px 80px;
-  background: var(--surface);
-}
-
 .section-header {
   text-align: center;
   margin-bottom: 64px;
@@ -245,14 +239,6 @@ body {
   max-width: 560px;
   margin: 0 auto;
   font-weight: 400;
-}
-
-.{{MAIN_SERVICE}}-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .service-card {
@@ -703,11 +689,6 @@ body {
     padding: 56px 24px;
   }
 
-  .{{MAIN_SERVICE}}-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
   .proof-layout {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -751,6 +732,79 @@ body {
     padding: 28px 24px;
   }
 }
+
+/* SERVICES — alternating layout */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+.service-row.reverse { direction: rtl; }
+.service-row.reverse > * { direction: ltr; }
+.service-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-height: 440px;
+}
+.service-row__body {
+  padding: 56px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg, #fff);
+}
+.service-row__label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent, #555);
+  margin-bottom: 12px;
+}
+.service-row__title {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--primary, #111);
+}
+.service-row__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text, #555);
+  margin-bottom: 28px;
+}
+.service-row__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent, #555);
+  text-decoration: none;
+}
+.service-row__link:hover { gap: 10px; }
+@media (max-width: 768px) {
+  .service-row { grid-template-columns: 1fr; }
+  .service-row.reverse { direction: ltr; }
+  .service-row__img { min-height: 260px; }
+  .service-row__body { padding: 36px 28px; }
+}
+
 </style>
 
 
@@ -868,32 +922,35 @@ nav a, header a, .nav a { font-size: 13px !important; }
     <h2>Réparations courantes, prix clairs, travail bien fait</h2>
     <p>Chaque service inclut un rapport d'inspection photo et un prix forfaitaire sans surprise.</p>
   </div>
-  <div class="{{MAIN_SERVICE}}-grid">
-    <div class="service-card fade-up">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&auto=format&fit=crop" alt="Entretien mécanique général">
-      <div class="service-card-body">
-        <h3>Entretien et vidange d'huile</h3>
-        <p>Changement d'huile conventionnelle ou synthétique, remplacement de filtres et inspection des niveaux de liquides. On vous remet sur la route en moins de 30 minutes.</p>
-        <span class="service-price">Prix forfaitaire · Aucun frais caché</span>
+  <div class="services-grid">
+    <div class="service-row">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&auto=format&fit=crop" alt="Entretien mécanique général">
+      <div class="service-row__body">
+        <div class="service-row__label">Entretien et vidange d'huile</div>
+        <h3 class="service-row__title">Entretien et vidange d'huile</h3>
+        <p class="service-row__desc">Changement d'huile conventionnelle ou synthétique, remplacement de filtres et inspection des niveaux de liquides. On vous remet sur la route en moins de 30 minutes.</p>
+        <a href="#booking" class="service-row__link">Learn more → <span>→</span></a>
       </div>
     </div>
-    <div class="service-card fade-up">
-      <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200&q=85&auto=format&fit=crop" alt="Réparation de freins">
-      <div class="service-card-body">
-        <h3>Freins et suspension</h3>
-        <p>Plaquettes, disques, étriers et amortisseurs — tout est mesuré et photographié avant le travail. Vous approuvez chaque réparation depuis votre cellulaire.</p>
-        <span class="service-price">Prix forfaitaire · Rapport photo inclus</span>
+    <div class="service-row reverse">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200&q=85&auto=format&fit=crop" alt="Réparation de freins">
+      <div class="service-row__body">
+        <div class="service-row__label">Freins et suspension</div>
+        <h3 class="service-row__title">Freins et suspension</h3>
+        <p class="service-row__desc">Plaquettes, disques, étriers et amortisseurs — tout est mesuré et photographié avant le travail. Vous approuvez chaque réparation depuis votre cellulaire.</p>
+        <a href="#booking" class="service-row__link">Learn more → <span>→</span></a>
       </div>
     </div>
-    <div class="service-card fade-up">
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200&q=85&auto=format&fit=crop" alt="Diagnostic moteur">
-      <div class="service-card-body">
-        <h3>Diagnostic et inspection</h3>
-        <p>Diagnostic électronique complet, inspection de sécurité SAAQ et vérification pré-achat. On trouve le problème, on vous l'explique, et vous décidez.</p>
-        <span class="service-price">Prix forfaitaire · Navette disponible</span>
+    <div class="service-row">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200&q=85&auto=format&fit=crop" alt="Diagnostic moteur">
+      <div class="service-row__body">
+        <div class="service-row__label">Diagnostic et inspection</div>
+        <h3 class="service-row__title">Diagnostic et inspection</h3>
+        <p class="service-row__desc">Diagnostic électronique complet, inspection de sécurité SAAQ et vérification pré-achat. On trouve le problème, on vous l'explique, et vous décidez.</p>
+        <a href="#booking" class="service-row__link">Learn more → <span>→</span></a>
       </div>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- SOCIAL PROOF -->

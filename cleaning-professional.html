@@ -220,12 +220,6 @@ body {
   font-size: 16px;
 }
 
-/* {{MAIN_SERVICE}} */
-.{{MAIN_SERVICE}} {
-  padding: 100px 80px;
-  background: var(--surface);
-}
-
 .section-header {
   text-align: center;
   max-width: 600px;
@@ -258,14 +252,6 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
-}
-
-.{{MAIN_SERVICE}}-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .service-card {
@@ -754,14 +740,6 @@ body {
     display: none;
   }
 
-  .{{MAIN_SERVICE}} {
-    padding: 56px 24px;
-  }
-
-  .{{MAIN_SERVICE}}-grid {
-    grid-template-columns: 1fr;
-  }
-
   .social-proof {
     padding: 56px 24px;
   }
@@ -830,6 +808,79 @@ body {
     padding: 28px;
   }
 }
+
+/* SERVICES — alternating layout */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+.service-row.reverse { direction: rtl; }
+.service-row.reverse > * { direction: ltr; }
+.service-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-height: 440px;
+}
+.service-row__body {
+  padding: 56px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg, #fff);
+}
+.service-row__label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent, #555);
+  margin-bottom: 12px;
+}
+.service-row__title {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--primary, #111);
+}
+.service-row__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text, #555);
+  margin-bottom: 28px;
+}
+.service-row__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent, #555);
+  text-decoration: none;
+}
+.service-row__link:hover { gap: 10px; }
+@media (max-width: 768px) {
+  .service-row { grid-template-columns: 1fr; }
+  .service-row.reverse { direction: ltr; }
+  .service-row__img { min-height: 260px; }
+  .service-row__body { padding: 36px 28px; }
+}
+
 </style>
 
 
@@ -947,32 +998,35 @@ nav a, header a, .nav a { font-size: 13px !important; }
     <h2>Cleaning That Fits Your Schedule and Your Standards</h2>
     <p>Whether you need weekly upkeep or a one-time deep scrub, we handle every detail so you never have to worry about it.</p>
   </div>
-  <div class="{{MAIN_SERVICE}}-grid">
-    <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=85&auto=format&fit=crop" alt="Recurring weekly and biweekly cleaning">
-      <div class="service-card-body">
-        <h3>Recurring Weekly and Biweekly Cleans</h3>
-        <p>Set it and forget it. Our trained teams arrive on your chosen day, every week or every two weeks, keeping your home consistently fresh with eco-friendly products.</p>
-        <a href="#booking" class="card-link">Schedule recurring visits <span>→</span></a>
+  <div class="services-grid">
+    <div class="service-row">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=85&auto=format&fit=crop" alt="Recurring weekly and biweekly cleaning">
+      <div class="service-row__body">
+        <div class="service-row__label">Recurring Weekly and Biweekly Cleans</div>
+        <h3 class="service-row__title">Recurring Weekly and Biweekly Cleans</h3>
+        <p class="service-row__desc">Set it and forget it. Our trained teams arrive on your chosen day, every week or every two weeks, keeping your home consistently fresh with eco-friendly products.</p>
+        <a href="#booking" class="service-row__link">Schedule recurring visits→ <span>→</span></a>
       </div>
     </div>
-    <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1200&q=85&auto=format&fit=crop" alt="Deep cleaning service">
-      <div class="service-card-body">
-        <h3>Deep Cleaning Sessions</h3>
-        <p>From baseboards to ceiling fans, our deep clean covers every overlooked surface. Perfect for seasonal refreshes or getting your space back to showroom condition.</p>
-        <a href="#booking" class="card-link">Book a deep clean <span>→</span></a>
+    <div class="service-row reverse">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1200&q=85&auto=format&fit=crop" alt="Deep cleaning service">
+      <div class="service-row__body">
+        <div class="service-row__label">Deep Cleaning Sessions</div>
+        <h3 class="service-row__title">Deep Cleaning Sessions</h3>
+        <p class="service-row__desc">From baseboards to ceiling fans, our deep clean covers every overlooked surface. Perfect for seasonal refreshes or getting your space back to showroom condition.</p>
+        <a href="#booking" class="service-row__link">Book a deep clean→ <span>→</span></a>
       </div>
     </div>
-    <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1200&q=85&auto=format&fit=crop" alt="Move-in move-out cleaning">
-      <div class="service-card-body">
-        <h3>Move-In and Move-Out Cleans</h3>
-        <p>Handing over keys or welcoming new tenants? We leave every room spotless, ensuring security deposits are returned and first impressions are flawless.</p>
-        <a href="#booking" class="card-link">Get a move clean quote <span>→</span></a>
+    <div class="service-row">
+      <img class="service-row__img" src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1200&q=85&auto=format&fit=crop" alt="Move-in move-out cleaning">
+      <div class="service-row__body">
+        <div class="service-row__label">Move-In and Move-Out Cleans</div>
+        <h3 class="service-row__title">Move-In and Move-Out Cleans</h3>
+        <p class="service-row__desc">Handing over keys or welcoming new tenants? We leave every room spotless, ensuring security deposits are returned and first impressions are flawless.</p>
+        <a href="#booking" class="service-row__link">Get a move clean quote→ <span>→</span></a>
       </div>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- SOCIAL PROOF -->
