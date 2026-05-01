@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café Delyssa | Saveurs Authentiques à Montréal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #2A1F22;
+  --primary: #674715;
+  --accent: #C4A35A;
+  --surface: #4F3D41;
+  --text-on-dark: #FFFFFF;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-on-dark);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 72px;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.nav.scrolled {
+  background: rgba(42, 31, 34, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 60px;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  justify-self: end;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary:hover {
+  background: #7a5518;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(103, 71, 21, 0.45);
+}
+
+.btn-secondary {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 10px 22px;
+  display: inline-block;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: rgba(196, 163, 90, 0.1);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 80px;
+  position: relative;
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(42,31,34,0.78) 60%, rgba(42,31,34,0.95) 100%),
+    url('https://images.pexels.com/photos/35419307/pexels-photo-35419307.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 720px;
+  z-index: 2;
+}
+
+.hero-badge {
+  position: absolute;
+  top: -340px;
+  right: -200px;
+  background: var(--primary);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(103, 71, 21, 0.45);
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero h1 span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 560px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* MENU SECTION */
+.section-menu {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  background: var(--bg);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(196, 163, 90, 0.12);
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  border-color: rgba(196, 163, 90, 0.3);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-card-body {
+  padding: 24px;
+}
+
+.menu-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.menu-card-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.menu-card-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* EXPERIENCE SECTION */
+.section-experience {
+  padding: 100px 80px;
+  background: var(--bg);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.experience-img-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.experience-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.experience-content .section-label {
+  text-align: left;
+}
+
+.experience-content .section-title {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.experience-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.experience-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(196, 163, 90, 0.18);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* FIND US SECTION */
+.section-find {
+  padding: 100px 80px;
+  background: var(--surface);
+}
+
+.find-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.find-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.find-address {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 32px;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table tr {
+  border-bottom: 1px solid rgba(196, 163, 90, 0.1);
+}
+
+.hours-table td {
+  padding: 12px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hours-table td:first-child {
+  font-weight: 600;
+  color: var(--text-on-dark);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+}
+
+.map-placeholder {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(196, 163, 90, 0.15);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  padding: 40px;
+}
+
+.map-placeholder svg {
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.map-placeholder .map-text {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+.map-placeholder .map-address {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 8px;
+}
+
+/* CTA BANNER */
+.section-cta {
+  padding: 80px;
+  background: var(--primary);
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: white;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.cta-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.btn-cta-light {
+  background: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-cta-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.cta-link {
+  display: inline-block;
+  margin-left: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  transition: border-color 0.2s;
+}
+
+.cta-link:hover {
+  border-color: white;
+}
+
+/* FOOTER */
+.footer {
+  padding: 80px 80px 40px;
+  background: var(--bg);
+  border-top: 1px solid rgba(196, 163, 90, 0.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(196, 163, 90, 0.1);
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer-contact-item {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 0 24px 64px;
+  }
+
+  .hero-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 24px;
+    display: inline-flex;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .section-menu,
+  .section-experience,
+  .section-find {
+    padding: 56px 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .experience-img-wrap {
+    min-height: 300px;
+  }
+
+  .find-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .section-cta {
+    padding: 56px 24px;
+  }
+
+  .cta-link {
+    display: block;
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  .footer {
+    padding: 56px 24px 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .experience-stats {
+    gap: 24px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+
+<style id="studio-polish">
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+
+h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
+h4, h5, h6 { font-size: 1rem !important; }
+
+body, p, li, span, a { font-size: 15px; line-height: 1.55; }
+
+a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
+button, button[class*="btn"], input[type="submit"], input[type="button"] {
+  padding: 9px 18px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.35 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  box-shadow: none !important;
+  transform: none !important;
+  gap: 6px !important;
+}
+
+nav a, header a, .nav a { font-size: 13px !important; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.05rem !important; }
+  body, p, li, span { font-size: 14.5px !important; }
+  section, .hero, [class*="hero"], [class*="Hero"] {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+  }
+  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
+    padding: 9px 16px !important; font-size: 13px !important;
+  }
+  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
+    display: none !important;
+  }
+  nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
+  [class*="hero-buttons"], [class*="hero-content"] {
+    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
+  }
+  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
+    position: static !important; transform: none !important;
+  }
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  img { max-width: 100% !important; height: auto !important; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="logo-icon"></div>
+      Café Delyssa
+    </div>
+    <ul class="nav-links">
+      <li><a href="#menu">Notre Menu</a></li>
+      <li><a href="#experience">Notre Histoire</a></li>
+      <li><a href="#find">Nous Trouver</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#find" class="btn-primary">Venir Nous Voir</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Saveurs Authentiques
+    </div>
+    <h1>Goûtez<br>l'art de la <span>saveur</span></h1>
+    <p class="hero-sub">Sandwichs généreux, gaufres indulgentes, boissons signature. Chaque assiette chez Café Delyssa est une invitation à savourer l'instant.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn-primary" style="padding:14px 30px;font-size:15px;">Voir le Menu</a>
+      <a href="#find" class="btn-secondary">Nous Trouver</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR MENU -->
+<section class="section-menu" id="menu">
+  <div class="section-header fade-up">
+    <div class="section-label">Notre Menu</div>
+    <h2 class="section-title">Trois incontournables à découvrir</h2>
+    <p class="section-desc">Des créations qui font revenir — préparées avec soin, servies avec générosité.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card fade-up">
+      <img class="menu-card-img" src="https://images.pexels.com/photos/34495427/pexels-photo-34495427.jpeg?auto=compress&cs=tinysrgb&w=800&h=520&fit=crop" alt="Sous-marin au Bœuf Fumé">
+      <div class="menu-card-body">
+        <div class="menu-card-name">Sous-marin au Bœuf Fumé</div>
+        <div class="menu-card-desc">Généreux, fondant, irrésistible — bœuf fumé sur baguette croustillante, servi à la manière Delyssa</div>
+        <div class="menu-card-price">14,99 $</div>
+      </div>
+    </div>
+    <div class="menu-card fade-up">
+      <img class="menu-card-img" src="https://images.pexels.com/photos/32612248/pexels-photo-32612248.jpeg?auto=compress&cs=tinysrgb&w=800&h=520&fit=crop" alt="Boissons Signature">
+      <div class="menu-card-body">
+        <div class="menu-card-name">Boissons Signature</div>
+        <div class="menu-card-desc">Jus pressés, cafés glacés et créations maison — chaque verre porte la signature Delyssa</div>
+        <div class="menu-card-price">8,69 $</div>
+      </div>
+    </div>
+    <div class="menu-card fade-up">
+      <img class="menu-card-img" src="https://images.pexels.com/photos/30279797/pexels-photo-30279797.jpeg?auto=compress&cs=tinysrgb&w=800&h=520&fit=crop" alt="Gaufre Pistache & Chocolat">
+      <div class="menu-card-body">
+        <div class="menu-card-name">Gaufre Pistache & Chocolat</div>
+        <div class="menu-card-desc">Gaufre dorée nappée de crème pistache et chocolat, couronnée d'une touche de crème fouettée</div>
+        <div class="menu-card-price">17,99 $</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIENCE -->
+<section class="section-experience" id="experience">
+  <div class="experience-grid">
+    <div class="experience-img-wrap fade-up">
+      <img src="https://images.pexels.com/photos/33617639/pexels-photo-33617639.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&fit=crop" alt="Intérieur Café Delyssa">
+    </div>
+    <div class="experience-content fade-up">
+      <div class="section-label">Notre Histoire</div>
+      <h2 class="section-title">Un café qui mérite qu'on s'attarde</h2>
+      <p class="experience-text">Café Delyssa est né d'une passion simple : offrir des saveurs authentiques dans un cadre qui invite à s'installer. Chaque détail de notre menu est pensé pour vous surprendre — du premier coup d'œil à la dernière bouchée.</p>
+      <p class="experience-text">Nos recettes sont généreuses, nos boissons sont créatives, et notre ambiance est unique. Venez comme vous êtes — repartez avec l'envie de revenir.</p>
+      <div class="experience-stats">
+        <div class="stat">
+          <div class="stat-number">4.8★</div>
+          <div class="stat-label">sur Google</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Fait avec soin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="section-find" id="find">
+  <div class="section-header fade-up">
+    <div class="section-label">Nous Trouver</div>
+    <h2 class="section-title">Votre table vous attend</h2>
+  </div>
+  <div class="find-grid">
+    <div class="find-info fade-up">
+      <h3>Adresse</h3>
+      <div class="find-address">
+        [Adresse à confirmer]<br>
+        Montréal, QC<br>
+        [Métro le plus proche]
+      </div>
+      <h3>Heures d'ouverture</h3>
+      <table class="hours-table">
+        <tr><td>Lundi</td><td>8 h – 18 h</td></tr>
+        <tr><td>Mardi</td><td>8 h – 18 h</td></tr>
+        <tr><td>Mercredi</td><td>8 h – 19 h</td></tr>
+        <tr><td>Jeudi</td><td>8 h – 19 h</td></tr>
+        <tr><td>Vendredi</td><td>8 h – 20 h</td></tr>
+        <tr><td>Samedi</td><td>9 h – 20 h</td></tr>
+        <tr><td>Dimanche</td><td>9 h – 17 h</td></tr>
+      </table>
+    </div>
+    <div class="map-placeholder fade-up">
+      <svg width="48" height="48" viewBox="0 0 24 24" stroke="var(--text-on-dark)" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <div class="map-text">Google Maps</div>
+      <div class="map-address">Café Delyssa, Montréal</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="section-cta">
+  <div class="cta-inner">
+    <h2 class="cta-title">Goûtez la différence Delyssa.</h2>
+    <p class="cta-desc">Une expérience gourmande qui commence dès que vous entrez. Venez découvrir pourquoi nos habitués ne repartent jamais sans sourire.</p>
+    <a href="#find" class="btn-cta-light">Nous Trouver</a>
+    <a href="#menu" class="cta-link">Voir le Menu →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Café Delyssa</div>
+      <p class="footer-tagline">Saveurs authentiques, ambiance unique. Un café à Montréal où chaque visite devient un souvenir.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#menu">Notre Menu</a></li>
+        <li><a href="#experience">Notre Histoire</a></li>
+        <li><a href="#find">Nous Trouver</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">[Adresse à confirmer]<br>Montréal, QC</div>
+      <div class="footer-contact-item">[Téléphone à confirmer]</div>
+      <div class="footer-contact-item">[Email à confirmer]</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Café Delyssa. Tous droits réservés.
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+const faders = document.querySelectorAll('.fade-up');
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+faders.forEach(f => appearOnScroll.observe(f));
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
