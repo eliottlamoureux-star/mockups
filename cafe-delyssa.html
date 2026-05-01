@@ -165,9 +165,11 @@ a {
 }
 
 .hero-badge {
-  position: absolute;
-  top: -340px;
-  right: -200px;
+  position: relative;
+  top: auto;
+  right: auto;
+  display: inline-flex;
+  margin-bottom: 28px;
   background: var(--primary);
   color: white;
   padding: 14px 24px;
@@ -703,56 +705,14 @@ a {
 <style id="studio-polish">
 html, body { overflow-x: hidden !important; max-width: 100vw !important; }
 
-h1 { font-size: clamp(1.6rem, 4.2vw, 2.25rem) !important; line-height: 1.15 !important; letter-spacing: -0.01em !important; }
-h2 { font-size: clamp(1.25rem, 3vw, 1.6rem) !important; line-height: 1.25 !important; }
-h3 { font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important; line-height: 1.3 !important; }
-h4, h5, h6 { font-size: 1rem !important; }
-
-body, p, li, span, a { font-size: 15px; line-height: 1.55; }
-
-a[class*="btn"], a[class*="Btn"], a[class*="cta"], a[class*="CTA"],
-button, button[class*="btn"], input[type="submit"], input[type="button"] {
-  padding: 9px 18px !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  border-radius: 8px !important;
-  letter-spacing: 0.01em !important;
-  line-height: 1.35 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: max-content !important;
-  box-shadow: none !important;
-  transform: none !important;
-  gap: 6px !important;
-}
+body, p, li { font-size: 15px; line-height: 1.55; }
 
 nav a, header a, .nav a { font-size: 13px !important; }
 
 @media (max-width: 640px) {
-  h1 { font-size: 1.55rem !important; line-height: 1.2 !important; }
-  h2 { font-size: 1.2rem !important; }
-  h3 { font-size: 1.05rem !important; }
   body, p, li, span { font-size: 14.5px !important; }
-  section, .hero, [class*="hero"], [class*="Hero"] {
-    padding-top: 28px !important; padding-bottom: 28px !important;
-  }
-  a[class*="btn"], a[class*="cta"], button, input[type="submit"] {
-    padding: 9px 16px !important; font-size: 13px !important;
-  }
-  nav ul, .nav-links, [class*="nav-center"], [class*="nav-menu"] {
-    display: none !important;
-  }
+  nav ul, .nav-links { display: none !important; }
   nav, header { flex-wrap: wrap !important; gap: 8px !important; padding-left: 16px !important; padding-right: 16px !important; }
-  [class*="hero"] [class*="row"], [class*="hero"] [class*="grid"],
-  [class*="hero-buttons"], [class*="hero-content"] {
-    flex-direction: column !important; grid-template-columns: 1fr !important; align-items: flex-start !important;
-  }
-  [class*="hero"] [class*="badge"], [class*="hero"] [class*="pill"], [class*="hero"] [class*="tag"] {
-    position: static !important; transform: none !important;
-  }
   section { padding-left: 16px !important; padding-right: 16px !important; }
   img { max-width: 100% !important; height: auto !important; }
 }
@@ -924,7 +884,7 @@ nav a, header a, .nav a { font-size: 13px !important; }
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; 2025 Café Delyssa. Tous droits réservés.
+    &copy; 2026 Café Delyssa. Tous droits réservés.
   </div>
 </footer>
 
