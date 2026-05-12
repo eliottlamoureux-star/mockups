@@ -69,6 +69,7 @@ a {
   height: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
 }
 
 .nav-brand {
@@ -81,15 +82,18 @@ a {
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 32px;
   list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-links a {
   color: rgba(255,255,255,0.75);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: color .2s;
 }
@@ -560,6 +564,119 @@ section {
   padding: 100px 60px;
 }
 
+/* Google Reviews Carousel */
+.reviews-carousel-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  padding: 8px 0 20px;
+}
+
+.reviews-carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: reviews-scroll 22s linear infinite;
+}
+
+.reviews-carousel-track:hover { animation-play-state: paused; }
+
+@keyframes reviews-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.google-review-card {
+  background: var(--white);
+  padding: 28px 26px;
+  border-radius: 2px;
+  position: relative;
+  width: 320px;
+  flex-shrink: 0;
+  border-top: 3px solid var(--gold);
+}
+
+.google-review-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.google-review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  flex-shrink: 0;
+}
+
+.google-review-meta { flex: 1; }
+.google-review-name { font-size: 13px; font-weight: 700; color: var(--black); }
+.google-review-via { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #888; margin-top: 2px; }
+
+.google-logo-inline { display: flex; align-items: center; gap: 1px; font-size: 11px; font-weight: 700; }
+.google-logo-inline .g-b { color: #4285F4; }
+.google-logo-inline .g-r { color: #EA4335; }
+.google-logo-inline .g-y { color: #FBBC05; }
+.google-logo-inline .g-g { color: #34A853; }
+
+.google-review-stars-row { color: #F5C400; font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; }
+
+.google-review-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.reviews-google-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 44px;
+  max-width: 1200px;
+}
+
+.reviews-google-badge-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 14px 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.reviews-google-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+}
+
+.reviews-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1;
+}
+
+.reviews-stars-big { color: #F5C400; font-size: 18px; letter-spacing: 2px; }
+.reviews-count { font-size: 12px; color: #888; margin-top: 2px; }
+
 .reviews-header {
   text-align: center;
   max-width: 1200px;
@@ -980,8 +1097,8 @@ section {
       <li><a href="#about">About</a></li>
       <li><a href="#services">Our Pieces</a></li>
       <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#visit" class="nav-cta">Visit Us</a></li>
     </ul>
+    <a href="#visit" class="nav-cta">Visit Us</a>
   </div>
 </nav>
 
@@ -1172,51 +1289,134 @@ section {
     <div class="gold-line" style="margin:0 auto 24px;"></div>
     <h2 class="section-title">A Perfect 5.0</h2>
   </div>
-  <div class="rating-display">
-    <div class="rating-score">5.0</div>
-    <div class="rating-detail">
-      <div class="rating-stars">★★★★★</div>
-      <div class="rating-meta">21 Google Reviews · Perfect Score</div>
+  <div class="reviews-google-badge">
+    <div class="reviews-google-badge-inner">
+      <div class="reviews-google-logo">
+        <span style="color:#4285F4;font-weight:800;">G</span><span style="color:#EA4335;font-weight:800;">o</span><span style="color:#FBBC05;font-weight:800;">o</span><span style="color:#4285F4;font-weight:800;">g</span><span style="color:#34A853;font-weight:800;">l</span><span style="color:#EA4335;font-weight:800;">e</span>
+      </div>
+      <div style="width:1px;height:40px;background:rgba(0,0,0,0.1);"></div>
+      <div class="reviews-score">5.0</div>
+      <div>
+        <div class="reviews-stars-big">★★★★★</div>
+        <div class="reviews-count">21 reviews · Perfect Score</div>
+      </div>
     </div>
   </div>
-  <div class="reviews-grid">
 
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"I came in with a rough sketch of what I wanted for my fiancée's engagement ring. The team brought it to life better than I could have imagined. The craftsmanship is flawless — she cries every time someone asks about it."</p>
-      <div class="review-author">
-        <div class="review-avatar">M</div>
-        <div>
-          <div class="review-name">Marcus T.</div>
-          <div class="review-date">Google Review · Verified</div>
+  <div class="reviews-carousel-wrap">
+    <div class="reviews-carousel-track">
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">M</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Marcus T.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
         </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"The team brought my sketch to life better than I could have imagined. The craftsmanship is flawless — she cries every time someone asks about it."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">D</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Diana R.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"Best jewelry shop in all of downtown Miami. Got it done in less than a week. Incredible quality, incredible price."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">J</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">James A.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"Walking distance from my office. They guided me without pressure. The result was stunning. Don't sleep on this place."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">S</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Sofia M.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"I had a vintage ring resized perfectly. You can't even tell it was altered. Honest pricing and super fast turnaround."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">R</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Rafael V.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"Exceptional craftsmanship and fair prices. The gem of Miami's jewelry district. My go-to for everything custom."</p>
+      </div>
+      <!-- duplicate set for seamless loop -->
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">M</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Marcus T.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"The team brought my sketch to life better than I could have imagined. The craftsmanship is flawless — she cries every time someone asks about it."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">D</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Diana R.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"Best jewelry shop in all of downtown Miami. Got it done in less than a week. Incredible quality, incredible price."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">J</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">James A.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"Walking distance from my office. They guided me without pressure. The result was stunning. Don't sleep on this place."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">S</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Sofia M.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"I had a vintage ring resized perfectly. You can't even tell it was altered. Honest pricing and super fast turnaround."</p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-header">
+          <div class="google-review-avatar">R</div>
+          <div class="google-review-meta">
+            <div class="google-review-name">Rafael V.</div>
+            <div class="google-review-via"><span style="color:#4285F4;font-weight:800;font-size:11px;">G</span><span style="color:#EA4335;font-weight:800;font-size:11px;">o</span><span style="color:#FBBC05;font-weight:800;font-size:11px;">o</span><span style="color:#4285F4;font-weight:800;font-size:11px;">g</span><span style="color:#34A853;font-weight:800;font-size:11px;">l</span><span style="color:#EA4335;font-weight:800;font-size:11px;">e</span>&nbsp;Review</div>
+          </div>
+        </div>
+        <div class="google-review-stars-row">★★★★★</div>
+        <p class="google-review-text">"Exceptional craftsmanship and fair prices. The gem of Miami's jewelry district. My go-to for everything custom."</p>
       </div>
     </div>
-
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Best jewelry shop in all of downtown Miami. I've been to a dozen places looking for a custom gold bracelet and nobody could do what I wanted. 305 Miami Jewelry got it done in less than a week. Incredible quality, incredible price."</p>
-      <div class="review-author">
-        <div class="review-avatar">D</div>
-        <div>
-          <div class="review-name">Diana R.</div>
-          <div class="review-date">Google Review · Verified</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Walking distance from my office and now I'm a regular. The team knows their craft inside and out — they guided me through every option for my anniversary piece without any pressure. The result was stunning. Don't sleep on this place."</p>
-      <div class="review-author">
-        <div class="review-avatar">J</div>
-        <div>
-          <div class="review-name">James A.</div>
-          <div class="review-date">Google Review · Verified</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1335,7 +1535,7 @@ section {
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2025 305 Miami Jewelry. All rights reserved.</span>
+    <span class="footer-copy">© 2026 305 Miami Jewelry. All rights reserved.</span>
     <span class="footer-credit">Site by <a href="https://studio-montreal.ca" target="_blank" rel="noopener">Studio</a></span>
   </div>
 </footer>
