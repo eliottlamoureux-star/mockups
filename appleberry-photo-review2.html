@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pick the right iPhone shot</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 48px 32px 64px;
+      color: #111;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .card-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #444;
+      letter-spacing: 0.2px;
+    }
+
+    .pexels-id {
+      font-size: 11px;
+      color: #999;
+      margin-top: -8px;
+    }
+
+    /* iPhone card frame */
+    .phone-card {
+      width: 280px;
+      height: 560px;
+      background: #222222;
+      border: 4px solid #6C6C6C;
+      border-radius: 30px;
+      padding: 6px;
+      box-shadow:
+        0 0 #0000004d,
+        0 9px 20px #0000004a,
+        0 37px 37px #00000042,
+        0 84px 50px #00000026;
+      overflow: hidden;
+    }
+
+    .phone-card-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .phone-card-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pick the right iPhone shot</h1>
+  <p class="subtitle">Full-device photos — entire phone visible, crack clearly shown. Portrait card format.</p>
+
+  <div class="grid">
+
+    <!-- Photo 1 — Pexels 16658250 -->
+    <div class="card-wrap">
+      <span class="card-label">Photo 1</span>
+      <span class="pexels-id">ID: 16658250</span>
+      <div class="phone-card">
+        <div class="phone-card-inner">
+          <img
+            src="https://images.pexels.com/photos/16658250/pexels-photo-16658250.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+            alt="Cracked smartphone on concrete pavement"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo 2 — Pexels 16658255 -->
+    <div class="card-wrap">
+      <span class="card-label">Photo 2</span>
+      <span class="pexels-id">ID: 16658255</span>
+      <div class="phone-card">
+        <div class="phone-card-inner">
+          <img
+            src="https://images.pexels.com/photos/16658255/pexels-photo-16658255.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+            alt="Cracked smartphone on textured asphalt"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo 3 — Pexels 16658257 -->
+    <div class="card-wrap">
+      <span class="card-label">Photo 3</span>
+      <span class="pexels-id">ID: 16658257</span>
+      <div class="phone-card">
+        <div class="phone-card-inner">
+          <img
+            src="https://images.pexels.com/photos/16658257/pexels-photo-16658257.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+            alt="Cracked smartphone on sunlit asphalt road"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo 4 — Pexels 10963256 — full phone held in hands -->
+    <div class="card-wrap">
+      <span class="card-label">Photo 4</span>
+      <span class="pexels-id">ID: 10963256</span>
+      <div class="phone-card">
+        <div class="phone-card-inner">
+          <img
+            src="https://images.pexels.com/photos/10963256/pexels-photo-10963256.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+            alt="Hands holding cracked smartphone against yellow backdrop"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo 5 — Pexels 196653 — iPhone on leather seat, home button visible -->
+    <div class="card-wrap">
+      <span class="card-label">Photo 5</span>
+      <span class="pexels-id">ID: 196653</span>
+      <div class="phone-card">
+        <div class="phone-card-inner">
+          <img
+            src="https://images.pexels.com/photos/196653/pexels-photo-196653.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+            alt="iPhone with cracked screen on leather car seat"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
