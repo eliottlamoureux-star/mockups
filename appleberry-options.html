@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Berry — Screen Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #0a0a0a;
+    min-height: 100vh;
+    padding: 48px 32px 64px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0a0a0a;
+    margin-bottom: 48px;
+    letter-spacing: -0.5px;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .phone {
+    width: 200px;
+    height: 410px;
+    background: linear-gradient(145deg, #2a2a2c, #1a1a1c);
+    border-radius: 32px;
+    position: relative;
+    box-shadow: 0 0 0 1px #3a3a3c, inset 0 0 0 1px rgba(255,255,255,0.07), 0 20px 60px rgba(0,0,0,0.4);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 50%; transform: translateX(-50%);
+    width: 70px; height: 20px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 50;
+  }
+  .label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0a0a0a;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Apple Berry — Screen Options</h1>
+
+<div class="grid">
+
+  <!-- A — Cracked Lock Screen -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <!-- Dark purple wallpaper -->
+        <div style="width:100%;height:100%;background:linear-gradient(170deg,#1a0a2e 0%,#2d1060 40%,#0f0520 100%);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <!-- Stars -->
+          <div style="position:absolute;inset:0;">
+            <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:40px;left:30px;opacity:0.6;"></div>
+            <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:60px;left:80px;opacity:0.5;"></div>
+            <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:55px;left:160px;opacity:0.7;"></div>
+            <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:90px;left:50px;opacity:0.4;"></div>
+            <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:110px;left:140px;opacity:0.5;"></div>
+            <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:30px;left:110px;opacity:0.6;"></div>
+          </div>
+          <!-- Time -->
+          <div style="margin-top:-60px;text-align:center;z-index:5;position:relative;">
+            <div style="font-size:64px;font-weight:200;color:#fff;line-height:1;letter-spacing:-2px;font-family:'Inter',sans-serif;">9:41</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:6px;font-weight:400;">Tuesday, January 11</div>
+          </div>
+          <!-- Crack SVG -->
+          <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:10;" viewBox="0 0 200 410" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <!-- Impact glow -->
+            <radialGradient id="glowA" cx="100" cy="290" r="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <ellipse cx="100" cy="290" rx="38" ry="30" fill="url(#glowA)"/>
+            <!-- Cracks radiating from (100, 290) -->
+            <path d="M100,290 L15,180 L8,140" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" fill="none"/>
+            <path d="M100,290 L5,300 L0,320" stroke="rgba(255,255,255,0.85)" stroke-width="1.0" fill="none"/>
+            <path d="M100,290 L40,410" stroke="rgba(255,255,255,0.85)" stroke-width="0.9" fill="none"/>
+            <path d="M100,290 L110,410 L120,410" stroke="rgba(255,255,255,0.85)" stroke-width="0.8" fill="none"/>
+            <path d="M100,290 L170,380 L200,400" stroke="rgba(255,255,255,0.85)" stroke-width="1.1" fill="none"/>
+            <path d="M100,290 L195,260 L200,240" stroke="rgba(255,255,255,0.85)" stroke-width="0.9" fill="none"/>
+            <path d="M100,290 L165,190 L180,160 L200,120" stroke="rgba(255,255,255,0.85)" stroke-width="1.0" fill="none"/>
+            <path d="M100,290 L90,200 L70,150 L80,100" stroke="rgba(255,255,255,0.85)" stroke-width="0.8" fill="none"/>
+            <!-- Secondary cracks -->
+            <path d="M55,230 L90,260 L60,300" stroke="rgba(255,255,255,0.5)" stroke-width="0.6" fill="none"/>
+            <path d="M140,240 L110,270 L145,310" stroke="rgba(255,255,255,0.5)" stroke-width="0.6" fill="none"/>
+            <path d="M80,320 L100,290 L120,330" stroke="rgba(255,255,255,0.5)" stroke-width="0.6" fill="none"/>
+            <!-- Shards near impact -->
+            <polygon points="95,285 105,280 108,292 98,295" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.7)" stroke-width="0.5"/>
+            <polygon points="88,296 97,293 94,304 85,303" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5"/>
+            <polygon points="106,295 114,291 116,302 108,304" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5"/>
+          </svg>
+          <!-- Notification hints bottom -->
+          <div style="position:absolute;bottom:60px;width:160px;left:20px;background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border-radius:14px;padding:10px 12px;z-index:20;">
+            <div style="font-size:9px;color:rgba(255,255,255,0.6);margin-bottom:3px;">Messages</div>
+            <div style="font-size:10px;color:#fff;font-weight:500;">Missed call</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="label">A — Cracked Lock Screen</div>
+  </div>
+
+  <!-- B — Repair Ready Notification -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <div style="width:100%;height:100%;background:linear-gradient(160deg,#b8cff5 0%,#c5b0e8 50%,#a8c4f0 100%);position:relative;">
+          <!-- Status bar -->
+          <div style="position:absolute;top:0;left:0;right:0;height:44px;display:flex;align-items:flex-end;padding:0 20px 6px;justify-content:space-between;z-index:30;">
+            <div style="font-size:11px;font-weight:600;color:#1a1a2e;">9:41</div>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <svg width="16" height="10" viewBox="0 0 16 10"><rect x="0" y="2" width="3" height="8" rx="0.5" fill="#1a1a2e"/><rect x="4" y="1" width="3" height="9" rx="0.5" fill="#1a1a2e"/><rect x="8" y="0" width="3" height="10" rx="0.5" fill="#1a1a2e"/></svg>
+              <svg width="15" height="10" viewBox="0 0 15 10"><rect x="0" y="1" width="13" height="8" rx="1.5" stroke="#1a1a2e" stroke-width="1" fill="none"/><rect x="1.5" y="2.5" width="9" height="5" rx="0.5" fill="#1a1a2e"/><rect x="13" y="3" width="2" height="4" rx="1" fill="#1a1a2e"/></svg>
+            </div>
+          </div>
+          <!-- Blurred wallpaper circles -->
+          <div style="position:absolute;width:150px;height:150px;background:rgba(255,255,255,0.2);border-radius:50%;top:-30px;left:-40px;filter:blur(30px);"></div>
+          <div style="position:absolute;width:120px;height:120px;background:rgba(180,160,230,0.3);border-radius:50%;bottom:80px;right:-20px;filter:blur(25px);"></div>
+          <!-- Time -->
+          <div style="position:absolute;top:55px;width:100%;text-align:center;">
+            <div style="font-size:58px;font-weight:200;color:#1a1a2e;line-height:1;letter-spacing:-2px;">9:41</div>
+            <div style="font-size:11px;color:rgba(26,26,46,0.6);margin-top:4px;">Tuesday, January 11</div>
+          </div>
+          <!-- Notification card -->
+          <div style="position:absolute;top:175px;left:12px;right:12px;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);border-radius:16px;padding:12px 12px 10px;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+            <div style="display:flex;align-items:flex-start;gap:9px;">
+              <!-- App icon -->
+              <div style="width:32px;height:32px;background:linear-gradient(135deg,#e53935,#c62828);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">🍎</div>
+              <div style="flex:1;min-width:0;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                  <div style="font-size:11px;font-weight:700;color:#1a1a2e;">Apple Berry Repair</div>
+                  <div style="font-size:10px;color:rgba(26,26,46,0.4);">now</div>
+                </div>
+                <div style="font-size:11px;color:#1a1a2e;line-height:1.4;">Your screen replacement is ready for pickup! 🎉</div>
+              </div>
+            </div>
+          </div>
+          <!-- Second notification -->
+          <div style="position:absolute;top:262px;left:12px;right:12px;background:rgba(255,255,255,0.7);backdrop-filter:blur(20px);border-radius:16px;padding:10px 12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="width:28px;height:28px;background:#1c8ef9;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">💬</div>
+              <div>
+                <div style="font-size:10px;font-weight:700;color:#1a1a2e;">Messages</div>
+                <div style="font-size:10px;color:rgba(26,26,46,0.6);">Your repair receipt</div>
+              </div>
+            </div>
+          </div>
+          <!-- Dock blur hint -->
+          <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:rgba(255,255,255,0.15);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.2);">
+            <div style="display:flex;justify-content:center;gap:14px;padding:14px 0 0;">
+              <div style="width:38px;height:38px;background:#1c8ef9;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">📱</div>
+              <div style="width:38px;height:38px;background:#28cd41;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+              <div style="width:38px;height:38px;background:#f6f6f6;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">🔍</div>
+              <div style="width:38px;height:38px;background:linear-gradient(135deg,#e53935,#c62828);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">🍎</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="label">B — Repair Ready Notification</div>
+  </div>
+
+  <!-- C — Before/After Split -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <div style="width:100%;height:100%;position:relative;display:flex;">
+          <!-- Left: BEFORE — dark cracked -->
+          <div style="width:50%;height:100%;background:#0a0a0a;position:relative;overflow:hidden;">
+            <!-- Red tint overlay -->
+            <div style="position:absolute;inset:0;background:rgba(120,0,0,0.25);z-index:2;"></div>
+            <!-- Broken screen lines -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:3;" viewBox="0 0 100 410" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50,220 L10,140 L5,80" stroke="rgba(255,255,255,0.8)" stroke-width="1" fill="none"/>
+              <path d="M50,220 L0,240 L0,280" stroke="rgba(255,255,255,0.8)" stroke-width="0.8" fill="none"/>
+              <path d="M50,220 L20,350 L30,410" stroke="rgba(255,255,255,0.8)" stroke-width="0.9" fill="none"/>
+              <path d="M50,220 L80,310 L90,410" stroke="rgba(255,255,255,0.8)" stroke-width="0.9" fill="none"/>
+              <path d="M50,220 L90,160 L100,120" stroke="rgba(255,255,255,0.8)" stroke-width="0.8" fill="none"/>
+              <path d="M50,220 L60,120 L55,60" stroke="rgba(255,255,255,0.7)" stroke-width="0.7" fill="none"/>
+              <!-- Shards -->
+              <polygon points="47,217 55,213 57,222 49,225" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.7)" stroke-width="0.4"/>
+              <radialGradient id="glowC" cx="50" cy="220" r="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="rgba(255,80,80,0.4)"/>
+                <stop offset="100%" stop-color="rgba(255,0,0,0)"/>
+              </radialGradient>
+              <ellipse cx="50" cy="220" rx="25" ry="20" fill="url(#glowC)"/>
+              <!-- Black pixels scattered -->
+              <rect x="10" y="60" width="40" height="25" fill="#000" opacity="0.7"/>
+              <rect x="5" y="180" width="25" height="15" fill="#000" opacity="0.6"/>
+              <rect x="60" y="280" width="35" height="20" fill="#000" opacity="0.5"/>
+            </svg>
+            <!-- BEFORE label -->
+            <div style="position:absolute;top:44px;left:8px;font-size:9px;font-weight:700;color:#fff;z-index:10;letter-spacing:1px;opacity:0.9;">BEFORE</div>
+          </div>
+          <!-- Right: AFTER — clean iOS -->
+          <div style="width:50%;height:100%;background:#f2f2f7;position:relative;overflow:hidden;">
+            <!-- Clean wallpaper hint -->
+            <div style="position:absolute;inset:0;background:linear-gradient(160deg,#e8f4fd 0%,#ddf0ff 50%,#f0e8ff 100%);"></div>
+            <!-- App icons grid -->
+            <div style="position:absolute;top:55px;left:6px;right:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;z-index:5;">
+              <div style="width:26px;height:26px;background:#1c8ef9;border-radius:7px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">📷</div>
+              <div style="width:26px;height:26px;background:#28cd41;border-radius:7px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">💬</div>
+              <div style="width:26px;height:26px;background:linear-gradient(135deg,#f9844a,#ee4d2a);border-radius:7px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">🗺️</div>
+              <div style="width:26px;height:26px;background:linear-gradient(135deg,#e53935,#c62828);border-radius:7px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">🍎</div>
+              <div style="width:26px;height:26px;background:#555;border-radius:7px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">⚙️</div>
+              <div style="width:26px;height:26px;background:#ff9f0a;border-radius:7px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px;">🎵</div>
+            </div>
+            <!-- AFTER label -->
+            <div style="position:absolute;top:44px;left:8px;font-size:9px;font-weight:700;color:#0a0a0a;z-index:10;letter-spacing:1px;opacity:0.8;">AFTER</div>
+            <!-- Time -->
+            <div style="position:absolute;top:22px;left:0;right:0;text-align:center;font-size:11px;font-weight:600;color:#1a1a2e;z-index:5;">9:41</div>
+          </div>
+          <!-- Dividing line -->
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;background:#fff;z-index:20;box-shadow:0 0 8px rgba(255,255,255,0.8);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="label">C — Before / After Split</div>
+  </div>
+
+  <!-- D — Low Battery + Cracked -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <div style="width:100%;height:100%;background:#0a0a0a;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <!-- Battery icon -->
+          <div style="position:relative;margin-bottom:12px;">
+            <!-- Battery outline -->
+            <svg width="60" height="28" viewBox="0 0 60 28">
+              <rect x="0" y="2" width="54" height="24" rx="4" stroke="#ff3b30" stroke-width="2" fill="none"/>
+              <rect x="54" y="9" width="6" height="10" rx="2" fill="#ff3b30"/>
+              <!-- Fill: ~8% -->
+              <rect x="3" y="5" width="4" height="18" rx="2" fill="#ff3b30"/>
+            </svg>
+          </div>
+          <!-- 10% text -->
+          <div style="font-size:22px;font-weight:600;color:#ff3b30;margin-bottom:4px;">10%</div>
+          <div style="font-size:16px;font-weight:600;color:#fff;margin-bottom:5px;">Low Battery</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">Connect to charger</div>
+          <!-- Crack overlay from bottom-right -->
+          <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 200 410" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <radialGradient id="glowD" cx="175" cy="370" r="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <ellipse cx="175" cy="370" rx="38" ry="30" fill="url(#glowD)"/>
+            <path d="M175,370 L80,260 L60,220 L30,180" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" fill="none"/>
+            <path d="M175,370 L100,300 L60,290 L10,310" stroke="rgba(255,255,255,0.8)" stroke-width="1.0" fill="none"/>
+            <path d="M175,370 L130,410" stroke="rgba(255,255,255,0.8)" stroke-width="0.9" fill="none"/>
+            <path d="M175,370 L200,330" stroke="rgba(255,255,255,0.8)" stroke-width="0.8" fill="none"/>
+            <path d="M175,370 L150,410" stroke="rgba(255,255,255,0.7)" stroke-width="0.7" fill="none"/>
+            <path d="M175,370 L200,380" stroke="rgba(255,255,255,0.7)" stroke-width="0.8" fill="none"/>
+            <!-- Secondary -->
+            <path d="M120,310 L100,340 L110,370" stroke="rgba(255,255,255,0.45)" stroke-width="0.6" fill="none"/>
+            <path d="M90,280 L110,300 L90,330" stroke="rgba(255,255,255,0.45)" stroke-width="0.5" fill="none"/>
+            <!-- Shards -->
+            <polygon points="170,365 180,361 182,372 172,375" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="label">D — Low Battery + Cracked</div>
+  </div>
+
+  <!-- E — SOS Emergency Screen -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <div style="width:100%;height:100%;background:#000;position:relative;display:flex;flex-direction:column;align-items:center;">
+          <!-- Status bar -->
+          <div style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:34px 18px 0;position:relative;z-index:5;">
+            <div style="font-size:11px;font-weight:600;color:#fff;">9:41</div>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <svg width="14" height="10" viewBox="0 0 14 10"><rect x="0" y="3" width="2.5" height="7" rx="0.4" fill="white"/><rect x="3.5" y="2" width="2.5" height="8" rx="0.4" fill="white"/><rect x="7" y="0.5" width="2.5" height="9.5" rx="0.4" fill="white"/></svg>
+              <svg width="14" height="10" viewBox="0 0 14 10"><rect x="0" y="1" width="12" height="8" rx="1.5" stroke="white" stroke-width="1" fill="none"/><rect x="1.5" y="2.5" width="7" height="5" rx="0.5" fill="white"/><rect x="12" y="3" width="2" height="4" rx="1" fill="white"/></svg>
+            </div>
+          </div>
+          <!-- Center content -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px;width:100%;margin-top:-10px;">
+            <!-- Red circle icon -->
+            <div style="width:62px;height:62px;background:#ff3b30;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:0 0 30px rgba(255,59,48,0.5);">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M10 5 L10 14 L7 17 L7 26 C7 27.1 7.9 28 9 28 L23 28 C24.1 28 25 27.1 25 26 L25 17 L22 14 L22 5 C22 3.9 21.1 3 20 3 L12 3 C10.9 3 10 3.9 10 5Z" fill="white"/>
+                <circle cx="16" cy="10" r="2" fill="#ff3b30"/>
+              </svg>
+            </div>
+            <!-- SCREEN DAMAGED -->
+            <div style="font-size:14px;font-weight:800;color:#ff3b30;letter-spacing:2px;margin-bottom:10px;">SCREEN DAMAGED</div>
+            <!-- Divider -->
+            <div style="width:120px;height:1px;background:#ff3b30;opacity:0.5;margin-bottom:14px;"></div>
+            <!-- Phone number -->
+            <div style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-bottom:5px;">(786) 953-7849</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px;">Apple Berry Repair</div>
+            <div style="font-size:11px;color:#32d74b;font-weight:600;">Open Now · Same Day Service</div>
+          </div>
+          <!-- CALL NOW button -->
+          <div style="width:calc(100% - 28px);margin:0 14px 32px;background:#ff3b30;border-radius:14px;padding:14px;text-align:center;">
+            <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:1px;">CALL NOW</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="label">E — SOS Emergency Screen</div>
+  </div>
+
+  <!-- F — Repair Progress Screen -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <div style="width:100%;height:100%;background:#1c1c1e;position:relative;display:flex;flex-direction:column;">
+          <!-- Header -->
+          <div style="background:#2c2c2e;padding:34px 16px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div style="width:28px;height:28px;background:linear-gradient(135deg,#e53935,#c62828);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🍎</div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:#fff;">Apple Berry Repair</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.4);">Order #AB-20489</div>
+            </div>
+          </div>
+          <!-- Status -->
+          <div style="padding:16px 16px 12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px;">Status</div>
+            <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:14px;">Repair in Progress</div>
+            <!-- Progress bar -->
+            <div style="background:rgba(255,255,255,0.08);border-radius:8px;height:10px;overflow:hidden;margin-bottom:5px;">
+              <div style="width:85%;height:100%;background:linear-gradient(90deg,#32d74b,#ff9f0a);border-radius:8px;"></div>
+            </div>
+            <div style="text-align:right;font-size:10px;color:rgba(255,255,255,0.4);">85% complete</div>
+          </div>
+          <!-- Checklist -->
+          <div style="padding:4px 16px;flex:1;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">Progress</div>
+            <!-- Item 1 -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:14px;">✅</div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#fff;">Screen Replacement</div>
+                <div style="font-size:10px;color:#32d74b;">Completed</div>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:14px;">✅</div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#fff;">Battery Check</div>
+                <div style="font-size:10px;color:#32d74b;">Completed</div>
+              </div>
+            </div>
+            <!-- Item 3 — in progress -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(255,159,10,0.05);border-radius:6px;padding-left:4px;">
+              <div style="font-size:14px;">⏳</div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#fff;">Charging Port</div>
+                <div style="font-size:10px;color:#ff9f0a;">In progress...</div>
+              </div>
+              <div style="margin-left:auto;width:6px;height:6px;background:#ff9f0a;border-radius:50%;"></div>
+            </div>
+            <!-- Item 4 -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 0;">
+              <div style="font-size:14px;">⬜</div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);">Final QC Test</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.25);">Pending</div>
+              </div>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div style="padding:10px 16px 22px;border-top:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:12px;font-weight:600;color:#32d74b;margin-bottom:4px;">Est. Ready: 30 min</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);">(786) 953-7849 · apple-berry.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="label">F — Repair Progress Screen</div>
+  </div>
+
+  <!-- G — Apple Berry App Icon -->
+  <div class="card">
+    <div class="phone">
+      <div class="phone-screen">
+        <div style="width:100%;height:100%;background:linear-gradient(160deg,#0f0c29,#302b63,#24243e);position:relative;">
+          <!-- Stars bg -->
+          <div style="position:absolute;inset:0;">
+            <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:25px;left:25px;opacity:0.5;"></div>
+            <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:50px;left:90px;opacity:0.4;"></div>
+            <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:40px;left:155px;opacity:0.6;"></div>
+            <div style="position:absolute;width:1px;height:1px;background:#fff;border-radius:50%;top:75px;left:35px;opacity:0.4;"></div>
+            <div style="position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;top:85px;left:120px;opacity:0.5;"></div>
+          </div>
+          <!-- Status bar -->
+          <div style="display:flex;justify-content:space-between;padding:34px 18px 0;position:relative;z-index:5;">
+            <div style="font-size:11px;font-weight:600;color:#fff;">9:41</div>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <svg width="14" height="10" viewBox="0 0 14 10"><rect x="0" y="3" width="2.5" height="7" rx="0.4" fill="white"/><rect x="3.5" y="2" width="2.5" height="8" rx="0.4" fill="white"/><rect x="7" y="0.5" width="2.5" height="9.5" rx="0.4" fill="white"/></svg>
+              <svg width="14" height="10" viewBox="0 0 14 10"><rect x="0" y="1" width="12" height="8" rx="1.5" stroke="white" stroke-width="1" fill="none"/><rect x="1.5" y="2.5" width="8" height="5" rx="0.5" fill="white"/><rect x="12" y="3" width="2" height="4" rx="1" fill="white"/></svg>
+            </div>
+          </div>
+          <!-- App icons grid — 3x3 -->
+          <div style="padding:14px 12px 0;position:relative;z-index:5;">
+            <!-- Row 1 — normal icons -->
+            <div style="display:flex;justify-content:space-around;margin-bottom:8px;">
+              <!-- Safari -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#1c8ef9,#00c6fb);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">🧭</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Safari</div>
+              </div>
+              <!-- Messages -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#28cd41,#1db954);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Messages</div>
+              </div>
+              <!-- Camera -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#636366,#3a3a3c);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">📷</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Camera</div>
+              </div>
+            </div>
+            <!-- Row 2 — CENTER is AB Repair (bigger + glow) -->
+            <div style="display:flex;justify-content:space-around;align-items:center;margin-bottom:8px;">
+              <!-- Settings -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#636366,#444);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">⚙️</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Settings</div>
+              </div>
+              <!-- AB Repair — CENTER, bigger -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="position:relative;">
+                  <!-- Glow ring -->
+                  <div style="position:absolute;inset:-5px;border-radius:16px;background:radial-gradient(circle,rgba(255,59,48,0.5) 0%,rgba(255,59,48,0) 70%);z-index:-1;"></div>
+                  <div style="width:54px;height:54px;background:linear-gradient(135deg,#ff453a,#e53935,#c62828);border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(255,59,48,0.7);font-size:30px;">🍎</div>
+                </div>
+                <div style="font-size:8px;color:#fff;font-weight:700;">AB Repair</div>
+              </div>
+              <!-- Photos -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#f6d365,#fda085);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">🖼️</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Photos</div>
+              </div>
+            </div>
+            <!-- Row 3 -->
+            <div style="display:flex;justify-content:space-around;margin-bottom:8px;">
+              <!-- Maps -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#34c759,#1db954);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">🗺️</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Maps</div>
+              </div>
+              <!-- Music -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#fc3d39,#f81b2b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">🎵</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Music</div>
+              </div>
+              <!-- Notes -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,#ffd60a,#ff9f0a);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;">📝</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.7);">Notes</div>
+              </div>
+            </div>
+          </div>
+          <!-- Dock -->
+          <div style="position:absolute;bottom:0;left:0;right:0;height:86px;background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.08);border-radius:0 0 32px 32px;">
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:14px 14px 0;">
+              <!-- Phone -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:42px;height:42px;background:#1c8ef9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">📱</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.6);">Phone</div>
+              </div>
+              <!-- Messages -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:42px;height:42px;background:linear-gradient(135deg,#28cd41,#1db954);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">💬</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.6);">Messages</div>
+              </div>
+              <!-- Safari -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:42px;height:42px;background:linear-gradient(135deg,#1c8ef9,#00c6fb);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">🧭</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.6);">Safari</div>
+              </div>
+              <!-- AB Repair -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <div style="width:42px;height:42px;background:linear-gradient(135deg,#ff453a,#c62828);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 12px rgba(255,59,48,0.5);">🍎</div>
+                <div style="font-size:8px;color:rgba(255,255,255,0.6);">AB Repair</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="label">G — Apple Berry App Icon</div>
+  </div>
+
+</div>
+
+</body>
+</html>
