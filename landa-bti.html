@@ -50,12 +50,6 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.3s;
 }
 
-.nav.scrolled {
-  background: rgba(17,17,17,0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(245,196,0,0.15);
-}
 
 .nav-inner {
   display: flex;
@@ -87,12 +81,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 .nav-links a {
-  color: #fff;
+  color: var(--gold);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.3px;
   transition: color 0.2s;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.5);
 }
 
 .nav-links a:hover { color: var(--gold); }
@@ -1466,11 +1459,7 @@ footer {
 </footer>
 
 <script>
-// Nav scroll effect
-const nav = document.querySelector('.nav');
-window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+// Nav always transparent
 
 // Intersection Observer for fade-up (non-hero elements)
 const observer = new IntersectionObserver((entries) => {

@@ -29,14 +29,8 @@ img { max-width: 100%; display: block; }
 .nav {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
   height: 70px;
-  background: transparent;
-  transition: background 0.3s, backdrop-filter 0.3s;
-}
-.nav.scrolled {
-  background: rgba(74, 46, 14, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  background: var(--brown);
+  box-shadow: 0 2px 12px rgba(74,46,14,0.3);
 }
 .nav-inner {
   max-width: 1280px; margin: 0 auto;
@@ -147,8 +141,9 @@ img { max-width: 100%; display: block; }
 
 /* ── TRUST BAR ── */
 .trust-bar {
-  background: var(--brown);
+  background: var(--cream);
   padding: 18px 48px;
+  border-bottom: 1px solid rgba(74,46,14,0.1);
 }
 .trust-inner {
   max-width: 1280px; margin: 0 auto;
@@ -157,7 +152,7 @@ img { max-width: 100%; display: block; }
 }
 .trust-item {
   display: flex; align-items: center; gap: 10px;
-  color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500;
+  color: var(--brown); font-size: 14px; font-weight: 500;
 }
 .trust-icon {
   width: 28px; height: 28px;
@@ -171,9 +166,9 @@ img { max-width: 100%; display: block; }
 /* ── SECTIONS ── */
 section { padding: 88px 48px; }
 .section-cream { background: var(--cream); }
-.section-white { background: #fff; }
-.section-brown { background: var(--brown); }
-.section-charcoal { background: var(--charcoal); }
+.section-white { background: var(--cream); }
+.section-brown { background: var(--cream); }
+.section-charcoal { background: var(--cream); }
 
 .section-label {
   text-transform: uppercase; font-size: 12px; font-weight: 700;
@@ -515,6 +510,36 @@ section { padding: 88px 48px; }
 .tc-stars .star { color: #FBBC04; font-size: 13px; }
 .tc-date { font-size: 11px; color: rgba(255,255,255,0.4); margin: 0; }
 .tc-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0; font-style: italic; }
+
+/* ── OVERRIDES FOR CREAM BACKGROUND SECTIONS ── */
+
+/* Reviews section (was charcoal) */
+.section-charcoal .section-heading.light { color: var(--brown); }
+.section-charcoal .section-desc.light { color: var(--muted); }
+.google-badge {
+  background: rgba(74,46,14,0.08);
+  color: var(--brown);
+}
+.google-badge strong { color: var(--brown); }
+.testimonial-card {
+  background: #fff;
+  border: 1px solid rgba(74,46,14,0.1);
+  box-shadow: 0 2px 12px rgba(74,46,14,0.06);
+}
+.author-name { color: var(--brown); }
+.tc-text { color: rgba(74,46,14,0.75); }
+.tc-date { color: rgba(74,46,14,0.45); }
+
+/* CTA section (was brown) */
+.section-brown h2 { color: var(--brown) !important; }
+.section-brown p { color: var(--muted) !important; }
+.section-brown a[href^="tel"] {
+  color: var(--brown) !important;
+  border-color: rgba(74,46,14,0.3) !important;
+}
+
+/* Footer stays brown — ensure footer overrides are explicit */
+.footer { background: var(--brown) !important; }
 </style>
 </head>
 <body>
@@ -994,9 +1019,7 @@ section { padding: 88px 48px; }
 <script>
 // Nav scroll
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-});
+// Nav is always brown
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
