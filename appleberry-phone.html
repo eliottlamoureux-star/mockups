@@ -164,8 +164,8 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
 }
 .iphone-screen {
   position: absolute;
-  top: 6px; left: 6px; right: 6px; bottom: 6px;
-  border-radius: 52px;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 58px;
   overflow: hidden;
   background: #000;
 }
@@ -459,121 +459,119 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
       </h1>
       <p class="hero-subline">Screen repair &middot; Battery &middot; Water damage &middot; Simple Mobile</p>
     </div>
-    <div class="hero-card-wrap" style="padding: 0 1rem;">
+    <div class="hero-card-wrap">
       <div class="hero-card" id="hero-card">
-        <div class="dynamic-island"></div>
         <div class="iphone-screen">
-          <div class="dynamic-island"></div>
 
-          <!-- iOS dark lock screen bg -->
-          <div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a0a2e 0%,#0d0d0d 50%,#1a1a1a 100%);"></div>
+  <!-- Wallpaper -->
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a0533 0%,#0d1b4b 35%,#0a1628 65%,#000 100%);"></div>
 
-          <!-- Lock screen time -->
-          <div style="position:absolute;top:80px;left:0;right:0;text-align:center;color:#fff;font-family:-apple-system,sans-serif;">
-            <div style="font-size:72px;font-weight:200;letter-spacing:-2px;line-height:1;">12:09</div>
-            <div style="font-size:16px;font-weight:400;opacity:0.7;margin-top:4px;">Saturday, January 11</div>
-          </div>
-
-          <!-- Cracked screen SVG — realistic spider web from lower-center impact -->
-          <svg viewBox="0 0 360 740" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;" preserveAspectRatio="xMidYMid slice">
-  <defs>
-    <radialGradient id="impactGlow" cx="50%" cy="70%" r="25%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
-      <stop offset="60%" stop-color="rgba(255,255,255,0.05)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="crackBlur">
-      <feGaussianBlur stdDeviation="0.3"/>
-    </filter>
-  </defs>
-
-  <!-- Impact glow -->
-  <ellipse cx="180" cy="520" rx="90" ry="70" fill="url(#impactGlow)"/>
-
-  <!-- PRIMARY CRACKS — jagged paths, not straight lines -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Crack 1: up-left to top-left corner -->
-    <path d="M180,520 L175,490 L168,455 L172,410 L163,370 L169,320 L158,265 L164,200 L152,140 L158,80 L145,30 L130,0" stroke="rgba(255,255,255,0.88)" stroke-width="1.4"/>
-    <!-- Crack 2: straight up slightly right -->
-    <path d="M180,520 L183,488 L178,448 L184,400 L180,350 L185,290 L179,230 L183,160 L178,90 L182,40 L185,0" stroke="rgba(255,255,255,0.82)" stroke-width="1.3"/>
-    <!-- Crack 3: upper right -->
-    <path d="M180,520 L188,492 L196,458 L204,420 L215,378 L228,330 L242,278 L258,220 L272,165 L285,110 L298,60 L310,20 L325,0" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"/>
-    <!-- Crack 4: right -->
-    <path d="M180,520 L205,515 L232,518 L258,512 L285,516 L310,510 L336,514 L360,510" stroke="rgba(255,255,255,0.80)" stroke-width="1.3"/>
-    <!-- Crack 5: lower-right -->
-    <path d="M180,520 L198,538 L214,558 L226,580 L238,602 L248,622 L255,645 L260,668 L265,700 L268,740" stroke="rgba(255,255,255,0.78)" stroke-width="1.2"/>
-    <!-- Crack 6: down -->
-    <path d="M180,520 L182,545 L178,572 L183,600 L179,628 L184,660 L180,695 L182,740" stroke="rgba(255,255,255,0.75)" stroke-width="1.1"/>
-    <!-- Crack 7: lower-left -->
-    <path d="M180,520 L162,535 L148,555 L135,578 L122,600 L110,622 L98,648 L88,675 L78,700 L65,740" stroke="rgba(255,255,255,0.78)" stroke-width="1.2"/>
-    <!-- Crack 8: left -->
-    <path d="M180,520 L154,518 L128,522 L102,516 L76,520 L48,514 L22,518 L0,514" stroke="rgba(255,255,255,0.80)" stroke-width="1.3"/>
-    <!-- Crack 9: upper-left -->
-    <path d="M180,520 L165,495 L152,462 L158,425 L142,385 L148,340 L132,295 L120,248 L108,195 L95,148 L80,100 L65,55 L40,20 L20,0" stroke="rgba(255,255,255,0.84)" stroke-width="1.3"/>
-  </g>
-
-  <!-- SECONDARY BRANCHES — thinner, branching off primaries -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Off crack 1 -->
-    <path d="M163,370 L140,350 L118,325 L95,295 L70,265 L45,240 L20,220 L0,205" stroke="rgba(255,255,255,0.72)" stroke-width="0.9"/>
-    <path d="M158,265 L130,248 L105,228 L78,215 L50,200 L25,185 L0,172" stroke="rgba(255,255,255,0.65)" stroke-width="0.8"/>
-    <!-- Off crack 3 -->
-    <path d="M228,330 L245,310 L258,285 L268,255 L272,225 L268,195 L258,168" stroke="rgba(255,255,255,0.68)" stroke-width="0.85"/>
-    <path d="M258,220 L280,215 L302,212 L325,208 L348,205 L360,202" stroke="rgba(255,255,255,0.62)" stroke-width="0.8"/>
-    <!-- Off crack 4 -->
-    <path d="M258,512 L265,488 L270,460 L265,432 L270,405 L265,378" stroke="rgba(255,255,255,0.60)" stroke-width="0.75"/>
-    <!-- Off crack 9 -->
-    <path d="M132,295 L108,278 L82,265 L55,258 L28,252 L0,248" stroke="rgba(255,255,255,0.65)" stroke-width="0.8"/>
-    <path d="M148,340 L168,320 L185,298 L198,272 L208,245 L215,215 L220,182 L222,148" stroke="rgba(255,255,255,0.60)" stroke-width="0.75"/>
-    <!-- Horizontal shelf crack -->
-    <path d="M95,385 L120,382 L148,386 L168,382 L195,386 L222,380 L248,384 L272,378 L298,382 L320,376" stroke="rgba(255,255,255,0.45)" stroke-width="0.6"/>
-    <!-- Mid left traverse -->
-    <path d="M0,320 L25,318 L52,322 L75,316 L100,320 L122,315 L142,320" stroke="rgba(255,255,255,0.42)" stroke-width="0.6"/>
-  </g>
-
-  <!-- TERTIARY MICRO-CRACKS near impact (dense zone) -->
-  <g fill="none" stroke="rgba(255,255,255,0.7)" stroke-linecap="round" filter="url(#crackBlur)">
-    <path d="M180,520 L172,505 L165,495" stroke-width="0.6"/>
-    <path d="M180,520 L190,506 L198,494" stroke-width="0.6"/>
-    <path d="M180,520 L168,512 L155,508" stroke-width="0.6"/>
-    <path d="M180,520 L194,514 L208,510" stroke-width="0.6"/>
-    <path d="M180,520 L175,532 L168,542" stroke-width="0.6"/>
-    <path d="M180,520 L186,534 L194,546" stroke-width="0.6"/>
-    <path d="M172,505 L160,498 L150,490" stroke-width="0.5"/>
-    <path d="M190,506 L202,500 L212,492" stroke-width="0.5"/>
-    <path d="M168,512 L160,522 L150,528" stroke-width="0.5"/>
-    <path d="M194,514 L205,522 L215,526" stroke-width="0.5"/>
-  </g>
-
-  <!-- GLASS SHARDS near impact — small filled polygons -->
-  <g stroke-linecap="round" stroke-linejoin="round">
-    <polygon points="180,520 165,500 175,492" fill="rgba(180,210,255,0.06)" stroke="rgba(255,255,255,0.75)" stroke-width="0.5"/>
-    <polygon points="180,520 195,498 185,490" fill="rgba(180,210,255,0.05)" stroke="rgba(255,255,255,0.70)" stroke-width="0.5"/>
-    <polygon points="180,520 160,510 155,522" fill="rgba(180,210,255,0.07)" stroke="rgba(255,255,255,0.72)" stroke-width="0.5"/>
-    <polygon points="180,520 200,512 205,524" fill="rgba(180,210,255,0.05)" stroke="rgba(255,255,255,0.68)" stroke-width="0.5"/>
-    <polygon points="180,520 170,534 162,524" fill="rgba(180,210,255,0.06)" stroke="rgba(255,255,255,0.70)" stroke-width="0.5"/>
-    <polygon points="180,520 192,536 200,526" fill="rgba(180,210,255,0.05)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5"/>
-    <polygon points="165,500 155,488 168,482 175,492" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.60)" stroke-width="0.4"/>
-    <polygon points="195,498 205,486 212,494 200,504" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.58)" stroke-width="0.4"/>
-    <polygon points="160,510 148,502 150,515 160,520" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
-    <polygon points="200,512 212,506 215,518 205,522" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
-    <polygon points="170,534 158,528 155,540 165,545" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
-    <polygon points="192,536 205,530 208,542 196,548" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
-  </g>
-
-  <!-- Impact point -->
-  <circle cx="180" cy="520" r="14" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
-  <circle cx="180" cy="520" r="6" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.6"/>
-  <circle cx="180" cy="520" r="2.5" fill="rgba(255,255,255,0.5)"/>
-
-  <!-- Screen glare -->
-  <ellipse cx="180" cy="100" rx="120" ry="30" fill="rgba(255,255,255,0.03)"/>
-</svg>
-
-          <!-- Vignette edges -->
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 50%,rgba(0,0,0,0.6) 100%);pointer-events:none;border-radius:46px;"></div>
+  <!-- Status bar -->
+  <div style="position:absolute;top:16px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 28px;z-index:30;font-family:-apple-system,sans-serif;">
+    <span style="color:#fff;font-size:15px;font-weight:600;letter-spacing:-0.3px;">9:41</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <!-- Signal bars -->
+      <svg width="17" height="12" viewBox="0 0 17 12" fill="white"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="4.5" width="3" height="7.5" rx="1"/><rect x="9" y="2" width="3" height="10" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+      <!-- WiFi -->
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M1 4c1.9-2 4.5-3 7-3s5.1 1 7 3"/><path d="M3.5 7c1.2-1.3 2.8-2 4.5-2s3.3.7 4.5 2"/><circle cx="8" cy="11" r="1.2" fill="white" stroke="none"/></svg>
+      <!-- Battery -->
+      <div style="display:flex;align-items:center;gap:1px;">
+        <div style="width:25px;height:12px;border:1.5px solid rgba(255,255,255,0.7);border-radius:3px;padding:2px;position:relative;">
+          <div style="width:80%;height:100%;background:#fff;border-radius:1.5px;"></div>
         </div>
-        <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:100px;height:4px;background:rgba(255,255,255,0.3);border-radius:3px;"></div>
+        <div style="width:2px;height:5px;background:rgba(255,255,255,0.5);border-radius:0 1px 1px 0;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Island -->
+  <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:34px;background:#000;border-radius:20px;z-index:40;"></div>
+
+  <!-- Date widget -->
+  <div style="position:absolute;top:72px;left:0;right:0;text-align:center;font-family:-apple-system,sans-serif;color:#fff;z-index:20;">
+    <div style="font-size:13px;font-weight:400;opacity:0.7;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:2px;">Tuesday</div>
+    <div style="font-size:76px;font-weight:100;line-height:1;letter-spacing:-3px;">9:41</div>
+  </div>
+
+  <!-- App grid -->
+  <div style="position:absolute;top:240px;left:0;right:0;padding:0 20px;z-index:20;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px 10px;">
+
+      <!-- Row 1 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#007AFF,#0051d5);display:flex;align-items:center;justify-content:center;font-size:26px;">🌐</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Safari</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#34C759,#248a3d);display:flex;align-items:center;justify-content:center;font-size:26px;">💬</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Messages</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#FF9500,#c87600);display:flex;align-items:center;justify-content:center;font-size:26px;">📸</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Camera</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#FF2D55,#c4003e);display:flex;align-items:center;justify-content:center;font-size:26px;">🎵</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Music</span>
+      </div>
+
+      <!-- Row 2 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#5856D6,#3d3ab5);display:flex;align-items:center;justify-content:center;font-size:26px;">🗺️</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Maps</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#FF6B35,#e04800);display:flex;align-items:center;justify-content:center;font-size:26px;">🖼️</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Photos</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#64D2FF,#0099d4);display:flex;align-items:center;justify-content:center;font-size:26px;">☁️</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Weather</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#636366,#3a3a3c);display:flex;align-items:center;justify-content:center;font-size:26px;">⚙️</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Settings</span>
+      </div>
+
+      <!-- Row 3 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#30D158,#1f8c3b);display:flex;align-items:center;justify-content:center;font-size:26px;">🏃</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Fitness</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#FFD60A,#c9a800);display:flex;align-items:center;justify-content:center;font-size:26px;">🔦</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Wallet</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#BF5AF2,#8944c2);display:flex;align-items:center;justify-content:center;font-size:26px;">🎙️</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Podcasts</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+        <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#FF375F,#c4002e);display:flex;align-items:center;justify-content:center;font-size:26px;">❤️</div>
+        <span style="color:#fff;font-size:10px;font-family:-apple-system,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Health</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page dots -->
+  <div style="position:absolute;bottom:110px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:20;">
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.9);"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.35);"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.35);"></div>
+  </div>
+
+  <!-- Dock -->
+  <div style="position:absolute;bottom:24px;left:16px;right:16px;background:rgba(255,255,255,0.12);backdrop-filter:blur(20px);border-radius:28px;padding:12px 20px;display:flex;justify-content:space-around;align-items:center;z-index:20;border:1px solid rgba(255,255,255,0.08);">
+    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#34C759,#248a3d);display:flex;align-items:center;justify-content:center;font-size:26px;">📞</div>
+    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#007AFF,#0051d5);display:flex;align-items:center;justify-content:center;font-size:26px;">✉️</div>
+    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#1C1C1E,#2c2c2e);display:flex;align-items:center;justify-content:center;font-size:26px;">🌐</div>
+    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#FF9500,#c87600);display:flex;align-items:center;justify-content:center;font-size:26px;">📸</div>
+  </div>
+
+  <!-- Home indicator -->
+  <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:120px;height:5px;background:rgba(255,255,255,0.4);border-radius:3px;z-index:30;"></div>
+
+        </div>
       </div>
     </div>
   </div>
