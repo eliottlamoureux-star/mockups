@@ -363,7 +363,7 @@ section {
 
 /* ═══════════════ ABOUT ═══════════════ */
 .about {
-  background: var(--off-white);
+  background: #111111;
   padding: 100px 60px;
 }
 
@@ -522,7 +522,7 @@ section {
 /* ═══════════════ CRAFT SECTION ═══════════════ */
 .craft {
   padding: 100px 60px;
-  background: var(--white);
+  background: #111111;
 }
 
 .craft-grid {
@@ -1106,6 +1106,36 @@ section {
   .instagram { padding: 72px 24px; }
   .footer { padding: 60px 24px; }
 }
+
+/* ═══════════════ DARK THEME OVERRIDES ═══════════════ */
+body { background: #0f0f0f; }
+
+/* About section text */
+.about .section-title { color: #fff; }
+.about .section-body { color: rgba(255,255,255,0.6); }
+.about-text p { color: rgba(255,255,255,0.6); }
+.stat-card {
+  background: #1a1a1a !important;
+  border-left: 3px solid var(--gold);
+}
+.stat-num { color: var(--gold); }
+.stat-label { color: rgba(255,255,255,0.4) !important; }
+
+/* Craft section text */
+.craft .section-title { color: #fff; }
+.craft .section-body { color: rgba(255,255,255,0.6); }
+.craft-text p, .craft-text li { color: rgba(255,255,255,0.6); }
+
+/* Testimonial cards on dark bg */
+.testimonial-card {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Visit section */
+.visit { background: #0f0f0f; }
+.visit .section-title { color: #fff; }
+.visit-hours-widget { background: rgba(255,255,255,0.04) !important; }
 </style>
 </head>
 <body>
