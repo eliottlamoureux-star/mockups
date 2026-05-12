@@ -34,11 +34,6 @@ nav {
   background: transparent;
   transition: background 0.3s;
 }
-nav.scrolled {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
 .nav-logo {
   font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
   color: #0a0a0a; text-decoration: none;
@@ -620,10 +615,6 @@ nav.scrolled {
     <p class="hero-sub">
       Miami's trusted phone repair shop. Screen replacement, battery, water damage — same day service.
     </p>
-    <div class="hero-buttons">
-      <a href="tel:7869537849" class="btn-primary">&#128222; Call (786) 953-7849</a>
-      <a href="#services" class="btn-secondary">Our Services</a>
-    </div>
     <div class="hero-trust">
       <span class="trust-item"><span class="trust-dot"></span>Same Day Service</span>
       <span class="trust-item"><span class="trust-dot"></span>90-Day Warranty</span>
@@ -976,7 +967,7 @@ nav.scrolled {
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 AppleBerry Phone Repair Store. All rights reserved.</p>
+    <p>&copy; 2026 AppleBerry Phone Repair Store. All rights reserved.</p>
     <p>113 NE 2nd Ave, Miami, FL 33132</p>
   </div>
 </footer>
@@ -985,7 +976,6 @@ nav.scrolled {
 // ─── NAVBAR SCROLL ───
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.pageYOffset > 60);
 }, { passive: true });
 
 
