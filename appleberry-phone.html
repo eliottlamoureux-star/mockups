@@ -29,26 +29,26 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
   transition: background 0.35s ease, box-shadow 0.35s ease;
 }
 .nav.scrolled {
-  background: rgba(26,26,26,0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.08);
 }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 56px; height: 100%; max-width: 1400px; margin: 0 auto;
 }
 .nav-brand {
-  color: #fff; font-weight: 800; font-size: 20px;
+  color: #0a0a0a; font-weight: 800; font-size: 20px;
   text-decoration: none; letter-spacing: -0.02em;
 }
 .nav-brand span { color: var(--green); }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a {
-  color: rgba(255,255,255,0.8); font-size: 14px;
+  color: #0a0a0a; font-size: 14px;
   text-decoration: none; font-weight: 500; transition: color 0.2s;
 }
-.nav-links a:hover { color: #fff; }
+.nav-links a:hover { color: #0a0a0a; }
 .btn-call {
   background: var(--red); color: #fff; border: none; border-radius: 8px;
   padding: 10px 22px; font-size: 14px; font-weight: 600; cursor: pointer;
@@ -131,10 +131,10 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
   perspective: 1000px;
 }
 .hero-card {
-  width: 300px;
-  height: 620px;
+  width: 360px;
+  height: 740px;
   background: linear-gradient(145deg, #2a2a2c, #1a1a1c, #2c2c2e);
-  border-radius: 52px;
+  border-radius: 58px;
   position: relative;
   margin: 0 auto;
   transform: rotateX(40deg) scale(1.15);
@@ -156,8 +156,8 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: 110px;
-  height: 32px;
+  width: 126px;
+  height: 36px;
   background: #000;
   border-radius: 20px;
   z-index: 20;
@@ -165,7 +165,7 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
 .iphone-screen {
   position: absolute;
   top: 6px; left: 6px; right: 6px; bottom: 6px;
-  border-radius: 46px;
+  border-radius: 52px;
   overflow: hidden;
   background: #000;
 }
@@ -474,53 +474,101 @@ body { font-family: 'Inter', sans-serif; color: var(--dark); background: var(--w
             <div style="font-size:16px;font-weight:400;opacity:0.7;margin-top:4px;">Saturday, January 11</div>
           </div>
 
-          <!-- Cracked screen SVG — spider web from lower-center impact -->
-          <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <radialGradient id="crackGlow" cx="50%" cy="70%" r="40%">
-                <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
-                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-              </radialGradient>
-            </defs>
-            <!-- Impact glow -->
-            <ellipse cx="150" cy="440" rx="80" ry="60" fill="url(#crackGlow)"/>
-            <!-- Primary cracks from impact point (150, 440) -->
-            <g stroke="rgba(255,255,255,0.9)" fill="none" stroke-linecap="round">
-              <line x1="150" y1="440" x2="0" y2="100" stroke-width="1.4"/>
-              <line x1="150" y1="440" x2="60" y2="0" stroke-width="1.2"/>
-              <line x1="150" y1="440" x2="200" y2="0" stroke-width="1.3"/>
-              <line x1="150" y1="440" x2="300" y2="120" stroke-width="1.4"/>
-              <line x1="150" y1="440" x2="300" y2="300" stroke-width="1.3"/>
-              <line x1="150" y1="440" x2="300" y2="500" stroke-width="1.2"/>
-              <line x1="150" y1="440" x2="240" y2="620" stroke-width="1.3"/>
-              <line x1="150" y1="440" x2="100" y2="620" stroke-width="1.4"/>
-              <line x1="150" y1="440" x2="0" y2="520" stroke-width="1.3"/>
-              <line x1="150" y1="440" x2="0" y2="350" stroke-width="1.2"/>
-              <!-- Secondary branches -->
-              <line x1="80" y1="280" x2="30" y2="200" stroke-width="0.8"/>
-              <line x1="80" y1="280" x2="140" y2="250" stroke-width="0.7"/>
-              <line x1="220" y1="200" x2="260" y2="140" stroke-width="0.8"/>
-              <line x1="220" y1="200" x2="180" y2="160" stroke-width="0.7"/>
-              <line x1="260" y1="360" x2="290" y2="290" stroke-width="0.8"/>
-              <line x1="200" y1="530" x2="270" y2="580" stroke-width="0.8"/>
-              <line x1="120" y1="540" x2="60" y2="590" stroke-width="0.8"/>
-              <line x1="40" y1="430" x2="0" y2="440" stroke-width="0.7"/>
-              <!-- Micro-cracks near impact -->
-              <line x1="140" y1="420" x2="110" y2="400" stroke-width="0.6"/>
-              <line x1="160" y1="420" x2="190" y2="405" stroke-width="0.6"/>
-              <line x1="145" y1="460" x2="120" y2="480" stroke-width="0.6"/>
-              <line x1="160" y1="458" x2="185" y2="475" stroke-width="0.6"/>
-            </g>
-            <!-- Impact point -->
-            <circle cx="150" cy="440" r="10" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/>
-            <circle cx="150" cy="440" r="4" fill="rgba(255,255,255,0.4)"/>
-            <!-- Glass shard shading near impact -->
-            <polygon points="150,440 120,410 145,400" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
-            <polygon points="150,440 180,415 165,400" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.35)" stroke-width="0.5"/>
-            <polygon points="150,440 170,470 185,455" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
-            <!-- Screen glare streak -->
-            <line x1="80" y1="30" x2="220" y2="30" stroke="rgba(255,255,255,0.06)" stroke-width="20" stroke-linecap="round"/>
-          </svg>
+          <!-- Cracked screen SVG — realistic spider web from lower-center impact -->
+          <svg viewBox="0 0 360 740" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="impactGlow" cx="50%" cy="70%" r="25%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="60%" stop-color="rgba(255,255,255,0.05)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="crackBlur">
+      <feGaussianBlur stdDeviation="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Impact glow -->
+  <ellipse cx="180" cy="520" rx="90" ry="70" fill="url(#impactGlow)"/>
+
+  <!-- PRIMARY CRACKS — jagged paths, not straight lines -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Crack 1: up-left to top-left corner -->
+    <path d="M180,520 L175,490 L168,455 L172,410 L163,370 L169,320 L158,265 L164,200 L152,140 L158,80 L145,30 L130,0" stroke="rgba(255,255,255,0.88)" stroke-width="1.4"/>
+    <!-- Crack 2: straight up slightly right -->
+    <path d="M180,520 L183,488 L178,448 L184,400 L180,350 L185,290 L179,230 L183,160 L178,90 L182,40 L185,0" stroke="rgba(255,255,255,0.82)" stroke-width="1.3"/>
+    <!-- Crack 3: upper right -->
+    <path d="M180,520 L188,492 L196,458 L204,420 L215,378 L228,330 L242,278 L258,220 L272,165 L285,110 L298,60 L310,20 L325,0" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"/>
+    <!-- Crack 4: right -->
+    <path d="M180,520 L205,515 L232,518 L258,512 L285,516 L310,510 L336,514 L360,510" stroke="rgba(255,255,255,0.80)" stroke-width="1.3"/>
+    <!-- Crack 5: lower-right -->
+    <path d="M180,520 L198,538 L214,558 L226,580 L238,602 L248,622 L255,645 L260,668 L265,700 L268,740" stroke="rgba(255,255,255,0.78)" stroke-width="1.2"/>
+    <!-- Crack 6: down -->
+    <path d="M180,520 L182,545 L178,572 L183,600 L179,628 L184,660 L180,695 L182,740" stroke="rgba(255,255,255,0.75)" stroke-width="1.1"/>
+    <!-- Crack 7: lower-left -->
+    <path d="M180,520 L162,535 L148,555 L135,578 L122,600 L110,622 L98,648 L88,675 L78,700 L65,740" stroke="rgba(255,255,255,0.78)" stroke-width="1.2"/>
+    <!-- Crack 8: left -->
+    <path d="M180,520 L154,518 L128,522 L102,516 L76,520 L48,514 L22,518 L0,514" stroke="rgba(255,255,255,0.80)" stroke-width="1.3"/>
+    <!-- Crack 9: upper-left -->
+    <path d="M180,520 L165,495 L152,462 L158,425 L142,385 L148,340 L132,295 L120,248 L108,195 L95,148 L80,100 L65,55 L40,20 L20,0" stroke="rgba(255,255,255,0.84)" stroke-width="1.3"/>
+  </g>
+
+  <!-- SECONDARY BRANCHES — thinner, branching off primaries -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Off crack 1 -->
+    <path d="M163,370 L140,350 L118,325 L95,295 L70,265 L45,240 L20,220 L0,205" stroke="rgba(255,255,255,0.72)" stroke-width="0.9"/>
+    <path d="M158,265 L130,248 L105,228 L78,215 L50,200 L25,185 L0,172" stroke="rgba(255,255,255,0.65)" stroke-width="0.8"/>
+    <!-- Off crack 3 -->
+    <path d="M228,330 L245,310 L258,285 L268,255 L272,225 L268,195 L258,168" stroke="rgba(255,255,255,0.68)" stroke-width="0.85"/>
+    <path d="M258,220 L280,215 L302,212 L325,208 L348,205 L360,202" stroke="rgba(255,255,255,0.62)" stroke-width="0.8"/>
+    <!-- Off crack 4 -->
+    <path d="M258,512 L265,488 L270,460 L265,432 L270,405 L265,378" stroke="rgba(255,255,255,0.60)" stroke-width="0.75"/>
+    <!-- Off crack 9 -->
+    <path d="M132,295 L108,278 L82,265 L55,258 L28,252 L0,248" stroke="rgba(255,255,255,0.65)" stroke-width="0.8"/>
+    <path d="M148,340 L168,320 L185,298 L198,272 L208,245 L215,215 L220,182 L222,148" stroke="rgba(255,255,255,0.60)" stroke-width="0.75"/>
+    <!-- Horizontal shelf crack -->
+    <path d="M95,385 L120,382 L148,386 L168,382 L195,386 L222,380 L248,384 L272,378 L298,382 L320,376" stroke="rgba(255,255,255,0.45)" stroke-width="0.6"/>
+    <!-- Mid left traverse -->
+    <path d="M0,320 L25,318 L52,322 L75,316 L100,320 L122,315 L142,320" stroke="rgba(255,255,255,0.42)" stroke-width="0.6"/>
+  </g>
+
+  <!-- TERTIARY MICRO-CRACKS near impact (dense zone) -->
+  <g fill="none" stroke="rgba(255,255,255,0.7)" stroke-linecap="round" filter="url(#crackBlur)">
+    <path d="M180,520 L172,505 L165,495" stroke-width="0.6"/>
+    <path d="M180,520 L190,506 L198,494" stroke-width="0.6"/>
+    <path d="M180,520 L168,512 L155,508" stroke-width="0.6"/>
+    <path d="M180,520 L194,514 L208,510" stroke-width="0.6"/>
+    <path d="M180,520 L175,532 L168,542" stroke-width="0.6"/>
+    <path d="M180,520 L186,534 L194,546" stroke-width="0.6"/>
+    <path d="M172,505 L160,498 L150,490" stroke-width="0.5"/>
+    <path d="M190,506 L202,500 L212,492" stroke-width="0.5"/>
+    <path d="M168,512 L160,522 L150,528" stroke-width="0.5"/>
+    <path d="M194,514 L205,522 L215,526" stroke-width="0.5"/>
+  </g>
+
+  <!-- GLASS SHARDS near impact — small filled polygons -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="180,520 165,500 175,492" fill="rgba(180,210,255,0.06)" stroke="rgba(255,255,255,0.75)" stroke-width="0.5"/>
+    <polygon points="180,520 195,498 185,490" fill="rgba(180,210,255,0.05)" stroke="rgba(255,255,255,0.70)" stroke-width="0.5"/>
+    <polygon points="180,520 160,510 155,522" fill="rgba(180,210,255,0.07)" stroke="rgba(255,255,255,0.72)" stroke-width="0.5"/>
+    <polygon points="180,520 200,512 205,524" fill="rgba(180,210,255,0.05)" stroke="rgba(255,255,255,0.68)" stroke-width="0.5"/>
+    <polygon points="180,520 170,534 162,524" fill="rgba(180,210,255,0.06)" stroke="rgba(255,255,255,0.70)" stroke-width="0.5"/>
+    <polygon points="180,520 192,536 200,526" fill="rgba(180,210,255,0.05)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5"/>
+    <polygon points="165,500 155,488 168,482 175,492" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.60)" stroke-width="0.4"/>
+    <polygon points="195,498 205,486 212,494 200,504" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.58)" stroke-width="0.4"/>
+    <polygon points="160,510 148,502 150,515 160,520" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
+    <polygon points="200,512 212,506 215,518 205,522" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
+    <polygon points="170,534 158,528 155,540 165,545" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
+    <polygon points="192,536 205,530 208,542 196,548" fill="rgba(180,210,255,0.04)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4"/>
+  </g>
+
+  <!-- Impact point -->
+  <circle cx="180" cy="520" r="14" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+  <circle cx="180" cy="520" r="6" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.6"/>
+  <circle cx="180" cy="520" r="2.5" fill="rgba(255,255,255,0.5)"/>
+
+  <!-- Screen glare -->
+  <ellipse cx="180" cy="100" rx="120" ry="30" fill="rgba(255,255,255,0.03)"/>
+</svg>
 
           <!-- Vignette edges -->
           <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 50%,rgba(0,0,0,0.6) 100%);pointer-events:none;border-radius:46px;"></div>
